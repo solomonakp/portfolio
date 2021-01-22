@@ -6,10 +6,11 @@ import {
 } from '../redux/actions/counterActions';
 import Link from 'next/link';
 
-export default function Home() {
+export default function Home(props) {
   const count = useSelector((state) => state.counter.value);
-  console.log(count);
+
   const dispatch = useDispatch();
+  // console.log(props);
 
   return (
     <div className='container'>
