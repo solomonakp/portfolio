@@ -18,7 +18,11 @@ const useTheme = () => {
       iconColor: 'B2B9CD', // based on state
       cardHover: '#1B2E43', // based on state
     },
-    spacing: {},
+    spacing: {
+      sectionSpace: '11rem',
+      blogCard: '7.188rem',
+      blogCardSide: '5.25rem',
+    },
     size: {
       mainHeading: '4rem',
       sectionHeading: '2.5rem',
@@ -30,7 +34,7 @@ const useTheme = () => {
     },
     radius: {
       button: '5px',
-      portFolioCard: '10px',
+      card: '10px',
     },
     shadow: {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',
