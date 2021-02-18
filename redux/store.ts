@@ -1,9 +1,10 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import { HYDRATE, createWrapper } from 'next-redux-wrapper';
+import { createStore, applyMiddleware, AnyAction } from 'redux';
+import { HYDRATE, createWrapper, MakeStore, Context } from 'next-redux-wrapper';
 import thunkMiddleware from 'redux-thunk';
 
 // imports index.js of reducers
 import rootReducer from './reducers';
+import { RootState } from './reducers/index';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -12,8 +13,9 @@ const bindMiddleware = (middleware) => {
   }
   return applyMiddleware(...middleware);
 };
+
 const combinedReducer = rootReducer;
-const reducer = (state, action) => {
+const reducer = (state: RootState, action: AnyAction) => {
   if (action.type === HYDRATE) {
     const nextState = {
       ...state, // use previous state
@@ -27,10 +29,10 @@ const reducer = (state, action) => {
 };
 
 // create a makeStore function
-const initStore = () => {
+const initStore: MakeStore<RootState> = (context: Context) => {
   // creating store and binding middlewares
   return createStore(reducer, bindMiddleware([thunkMiddleware]));
 };
 
 // export an assembled wrapper
-export const wrapper = createWrapper(initStore, { debug: true });
+export const wrapper = createWrapper<RootState>(initStore, { debug: true });

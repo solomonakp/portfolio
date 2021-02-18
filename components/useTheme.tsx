@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../redux/reducers/index';
 
 interface Theme {
   fontFamily: {
@@ -57,6 +58,8 @@ interface Theme {
 }
 
 const useTheme = () => {
+  const dark = useSelector((state: RootState) => state.ui.isDark);
+
   const theme: Theme = {
     fontFamily: {
       headingFont: 'Lufga',
@@ -65,9 +68,9 @@ const useTheme = () => {
     colors: {
       primary: '#EF4E3C',
       secondary: '#4BB3FD',
-      tertiary: '#FFFFFC', // based on state
-      iconColor: 'B2B9CD', // based on state
-      cardHover: '#1B2E43', // based on state
+      tertiary: dark ? '#001524 ' : '#FFFFFC', // based on state
+      iconColor: dark ? 'B2B9CD' : '#616F94', // based on state
+      cardHover: dark ? '#1B2E43' : 'ECF1F4', // based on state
     },
     spacing: {
       sectionSpace: '11rem',
@@ -81,7 +84,7 @@ const useTheme = () => {
       textHeading: '1.5rem',
     },
     border: {
-      buttonBorder: '1px solid #B2B9CD',
+      buttonBorder: dark ? '1px solid #B2B9CD' : '1px solid #EF4E3C',
     },
     radius: {
       button: '5px',

@@ -1,15 +1,11 @@
 import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  incrementCounter,
-  decrementCounter,
-} from '../redux/actions/counterActions';
+
 import Link from 'next/link';
+import useTheme from '../components/useTheme';
 
 export default function Home(props) {
   const dispatch = useDispatch();
-  // console.log(props);
-
   return (
     <div className='container'>
       <Head>
