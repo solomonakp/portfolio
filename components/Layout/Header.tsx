@@ -24,10 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             {logo}
           </a>
           <Hamburger isOpen={open} />
-          <div
-            className='nav-group d-lg-flex align-items-center'
-            id='navigation'
-          >
+          <div className='d-flex align-items-lg-center ' id='navigation'>
             <Navigation />
             {theme ? <ModeButton isOpen={open} /> : null}
           </div>
@@ -39,21 +36,17 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             padding: 0 3.75rem;
           }
         }
-        .nav-group {
+        #navigation {
           @media (${maxMd}) {
             width: 100%;
             height: 100%;
             position: fixed;
             left: 0;
             right: 0;
-            top: 0;
+            top: 63.988px;
             bottom: 0;
-            display: flex;
             justify-content: center;
-            flex-direction: column;
-            background-color: black;
             align-items: center;
-            display: none;
           }
         }
       `}</style>

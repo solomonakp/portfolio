@@ -45,13 +45,15 @@ const Navigation: React.FC<NavigationProps> = (props) => {
             margin-right: 4rem;
             @media (${maxMd}) {
               margin-right: 0;
-              padding: 1.5rem 0;
-              font-size: ${mobileMenu};
             }
           }
           a:not(#nav-logo) {
             color: ${secondary};
             font-size: ${paragraph};
+            @media (${maxMd}) {
+              font-size: ${mobileMenu};
+              margin: 0 0 2rem 0;
+            }
           }
         `}
       </style>
