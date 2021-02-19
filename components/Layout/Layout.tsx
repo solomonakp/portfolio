@@ -1,4 +1,5 @@
 import React from 'react';
+import { Logo } from '../Svgs';
 import useTheme from '../useTheme';
 import { Header } from './Header';
 
@@ -9,10 +10,12 @@ interface LayoutProps {
 export const Layout: React.FC = ({ children }: LayoutProps) => {
   const {
     fontFamily: { textFont, headingFont },
+    colors: { light },
   } = useTheme();
   return (
     <div className='layout'>
-      <Header theme={true} />
+      <Header theme={true} logo={<Logo width={96} height={64} />} />
+
       <style jsx global>
         {`
           @font-face {
@@ -72,6 +75,8 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
             font-kerning: normal;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            background-color: ${light};
+            transition: background-color ease-in-out 200ms;
           }
 
           a,

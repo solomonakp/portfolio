@@ -1,0 +1,102 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import useTheme from '../useTheme';
+import { toggleOpen } from '../../redux/reducers/Ui/uiActions';
+
+interface HamburgerProps {
+  isOpen: boolean;
+}
+
+export const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
+  const {
+    colors: { dark },
+    media: { maxMd },
+  } = useTheme();
+  const dispatch = useDispatch();
+  return (
+    <button
+      className='hamburger'
+      type='button'
+      aria-label='Menu'
+      aria-controls='navigation'
+      aria-expanded={isOpen}
+      onClick={() => dispatch(toggleOpen())}
+    >
+      <span className='hamburger-box'>
+        <span className='hamburger-inner'></span>
+      </span>
+      <style jsx>{`
+        .hamburger {
+          cursor: pointer;
+          transition-property: opacity, filter;
+          transition-duration: 0.15s;
+          transition-timing-function: linear;
+          background-color: transparent;
+          border: 0;
+          margin: 0;
+          overflow: visible;
+          display: none;
+          padding: 5px;
+          @media (${maxMd}) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+        .hamburger-box {
+          width: 30px;
+          height: 24px;
+          display: inline-block;
+          position: relative;
+        }
+
+        .hamburger-inner {
+          display: block;
+          top: 50%;
+          width: 100%;
+          transition-duration: 0.22s;
+          transform: ${isOpen ? 'rotate(225deg)' : 'initial'};
+          transition-timing-function: ${isOpen
+            ? 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+            : ' cubic-bezier(0.55, 0.055, 0.675, 0.19)'};
+          &,
+          &::before,
+          &::after {
+            height: 2px;
+            border-radius: 2px;
+            position: absolute;
+            transition-property: transform;
+            transition-duration: 0.15s;
+            transition-timing-function: ease;
+            background-color: ${dark};
+          }
+
+          &::before,
+          &::after {
+            content: '';
+            display: block;
+          }
+          &::before {
+            width: 60%;
+            opacity: ${isOpen ? '0' : '1'};
+            top: ${isOpen ? '0' : '-6px'};
+            transition: ${isOpen
+              ? ' top 0.1s ease-out, opacity 0.1s 0.12s ease-out'
+              : 'top 0.1s 0.25s ease-in, opacity 0.1s ease-in'};
+          }
+          &::after {
+            bottom: ${isOpen ? '0' : '-6px'};
+            width: ${isOpen ? '100%' : '80%'};
+            transform: ${isOpen ? 'rotate(-90deg)' : 'initial'};
+            transition: ${isOpen
+              ? 'bottom 0.1s ease-out,' +
+                'transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1) '
+              : 'bottom 0.1s 0.25s ease-in,' +
+                'transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),' +
+                'width 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19)'};
+          }
+        }
+      `}</style>
+    </button>
+  );
+};

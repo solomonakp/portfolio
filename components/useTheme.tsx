@@ -10,7 +10,8 @@ interface Theme {
   colors: {
     primary: string;
     secondary: string;
-    tertiary: string;
+    dark: string;
+    light: string;
     iconColor: string;
     cardHover: string;
   };
@@ -24,6 +25,7 @@ interface Theme {
     sectionHeading: string;
     paragraph: string;
     textHeading: string;
+    mobileMenu: string;
   };
   border: {
     buttonBorder: string;
@@ -42,7 +44,7 @@ interface Theme {
     allIn: (duration: number) => string;
     allOut: (duration: number) => string;
   };
-  breakPoints: {
+  media: {
     minSm: string;
     minMd: string;
     minLg: string;
@@ -58,7 +60,7 @@ interface Theme {
 }
 
 const useTheme = () => {
-  const dark = useSelector((state: RootState) => state.ui.isDark);
+  const isDark = useSelector((state: RootState) => state.ui.isDark);
 
   const theme: Theme = {
     fontFamily: {
@@ -68,9 +70,10 @@ const useTheme = () => {
     colors: {
       primary: '#EF4E3C',
       secondary: '#4BB3FD',
-      tertiary: dark ? '#001524 ' : '#FFFFFC', // based on state
-      iconColor: dark ? 'B2B9CD' : '#616F94', // based on state
-      cardHover: dark ? '#1B2E43' : 'ECF1F4', // based on state
+      light: isDark ? '#001524 ' : '#FFFFFC', // based on state
+      iconColor: isDark ? 'B2B9CD' : '#616F94', // based on state
+      cardHover: isDark ? '#1B2E43' : 'ECF1F4', // based on state
+      dark: isDark ? '#FFFFFC' : '#001524 ',
     },
     spacing: {
       sectionSpace: '11rem',
@@ -82,9 +85,10 @@ const useTheme = () => {
       sectionHeading: '2.5rem',
       paragraph: '1rem',
       textHeading: '1.5rem',
+      mobileMenu: '2rem',
     },
     border: {
-      buttonBorder: dark ? '1px solid #B2B9CD' : '1px solid #EF4E3C',
+      buttonBorder: isDark ? '1px solid #B2B9CD' : '1px solid #EF4E3C',
     },
     radius: {
       button: '5px',
@@ -106,7 +110,7 @@ const useTheme = () => {
         return `all ${duration}ms ease-out`;
       },
     },
-    breakPoints: {
+    media: {
       minSm: 'min-width: 576px',
       minMd: 'min-width: 768px',
       minLg: 'min-width: 992px',
