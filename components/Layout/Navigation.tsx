@@ -9,6 +9,7 @@ const Navigation: React.FC<NavigationProps> = (props) => {
     colors: { secondary },
     size: { paragraph, mobileMenu },
   } = useTheme();
+
   return (
     <ul className='d-lg-flex align-items-center'>
       <li>

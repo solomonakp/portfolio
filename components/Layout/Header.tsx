@@ -2,7 +2,7 @@ import React from 'react';
 import useTheme from '../useTheme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
-import { Hamburger } from './Hamburger';
+import Hamburger from './Hamburger';
 import { ModeButton } from './ModeButton';
 import Navigation from './Navigation';
 interface HeaderProps {
@@ -24,10 +24,12 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             {logo}
           </a>
           <Hamburger isOpen={open} />
-          <div className='d-flex align-items-lg-center ' id='navigation'>
-            <Navigation />
-            {theme ? <ModeButton isOpen={open} /> : null}
-          </div>
+          {open ? (
+            <div className='d-flex align-items-lg-center ' id='navigation'>
+              <Navigation />
+              {theme ? <ModeButton isOpen={open} /> : null}
+            </div>
+          ) : null}
         </nav>
       </div>
       <style jsx>{`
