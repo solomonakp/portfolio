@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Link from 'next/link';
 import useTheme from '../components/useTheme';
+import { getLayout } from '../components/Layout/Layout';
 
-export default function Home(props) {
-  const dispatch = useDispatch();
+const Index = (props) => {
+  console.log(props);
   return (
     <div className='container'>
       <Head>
@@ -14,4 +15,8 @@ export default function Home(props) {
       </Head>
     </div>
   );
-}
+};
+
+Index.getLayout = getLayout;
+
+export default Index;
