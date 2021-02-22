@@ -65,7 +65,7 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
             height: 2px;
             border-radius: 2px;
             position: absolute;
-            transition-property: transform;
+            transition-property: transform, background-color;
             transition-duration: 0.15s;
             transition-timing-function: ease;
             background-color: ${dark};

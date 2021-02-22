@@ -24,15 +24,16 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             {logo}
           </a>
           <Hamburger isOpen={open} />
-          {open ? (
-            <div className='d-flex align-items-lg-center ' id='navigation'>
-              <Navigation />
-              {theme ? <ModeButton isOpen={open} /> : null}
-            </div>
-          ) : null}
+          <div className='d-flex align-items-lg-center ' id='navigation'>
+            <Navigation />
+            {theme ? <ModeButton isOpen={open} /> : null}
+          </div>
         </nav>
       </div>
       <style jsx>{`
+        header {
+          margin-bottom: auto;
+        }
         .container-fluid {
           @media (${minLg}) {
             padding: 0 3.75rem;
@@ -49,6 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             bottom: 0;
             justify-content: center;
             align-items: center;
+            display: none !important;
           }
         }
       `}</style>
