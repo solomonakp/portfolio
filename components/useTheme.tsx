@@ -14,6 +14,11 @@ interface Theme {
     light: string;
     iconColor: string;
     cardHover: string;
+    outLine: string;
+    btnColor: string;
+    lightColor: string;
+    darkColor: string;
+    hover: string;
   };
   spacing: {
     sectionSpace: string;
@@ -41,6 +46,9 @@ interface Theme {
     stretch: string;
     buttonTransitionIn: string;
     buttonTransitionOut: string;
+    fillTrans: string;
+    bgTrans: string;
+    colorTrans: string;
     allIn: (duration: number) => string;
     allOut: (duration: number) => string;
   };
@@ -71,9 +79,14 @@ const useTheme = () => {
       primary: '#EF4E3C',
       secondary: '#4BB3FD',
       light: isDark ? '#001524 ' : '#FFFFFC', // based on state
-      iconColor: isDark ? 'B2B9CD' : '#616F94', // based on state
-      cardHover: isDark ? '#1B2E43' : 'ECF1F4', // based on state
+      iconColor: isDark ? '#B2B9CD' : '#616F94', // based on state
+      cardHover: isDark ? '#1B2E43' : '#ECF1F4', // based on state
       dark: isDark ? '#FFFFFC' : '#001524 ',
+      outLine: isDark ? '#616F94' : '#EF4E3C',
+      btnColor: isDark ? '#FFFFFC' : '#EF4E3C',
+      lightColor: '#FFFFFC',
+      darkColor: '#001524',
+      hover: isDark ? '#EF4E3C' : '#4BB3FD',
     },
     spacing: {
       sectionSpace: '11rem',
@@ -98,11 +111,14 @@ const useTheme = () => {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',
     },
     effects: {
+      bgTrans: 'background-color 0.1s ease-in-out',
+      colorTrans: 'background-color 0.1s ease-in-out',
+      fillTrans: 'fill 0.1s ease-in-out',
       stretch: 'scale(0.95)',
       buttonTransitionIn:
-        'color 100ms ease-in, transform 80ms ease-in, background-color 100ms ease-in;',
+        'color 100ms ease-in, border-color 100ms ease-in, background-color 100ms ease-in;',
       buttonTransitionOut:
-        'color 100ms ease-out, transform 80ms ease-out,background-color 100ms ease-in',
+        'color 100ms ease-out, border-color 80ms ease-out,background-color 100ms ease-out',
       allIn: (duration: number): string => {
         return `all ${duration}ms ease-in`;
       },

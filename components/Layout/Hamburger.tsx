@@ -7,7 +7,7 @@ interface HamburgerProps {
   isOpen: boolean;
 }
 
-export const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
+const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
   const {
     colors: { dark },
     media: { maxMd },
@@ -15,18 +15,18 @@ export const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
   const dispatch = useDispatch();
   return (
     <button
-      className='hamburger'
+      className='menu-btn'
       type='button'
       aria-label='Menu'
       aria-controls='navigation'
       aria-expanded={isOpen}
       onClick={() => dispatch(toggleOpen())}
     >
-      <span className='hamburger-box'>
-        <span className='hamburger-inner'></span>
+      <span className='menu-box'>
+        <span className='menu-inner'></span>
       </span>
       <style jsx>{`
-        .hamburger {
+        .menu-btn {
           cursor: pointer;
           transition-property: opacity, filter;
           transition-duration: 0.15s;
@@ -43,14 +43,14 @@ export const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
             align-items: center;
           }
         }
-        .hamburger-box {
+        .menu-box {
           width: 30px;
           height: 24px;
           display: inline-block;
           position: relative;
         }
 
-        .hamburger-inner {
+        .menu-inner {
           display: block;
           top: 50%;
           width: 100%;
@@ -65,7 +65,7 @@ export const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
             height: 2px;
             border-radius: 2px;
             position: absolute;
-            transition-property: transform;
+            transition-property: transform, background-color;
             transition-duration: 0.15s;
             transition-timing-function: ease;
             background-color: ${dark};
@@ -100,3 +100,5 @@ export const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
     </button>
   );
 };
+
+export default Hamburger;

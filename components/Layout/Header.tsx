@@ -2,7 +2,7 @@ import React from 'react';
 import useTheme from '../useTheme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
-import { Hamburger } from './Hamburger';
+import Hamburger from './Hamburger';
 import { ModeButton } from './ModeButton';
 import Navigation from './Navigation';
 interface HeaderProps {
@@ -31,6 +31,9 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
         </nav>
       </div>
       <style jsx>{`
+        header {
+          margin-bottom: auto;
+        }
         .container-fluid {
           @media (${minLg}) {
             padding: 0 3.75rem;
@@ -47,6 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             bottom: 0;
             justify-content: center;
             align-items: center;
+            display: none !important;
           }
         }
       `}</style>

@@ -1,7 +1,11 @@
 import React from 'react';
+import Head from 'next/head';
 import { Logo } from '../Svgs';
 import useTheme from '../useTheme';
+import Footer from './Footer';
 import { Header } from './Header';
+import FloatingEmail from './FloatingEmail';
+import { FloatingContact } from './FloatingContact';
 
 interface LayoutProps {
   children: React.ReactChild;
@@ -9,103 +13,24 @@ interface LayoutProps {
 
 export const Layout: React.FC = ({ children }: LayoutProps) => {
   const {
-    fontFamily: { textFont, headingFont },
     colors: { light },
+    effects: { bgTrans },
   } = useTheme();
   return (
-    <div className='layout'>
+    <div id='layout'>
+      <Head>
+        <link rel='icon' type='image/png' href='/favicon.png' />
+      </Head>
       <Header theme={true} logo={<Logo width={96} height={64} />} />
-
+      {children}
+      <FloatingContact />
+      <FloatingEmail />
+      <Footer />
       <style jsx global>
         {`
-          @font-face {
-            font-family: 'Work Sans';
-            font-style: normal;
-            font-weight: 400;
-            src: local('WorkSans-Regular'),
-              url('/fonts/work_sans/WorkSans-Regular.ttf') format('truetype');
-          }
-
-          @font-face {
-            font-family: 'Work Sans';
-            font-style: normal;
-            font-weight: 500;
-            src: local('WorkSans-Medium'),
-              url('/fonts/work_sans/WorkSans-Medium.ttf') format('truetype');
-          }
-
-          @font-face {
-            font-family: 'Lufga';
-            font-style: normal;
-            font-weight: 400;
-            src: local('Lufga-Regular'),
-              url('/fonts/lufga_fonts/Lufga-Regular.otf') format('opentype');
-          }
-
-          @font-face {
-            font-family: 'Montserrat';
-            font-style: normal;
-            font-weight: 600;
-            src: local('Lufga-SemiBold'),
-              url('/fonts/lufga_fonts/Lufga-SemiBold.otf') format('opentype');
-          }
-
-          * {
-            box-sizing: border-box;
-          }
-          html {
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-          }
-
-          html,
           body {
-            height: 100%;
-            width: 100%;
-            font-family: ${textFont};
-          }
-
-          body {
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            font-kerning: normal;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
             background-color: ${light};
-            transition: background-color ease-in-out 200ms;
-          }
-
-          a,
-          a:hover,
-          a:active,
-          a:focus {
-            outline: none;
-            text-decoration: none;
-            display: inline-block;
-          }
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            font-family: ${headingFont};
-          }
-
-          button {
-            white-space: nowrap;
-            display: inline-block;
-            border: 0;
-          }
-
-          .layout {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
+            transition: ${bgTrans};
           }
         `}
       </style>
