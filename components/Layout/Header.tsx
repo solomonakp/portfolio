@@ -32,12 +32,16 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
       </div>
       <style jsx>{`
         header {
+          padding-top: 1rem;
           margin-bottom: auto;
         }
         .container-fluid {
           @media (${minLg}) {
             padding: 0 3.75rem;
           }
+        }
+        #nav-logo {
+          margin-right: auto;
         }
         #navigation {
           @media (${maxMd}) {

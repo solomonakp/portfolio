@@ -9,6 +9,7 @@ const FooterIcons = (props: Props) => {
   const {
     colors: { iconColor, primary, hover },
     effects: { fillTrans },
+    media: { minLg },
   } = useTheme();
   return (
     <div className='footer-icons'>
@@ -30,6 +31,9 @@ const FooterIcons = (props: Props) => {
           display: flex;
           justify-content: center;
           align-items: center;
+          @media (${minLg}) {
+            display: none;
+          }
         }
         .footer-icons :global(a) {
           margin-right: 1.5rem;

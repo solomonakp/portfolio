@@ -18,12 +18,14 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
   const {
     colors: { iconColor, hover },
     effects: { fillTrans },
+    media: { minLg },
   } = useTheme();
   return (
     <div>
       {children}
       <style jsx>{`
         div {
+          display: none;
           width: 40px;
           z-index: 100;
           position: fixed;
@@ -49,6 +51,9 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           &
             :global(#fixed-github, #fixed-linkedin, #fixed-twitter, #fixed-telephone) {
             transition: ${fillTrans};
+          }
+          @media (${minLg}) {
+            display: block;
           }
         }
       `}</style>
