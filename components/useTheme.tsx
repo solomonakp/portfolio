@@ -77,7 +77,7 @@ const useTheme = () => {
     },
     colors: {
       primary: '#EF4E3C',
-      secondary: '#4BB3FD',
+      secondary: isDark ? '#4BB3FD' : '#2630A3',
       light: isDark ? '#001524 ' : '#FFFFFC', // based on state
       iconColor: isDark ? '#B2B9CD' : '#616F94', // based on state
       cardHover: isDark ? '#1B2E43' : '#ECF1F4', // based on state
@@ -86,7 +86,7 @@ const useTheme = () => {
       btnColor: isDark ? '#FFFFFC' : '#EF4E3C',
       lightColor: '#FFFFFC',
       darkColor: '#001524',
-      hover: isDark ? '#EF4E3C' : '#4BB3FD',
+      hover: isDark ? '#EF4E3C' : '#2630A3',
     },
     spacing: {
       sectionSpace: '11rem',
