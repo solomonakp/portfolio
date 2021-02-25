@@ -71,6 +71,9 @@ h5,
 h6 {
   font-family: 'Lufga';
 }
+img {
+  image-rendering: crisp-edges;
+}
 
 button {
   white-space: nowrap;

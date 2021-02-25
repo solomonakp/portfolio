@@ -6,6 +6,7 @@ interface FloatingContainerProps {
   right?: string;
   top?: string;
   bottom?: string;
+  id?: string;
 }
 
 const FloatingContainer: React.FC<FloatingContainerProps> = ({
@@ -14,6 +15,8 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
   right,
   top,
   bottom,
+  id,
+  ...props
 }) => {
   const {
     colors: { iconColor, hover },
@@ -21,7 +24,7 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
     media: { minLg },
   } = useTheme();
   return (
-    <div className='d-none d-lg-block'>
+    <div id={id} {...props}>
       {children}
       <style jsx>{`
         div {
@@ -32,6 +35,7 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           right: ${right ? right : 'initial'};
           top: ${top ? top : 'initial'};
           bottom: ${bottom ? bottom : 'initial'};
+
           & :global(#floating-icons li:last-child) {
             margin-bottom: 35px;
           }
@@ -54,6 +58,26 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           &
             :global(#fixed-github, #fixed-linkedin, #fixed-twitter, #fixed-telephone) {
             transition: ${fillTrans};
+          }
+        }
+        #left {
+          @media (max-width: 1250px) {
+            left: 8px;
+          }
+        }
+        #right {
+          @media (max-width: 1250px) {
+            right: 8px;
+          }
+        }
+        #left {
+          @media (max-width: 1050px) {
+            display: none;
+          }
+        }
+        #right {
+          @media (max-width: 1050px) {
+            display: none;
           }
         }
       `}</style>

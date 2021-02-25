@@ -7,7 +7,7 @@ interface FloatingEmailProps {}
 
 const FloatingEmail: React.FC<FloatingEmailProps> = () => {
   return (
-    <FloatingContainer bottom='0px' right='52px'>
+    <FloatingContainer bottom='0px' right='30px' id='right'>
       <FloatList>
         <li>
           <IconLink href={'mailto:solomonakp@gmail.com'} id='floating-email'>

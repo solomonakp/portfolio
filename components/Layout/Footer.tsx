@@ -7,7 +7,6 @@ interface FooterProps {}
 const Footer: React.FC = (props: FooterProps) => {
   const {
     size: { sectionHeading, textHeading },
-    effects: { colorTrans },
     colors: { dark, primary },
     radius: { button },
   } = useTheme();

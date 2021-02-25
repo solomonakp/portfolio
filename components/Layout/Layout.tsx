@@ -46,6 +46,9 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
           h3 {
             font-size: ${sectionHeading};
           }
+          img {
+            image-rendering: auto;
+          }
         `}
       </style>
     </div>

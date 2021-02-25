@@ -7,9 +7,8 @@ interface Props {}
 
 const FooterIcons = (props: Props) => {
   const {
-    colors: { iconColor, primary, hover },
+    colors: { iconColor, hover },
     effects: { fillTrans },
-    media: { minLg },
   } = useTheme();
   return (
     <div className='d-flex d-lg-none justify-content-center align-items-center'>

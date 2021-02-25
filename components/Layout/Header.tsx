@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
         }
         .container-fluid {
           @media (${minLg}) {
-            padding: 0 3.75rem;
+            padding: 0 2.5rem;
           }
         }
 
