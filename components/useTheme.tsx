@@ -31,6 +31,7 @@ interface Theme {
     paragraph: string;
     textHeading: string;
     mobileMenu: string;
+    resMainHeading: string;
   };
   border: {
     buttonBorder: string;
@@ -94,7 +95,8 @@ const useTheme = () => {
       blogCardSide: '5.25rem',
     },
     size: {
-      mainHeading: '4rem',
+      mainHeading: '3.5rem',
+      resMainHeading: 'calc(2.75rem + ((1vw - 3.2px) * 1.0714))',
       sectionHeading: '2.5rem',
       paragraph: '1rem',
       textHeading: '1.5rem',
@@ -112,7 +114,7 @@ const useTheme = () => {
     },
     effects: {
       bgTrans: 'background-color 0.1s ease-in-out',
-      colorTrans: 'background-color 0.1s ease-in-out',
+      colorTrans: 'color 0.1s ease-in-out',
       fillTrans: 'fill 0.1s ease-in-out',
       stretch: 'scale(0.95)',
       buttonTransitionIn:

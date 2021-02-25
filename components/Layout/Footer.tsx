@@ -14,11 +14,14 @@ const Footer: React.FC = (props: FooterProps) => {
 
   return (
     <footer>
-      <h3>looking to build a team?</h3>
-      <h5>
-        Send a message and <a href='mailto:solomonakp@gmail.com'>let’s talk</a>
-      </h5>
-      <FooterIcons />
+      <div className='container'>
+        <h3>looking to build a team?</h3>
+        <h5>
+          Send a message and{' '}
+          <a href='mailto:solomonakp@gmail.com'>let’s talk</a>
+        </h5>
+        <FooterIcons />
+      </div>
       <style jsx>{`
         footer {
           text-align: center;
@@ -27,8 +30,6 @@ const Footer: React.FC = (props: FooterProps) => {
         }
         h3,
         h5 {
-          font-weight: 600;
-          transition: ${colorTrans};
           color: ${dark};
         }
         h3 {

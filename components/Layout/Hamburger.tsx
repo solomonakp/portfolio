@@ -15,7 +15,7 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
   const dispatch = useDispatch();
   return (
     <button
-      className='menu-btn'
+      className='menu-btn d-flex d-lg-none justify-content-center align-items-center'
       type='button'
       aria-label='Menu'
       aria-controls='navigation'
@@ -37,11 +37,6 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
           overflow: visible;
           display: none;
           padding: 5px;
-          @media (${maxMd}) {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
         }
         .menu-box {
           width: 30px;

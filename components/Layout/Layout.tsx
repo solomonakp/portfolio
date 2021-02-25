@@ -13,16 +13,17 @@ interface LayoutProps {
 
 export const Layout: React.FC = ({ children }: LayoutProps) => {
   const {
-    colors: { light },
-    effects: { bgTrans },
+    colors: { light, secondary },
+    effects: { bgTrans, colorTrans, fillTrans },
+    size: { sectionHeading },
   } = useTheme();
   return (
     <div id='layout'>
       <Head>
         <link rel='icon' type='image/png' href='/favicon.png' />
       </Head>
-      <Header theme={true} logo={<Logo width={96} height={64} />} />
-      {children}
+      <Header theme={true} logo={<Logo width={55} height={43} />} />
+      <main>{children}</main>
       <FloatingContact />
       <FloatingEmail />
       <Footer />
@@ -31,6 +32,19 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
           body {
             background-color: ${light};
             transition: ${bgTrans};
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-weight: 600;
+            color: ${secondary};
+            transition: ${colorTrans};
+          }
+          h3 {
+            font-size: ${sectionHeading};
           }
         `}
       </style>

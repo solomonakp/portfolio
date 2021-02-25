@@ -12,7 +12,7 @@ const FooterIcons = (props: Props) => {
     media: { minLg },
   } = useTheme();
   return (
-    <div className='footer-icons'>
+    <div className='d-flex d-lg-none justify-content-center align-items-center'>
       <IconLink href={'https://github.com/solomonakp'}>
         <Github width={24} height={24} fill={iconColor} id='github' />
       </IconLink>
@@ -27,25 +27,17 @@ const FooterIcons = (props: Props) => {
       </IconLink>
 
       <style jsx>{`
-        .footer-icons {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          @media (${minLg}) {
-            display: none;
-          }
-        }
-        .footer-icons :global(a) {
+        div :global(a) {
           margin-right: 1.5rem;
           &:last-of-type {
             margin-right: 0;
           }
         }
-        .footer-icons :global(a:hover svg) {
+        div :global(a:hover svg, a:active svg, a:focus svg) {
           fill: ${hover};
           transition: ${fillTrans};
         }
-        .footer-icons :global(#github, #linkedin, #twitter, #telephone) {
+        div :global(#github, #linkedin, #twitter, #telephone) {
           transition: ${fillTrans};
         }
       `}</style>

@@ -9,7 +9,7 @@ interface ButtonProps {
   size?: number;
   bgColor?: colors;
   radius?: number;
-  id: string;
+  id?: string;
 }
 
 const Ripples = createRipples();
@@ -28,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
     effects: { buttonTransitionIn, buttonTransitionOut },
   } = useTheme();
   return (
-    <Ripples className='d-inline-block'>
+    <Ripples className='ripple'>
       <button {...props} id={id}>
         {children}
       </button>

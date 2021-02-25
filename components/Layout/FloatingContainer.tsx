@@ -17,15 +17,14 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
 }) => {
   const {
     colors: { iconColor, hover },
-    effects: { fillTrans },
+    effects: { fillTrans, colorTrans },
     media: { minLg },
   } = useTheme();
   return (
-    <div>
+    <div className='d-none d-lg-block'>
       {children}
       <style jsx>{`
         div {
-          display: none;
           width: 40px;
           z-index: 100;
           position: fixed;
@@ -42,18 +41,19 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           & :global(#floating-email) {
             color: ${iconColor};
             writing-mode: vertical-rl;
+            transition: ${colorTrans};
           }
-
-          & :global(a:hover svg) {
+          &
+            :global(#floating-email:hover, #floating-email:focus, #floating-email:active) {
+            color: ${hover};
+          }
+          & :global(a:hover svg, a:active svg, a:focus svg) {
             fill: ${hover};
             transition: ${fillTrans};
           }
           &
             :global(#fixed-github, #fixed-linkedin, #fixed-twitter, #fixed-telephone) {
             transition: ${fillTrans};
-          }
-          @media (${minLg}) {
-            display: block;
           }
         }
       `}</style>
