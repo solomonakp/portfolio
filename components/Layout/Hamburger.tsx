@@ -40,7 +40,7 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
         }
         .menu-box {
           width: 30px;
-          height: 24px;
+          height: 34px;
           display: inline-block;
           position: relative;
         }
