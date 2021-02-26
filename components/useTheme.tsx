@@ -97,8 +97,8 @@ const useTheme = () => {
     },
     size: {
       mainHeading: '3.5rem',
-      resMainHeading: 'calc(2.75rem + ((1vw - 3.2px) * 1.0714))',
-      resSectionHeading: 'calc(2rem + ((1vw - 3.2px) * 0.7143))',
+      resMainHeading: 'calc(2.75rem + ((1vw - 0.2rem) * 1.0714))',
+      resSectionHeading: 'calc(2rem + ((1vw - 0.2rem) * 0.7143))',
       sectionHeading: '2.5rem',
       paragraph: '1rem',
       textHeading: '1.5rem',

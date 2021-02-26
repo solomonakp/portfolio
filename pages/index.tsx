@@ -2,10 +2,10 @@ import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
 import AboutSection from '../components/indexComponents/AboutSection';
 import LandingSection from '../components/indexComponents/LandingSection';
+import SkillSection from '../components/indexComponents/SkillSection';
 import { getLayout } from '../components/Layout/Layout';
 
 const Index = (props) => {
-  console.log(props);
   return (
     <div className='index-page'>
       <Head>
@@ -13,6 +13,7 @@ const Index = (props) => {
       </Head>
       <LandingSection />
       <AboutSection />
+      <SkillSection />
       <style jsx>{``}</style>
     </div>
   );

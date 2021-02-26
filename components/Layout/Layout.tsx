@@ -15,7 +15,7 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
   const {
     colors: { light, secondary, dark },
     effects: { bgTrans, colorTrans },
-    size: { sectionHeading, mainHeading, resSectionHeading },
+    size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
     media: { maxSm, minXxL },
     spacing: { sectionSpace },
   } = useTheme();
@@ -46,6 +46,9 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
             color: ${secondary};
             transition: ${colorTrans};
             min-height: 0vw;
+          }
+          h1 {
+            font-size: ${resMainHeading};
           }
 
           h2 {

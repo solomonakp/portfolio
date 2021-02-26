@@ -11,7 +11,7 @@ const FooterIcons = (props: Props) => {
     effects: { fillTrans },
   } = useTheme();
   return (
-    <div className='d-flex d-lg-none justify-content-center align-items-center'>
+    <div className=' justify-content-center align-items-center'>
       <IconLink href={'https://github.com/solomonakp'}>
         <Github width={24} height={24} fill={iconColor} id='github' />
       </IconLink>
@@ -26,6 +26,12 @@ const FooterIcons = (props: Props) => {
       </IconLink>
 
       <style jsx>{`
+        div {
+          display: flex;
+          @media (min-width: 1049.98px) {
+            display: none !important;
+          }
+        }
         div :global(a) {
           margin-right: 1.5rem;
           &:last-of-type {

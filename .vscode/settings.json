@@ -3,6 +3,7 @@
         "icon",
         "imagebackground",
         "link",
-        "linkedin"
+        "linkedin",
+        "strapi"
     ]
 }

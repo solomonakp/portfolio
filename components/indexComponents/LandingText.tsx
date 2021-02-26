@@ -26,16 +26,10 @@ const LandingText = (props: Props) => {
           </div>
         </div>
       </div>
+
       <style jsx>{`
         h1 {
-          font-size: ${resMainHeading};
-          letter-spacing: -0.02em;
-          font-weight: 600;
-          min-height: 0vw;
           margin-bottom: 1rem;
-          @media (${minXxL}) {
-            font-size: ${mainHeading};
-          }
         }
         p {
           margin-bottom: 1.5rem;
