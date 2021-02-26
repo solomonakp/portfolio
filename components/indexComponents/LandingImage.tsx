@@ -9,7 +9,7 @@ const LandingImage = (props: Props) => {
     media: { maxSm },
   } = useTheme();
   return (
-    <div className='col-12 col-md-6 col-lg-5'>
+    <div className='col-12 col-md-6 col-lg-5 image-space'>
       <div className='image-container'>
         <Image
           className='back-image'
@@ -27,11 +27,6 @@ const LandingImage = (props: Props) => {
         />
       </div>
       <style jsx>{`
-        .col-12 {
-          @media (${maxSm}) {
-            margin-top: 5rem;
-          }
-        }
         .image-container {
           width: 100%;
           height: 100%;

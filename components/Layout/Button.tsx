@@ -62,7 +62,7 @@ const Button: React.FC<ButtonProps> = ({
           &:focus {
             transition: ${buttonTransitionOut};
             background-color: ${outline ? primary : 'transparent'};
-            border-color: ${outline ? light : btnColor};
+            border-color: ${outline ? light : outLine};
             color: ${outline ? lightColor : btnColor};
           }
         }

@@ -32,7 +32,7 @@ const Footer: React.FC = (props: FooterProps) => {
           color: ${dark};
         }
         h3 {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           font-size: ${sectionHeading};
         }
         h5 {

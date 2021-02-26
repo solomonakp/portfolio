@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
       </div>
       <style jsx>{`
         header {
-          padding-top: 1.5rem;
+          padding: 1rem 0;
           margin-bottom: auto;
           position: fixed;
           right: 0;

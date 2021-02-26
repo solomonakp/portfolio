@@ -32,6 +32,7 @@ interface Theme {
     textHeading: string;
     mobileMenu: string;
     resMainHeading: string;
+    resSectionHeading: string;
   };
   border: {
     buttonBorder: string;
@@ -90,13 +91,14 @@ const useTheme = () => {
       hover: isDark ? '#EF4E3C' : '#2630A3',
     },
     spacing: {
-      sectionSpace: '11rem',
+      sectionSpace: '9.375rem',
       blogCard: '7.188rem',
       blogCardSide: '5.25rem',
     },
     size: {
       mainHeading: '3.5rem',
       resMainHeading: 'calc(2.75rem + ((1vw - 3.2px) * 1.0714))',
+      resSectionHeading: 'calc(2rem + ((1vw - 3.2px) * 0.7143))',
       sectionHeading: '2.5rem',
       paragraph: '1rem',
       textHeading: '1.5rem',

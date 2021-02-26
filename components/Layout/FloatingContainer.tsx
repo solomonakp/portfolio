@@ -21,7 +21,6 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
   const {
     colors: { iconColor, hover },
     effects: { fillTrans, colorTrans },
-    media: { minLg },
   } = useTheme();
   return (
     <div id={id} {...props}>
@@ -70,11 +69,7 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
             right: 8px;
           }
         }
-        #left {
-          @media (max-width: 1050px) {
-            display: none;
-          }
-        }
+        #left,
         #right {
           @media (max-width: 1050px) {
             display: none;

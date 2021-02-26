@@ -13,9 +13,11 @@ interface LayoutProps {
 
 export const Layout: React.FC = ({ children }: LayoutProps) => {
   const {
-    colors: { light, secondary },
-    effects: { bgTrans, colorTrans, fillTrans },
-    size: { sectionHeading },
+    colors: { light, secondary, dark },
+    effects: { bgTrans, colorTrans },
+    size: { sectionHeading, mainHeading, resSectionHeading },
+    media: { maxSm, minXxL },
+    spacing: { sectionSpace },
   } = useTheme();
   return (
     <div id='layout'>
@@ -39,15 +41,43 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
           h4,
           h5,
           h6 {
+            letter-spacing: -0.02em;
             font-weight: 600;
             color: ${secondary};
             transition: ${colorTrans};
+            min-height: 0vw;
           }
-          h3 {
-            font-size: ${sectionHeading};
+
+          h2 {
+            font-size: ${resSectionHeading};
           }
-          img {
-            image-rendering: auto;
+          p {
+            color: ${dark};
+            transition: ${colorTrans};
+          }
+          .left-container {
+            width: 100%;
+            height: 100%;
+            max-width: 540px;
+            @media (${maxSm}) {
+              margin: 0 auto;
+            }
+          }
+          @media (${minXxL}) {
+            h1 {
+              font-size: ${mainHeading};
+            }
+            h2 {
+              font-size: ${sectionHeading};
+            }
+          }
+          .section-space {
+            margin-bottom: ${sectionSpace};
+          }
+          @media (${maxSm}) {
+            .image-space {
+              margin-top: 5rem;
+            }
           }
         `}
       </style>

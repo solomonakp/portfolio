@@ -5,14 +5,12 @@ interface Props {}
 
 const LandingText = (props: Props) => {
   const {
-    colors: { secondary, dark },
     size: { resMainHeading, mainHeading },
-    media: { minXxL, maxSm },
-    effects: { colorTrans },
+    media: { minXxL },
   } = useTheme();
   return (
     <div className='col-12 col-md-6 '>
-      <div className='landing-text d-flex flex-column justify-content-center'>
+      <div className='left-container d-flex flex-column justify-content-center'>
         <h1>Hire Freelancers With better reviews</h1>
         <p>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
@@ -29,29 +27,18 @@ const LandingText = (props: Props) => {
         </div>
       </div>
       <style jsx>{`
-        .landing-text {
-          width: 100%;
-          height: 100%;
-          max-width: 540px;
-          @media (${maxSm}) {
-            margin: 0 auto;
-          }
-        }
         h1 {
-          color: ${secondary};
           font-size: ${resMainHeading};
           letter-spacing: -0.02em;
           font-weight: 600;
           min-height: 0vw;
           margin-bottom: 1rem;
-          transition: ${colorTrans};
           @media (${minXxL}) {
             font-size: ${mainHeading};
           }
         }
         p {
           margin-bottom: 1.5rem;
-          color: ${dark};
         }
         .contact-btn-container {
           margin-right: 1.5rem;
