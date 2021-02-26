@@ -9,8 +9,8 @@ interface SkillsProps {
 const SkillIcon: React.FC<SkillsProps> = ({
   children,
   background,
-  width = '112px',
-  height = '112px',
+  width = '100px',
+  height = '100px',
 }) => {
   return (
     <div className='d-flex justify-content-center align-items-center'>
@@ -22,6 +22,8 @@ const SkillIcon: React.FC<SkillsProps> = ({
           width: ${width};
           height: ${height};
           background-color: ${background};
+          margin-right: 40px;
+          margin-bottom: 50px;
         }
       `}</style>
     </div>

@@ -24,6 +24,7 @@ interface Theme {
     sectionSpace: string;
     blogCard: string;
     blogCardSide: string;
+    headingSpace: string;
   };
   size: {
     mainHeading: string;
@@ -94,6 +95,7 @@ const useTheme = () => {
       sectionSpace: '9.375rem',
       blogCard: '7.188rem',
       blogCardSide: '5.25rem',
+      headingSpace: '2.5rem',
     },
     size: {
       mainHeading: '3.5rem',

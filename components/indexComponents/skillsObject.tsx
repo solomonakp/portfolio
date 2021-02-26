@@ -72,16 +72,16 @@ const skills: skillObject[] = [
   {
     Icon: NextJs,
     backgroundColor: '#EFE8EB',
-    height: '48',
+    height: '60',
     id: 'nextjs',
-    width: '78',
+    width: '60',
   },
   {
     Icon: Bootstrap,
     backgroundColor: '#563D7C66',
-    height: '47',
+    height: '50',
     id: 'bootstrap',
-    width: '47',
+    width: '50',
   },
   {
     Icon: MaterialUi,
@@ -93,24 +93,24 @@ const skills: skillObject[] = [
   {
     Icon: WordPress,
     backgroundColor: '#21759B66',
-    height: '48',
+    height: '55',
     id: 'wordpress',
-    width: '48',
+    width: '55',
   },
 
   {
     Icon: Strapi,
     backgroundColor: '#8E75FF66',
-    height: '76',
+    height: '60',
     id: 'strapi',
-    width: '63',
+    width: '60',
   },
   {
     Icon: FireBase,
     backgroundColor: '#F6820C4D',
-    height: '65',
+    height: '60',
     id: 'firebase',
-    width: '47',
+    width: '60',
   },
 
   {
@@ -124,7 +124,7 @@ const skills: skillObject[] = [
   {
     Icon: JestLogo,
     backgroundColor: '#99425B4D',
-    height: '69',
+    height: '62',
     id: 'jestLogo',
     width: '62',
   },

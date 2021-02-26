@@ -7,7 +7,7 @@ interface Props {}
 
 const SkillsContainer = (props: Props) => {
   return (
-    <div className='row'>
+    <div className='row flex-wrap align-items-center justify-content-center'>
       {skills.map(({ backgroundColor, Icon, ...props }, index) => {
         return (
           <SkillIcon background={backgroundColor} key={index}>

@@ -7,7 +7,7 @@ const SkillSection = (props: Props) => {
   return (
     <section id='skill-section' className='section-spacing'>
       <div className='container'>
-        <h2>Skills</h2>
+        <h2 className='section-heading-space'>Skills</h2>
         <SkillsContainer />
       </div>
     </section>
