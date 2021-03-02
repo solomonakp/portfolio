@@ -5,7 +5,7 @@ interface Props {}
 
 const SkillSection = (props: Props) => {
   return (
-    <section id='skill-section' className='section-spacing'>
+    <section id='skill-section' className='section-space'>
       <div className='container'>
         <h2 className='section-heading-space'>Skills</h2>
         <SkillsContainer />
