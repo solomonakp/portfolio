@@ -41,6 +41,7 @@ interface Theme {
   radius: {
     button: string;
     card: string;
+    chip: string;
   };
   shadow: {
     contact: string;
@@ -112,6 +113,7 @@ const useTheme = () => {
     radius: {
       button: '5px',
       card: '10px',
+      chip: '9px',
     },
     shadow: {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',

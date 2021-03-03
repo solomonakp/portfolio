@@ -35,14 +35,6 @@ const SkillIcon: React.FC<SkillsProps> = ({
               grid-column: initial;
             }
           }
-          &:nth-of-type(n + 15) {
-            @media (${minLg}) {
-              display: none !important;
-            }
-            @media (${minXl}) {
-              display: flex !important;
-            }
-          }
         }
       `}</style>
     </div>

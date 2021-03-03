@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
 import AboutSection from '../components/indexComponents/AboutSection';
 import LandingSection from '../components/indexComponents/LandingSection';
+import ProjectsSection from '../components/indexComponents/ProjectsSection';
 import SkillSection from '../components/indexComponents/SkillSection';
 import { getLayout } from '../components/Layout/Layout';
 
@@ -14,6 +15,7 @@ const Index = (props) => {
       <LandingSection />
       <AboutSection />
       <SkillSection />
+      <ProjectsSection />
       <style jsx>{``}</style>
     </div>
   );

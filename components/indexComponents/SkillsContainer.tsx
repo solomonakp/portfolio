@@ -1,7 +1,6 @@
 import React from 'react';
 import SkillIcon from './SkillIcon';
 import skills from './skillsObject';
-import Index from '../../pages/index';
 import useTheme from '../useTheme';
 
 interface Props {}
@@ -11,7 +10,7 @@ const SkillsContainer = (props: Props) => {
     media: { minXl, minLg, minMd, minSm },
   } = useTheme();
   return (
-    <div className=''>
+    <div>
       {skills.map(({ backgroundColor, Icon, ...props }, index) => {
         return (
           <SkillIcon background={backgroundColor} key={index}>
@@ -39,8 +38,8 @@ const SkillsContainer = (props: Props) => {
             grid-column-gap: calc((100% - 400px) / 3);
           }
           @media (${minLg}) {
-            grid-template-columns: repeat(7, 100px);
-            grid-column-gap: calc((100% - 700px) / 6);
+            grid-template-columns: repeat(6, 100px);
+            grid-column-gap: calc((100% - 600px) / 5);
           }
 
           @media (${minXl}) {
