@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title = 'Portfolio site with Blog',
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum at et nibh gravida ullamcorper mauris, arcu eget duis. Amet et tristique condimentum nisi, lectus....',
   tags = ['React', 'Firebase', 'Next.js', 'bootstrap'],
-  thumbnail = '/pictures/project.jpg',
+  thumbnail = '/pictures/card.jpg',
   repository = '/',
   site = '/',
 }) => {
@@ -31,7 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div className='card'>
       <div className='front'>
-        <Image layout='fixed' width='100%' height='100%' src={thumbnail} />
+        <Image layout='responsive' width='300' height='320' src={thumbnail} />
         <h3>{title}</h3>
         <ProjectLinks site={site} repository={repository} />
       </div>
@@ -61,13 +61,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           }
 
           .front {
-            display: none;
             h3 {
               margin: 1rem 0;
             }
           }
 
           .back {
+            display: none;
             .text-box,
             .chips-container {
               margin-bottom: 1rem;
