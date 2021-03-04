@@ -37,6 +37,7 @@ interface Theme {
   };
   border: {
     buttonBorder: string;
+    chipBorder: string;
   };
   radius: {
     button: string;
@@ -109,6 +110,7 @@ const useTheme = () => {
     },
     border: {
       buttonBorder: isDark ? '1px solid #B2B9CD' : '1px solid #EF4E3C',
+      chipBorder: '1px solid #B2B9CD',
     },
     radius: {
       button: '5px',

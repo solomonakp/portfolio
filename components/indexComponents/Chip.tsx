@@ -8,7 +8,7 @@ interface ChipProps {
 const Chip: React.FC<ChipProps> = ({ name }) => {
   const {
     colors: { dark },
-    border: { buttonBorder },
+    border: { buttonBorder, chipBorder },
     radius: { chip },
   } = useTheme();
   return (
@@ -16,13 +16,14 @@ const Chip: React.FC<ChipProps> = ({ name }) => {
       {name}
       <style jsx>{`
         span {
+          text-align: center;
           white-space: nowrap;
           padding: 0.375em 0.5em;
           font-size: 14px;
           margin-bottom: 0.625rem;
           border-radius: ${chip};
           color: ${dark};
-          border: ${buttonBorder};
+          border: ${chipBorder};
           &:not(:last-of-type) {
             margin-right: 1rem;
           }

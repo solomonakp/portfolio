@@ -34,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
       </button>
       <style jsx>{`
         button {
+          text-align: center;
           padding: 0.75em 1em;
           text-transform: uppercase;
           font-weight: 500;
