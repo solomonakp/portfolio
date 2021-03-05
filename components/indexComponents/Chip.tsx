@@ -16,16 +16,18 @@ const Chip: React.FC<ChipProps> = ({ name }) => {
       {name}
       <style jsx>{`
         span {
+          display: inline-block;
           text-align: center;
           white-space: nowrap;
-          padding: 0.375em 0.5em;
-          font-size: 14px;
+          padding: 0.35em 0.5em;
+          font-size: 13px;
           margin-bottom: 0.625rem;
           border-radius: ${chip};
+          min-height: 0vw;
           color: ${dark};
           border: ${chipBorder};
           &:not(:last-of-type) {
-            margin-right: 1rem;
+            margin-right: 0.75rem;
           }
         }
       `}</style>

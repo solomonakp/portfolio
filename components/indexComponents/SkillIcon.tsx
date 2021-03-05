@@ -26,15 +26,6 @@ const SkillIcon: React.FC<SkillsProps> = ({
           width: ${width};
           height: ${height};
           background-color: ${background};
-          &:nth-of-type(16) {
-            @media (min-width: 375px) {
-              grid-column: 1/4;
-              justify-self: center;
-            }
-            @media (${minMd}) {
-              grid-column: initial;
-            }
-          }
         }
       `}</style>
     </div>

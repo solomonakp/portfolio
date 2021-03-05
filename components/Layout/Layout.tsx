@@ -72,6 +72,7 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
           .section-heading-space {
             margin-bottom: ${headingSpace};
           }
+
           @media (${minXxL}) {
             h1 {
               font-size: ${mainHeading};
@@ -85,6 +86,12 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
             .image-space {
               margin-top: 5rem;
             }
+          }
+          .trim {
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
         `}
       </style>

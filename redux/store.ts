@@ -21,7 +21,7 @@ const reducer = (state: RootState, action: AnyAction) => {
       ...state, // use previous state
       ...action.payload, // apply delta from hydration
     };
-    console.log('hyration was called');
+
     return nextState;
   } else {
     return combinedReducer(state, action);

@@ -1,34 +1,34 @@
 import Image from 'next/image';
 import React from 'react';
-import IconLink from '../Layout/IconLink';
-import { Git, Github, MaxWindow } from '../Svgs';
 import ProjectLinks from './ProjectLinks';
 import Chip from './Chip';
 import useTheme from '../useTheme';
 
-// remove the optional type when done and the defaults and use rest for repo ans site props
-interface ProjectCardProps {
-  tags?: string[];
-  title?: string;
-  description?: string;
-  thumbnail?: string;
-  repository?: string;
-  site?: string;
+export interface ProjectCardProps {
+  tags: string[];
+  title: string;
+  description: string;
+  thumbnail: string;
+  repository: string;
+  site: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  title = 'Portfolio site with Blog',
-  description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum at et nibh gravida ullamcorper mauris, arcu eget duis. Amet et tristique condimentum nisi, lectus....',
-  tags = ['React', 'Firebase', 'Next.js', 'bootstrap'],
-  thumbnail = '/pictures/project.jpg',
-  repository = '/',
-  site = '/',
+  title,
+  description,
+  tags,
+  thumbnail,
+  ...props
 }) => {
   const {
     colors: { dark, cardHover },
-    size: { textHeading },
+    size: { textHeading, resTextHeading },
     radius: { card },
   } = useTheme();
+  // maximum number of  rows for description
+  const clamp = 5;
+  const descriptionFontSize = 16;
+  const descriptionLineHeight = 1.5;
   return (
     <div className='card'>
       <div className='front'>
@@ -45,32 +45,54 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           />
         </div>
         <h3>{title}</h3>
-        <ProjectLinks site={site} repository={repository} />
+        <ProjectLinks {...props} />
       </div>
       <div className='more'>
         <div className='text-box'>
           <h3>{title}</h3>
-          <p>{description}</p>
+          <p className='trim'>{description}</p>
         </div>
-        <div className='chips-container'>
+        <div className='chips-container d-flex justify-content-start flex-wrap'>
           {tags.map((name, index) => (
             <Chip name={name} key={index} />
           ))}
         </div>
-        <ProjectLinks site={site} repository={repository} />
+        <ProjectLinks {...props} />
       </div>
 
       <div className='background'></div>
       <style jsx>{`
         .card {
           position: relative;
-          width: 320px;
+          width: 20rem;
+          white-space: nowrap;
+          margin-bottom: 3.125rem;
+          @media (max-width: 424.98px) {
+            width: 15.625rem;
+          }
+
           h3,
           p {
             color: ${dark};
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
           }
           h3 {
+            white-space: nowrap;
+            max-width: 100%;
+
             font-size: ${textHeading};
+            @media (max-width: 424.98px) {
+              font-size: ${resTextHeading};
+            }
+          }
+          p {
+            height: ${(clamp * descriptionFontSize * descriptionLineHeight) /
+              16 +
+            'rem'};
+            max-width: 100%;
+            -webkit-line-clamp: ${clamp};
           }
 
           .front {
@@ -93,13 +115,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           }
 
           .more {
-            position: absolute;
-            bottom: 0;
-            left: 0;
             opacity: 0;
+            position: absolute;
+            top: 42%;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transform: scale(0);
             .text-box,
             .chips-container {
-              margin-bottom: 1rem;
+              margin-bottom: 0.75rem;
+            }
+            .chips-container {
+              overflow: hidden;
+              max-height: 5.375rem;
             }
           }
           .background {
@@ -129,10 +158,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             }
             .more {
               opacity: 1;
+              transform: scale(1);
+              transition: transform 200ms ease, opacity 150ms linear;
             }
             .background {
-              transform: scale(1.2, 1.2);
+              transform: scale(1.2);
               opacity: 1;
+              @media (max-width: 424.98px) {
+                transform: scale(1.2) translateY(21%);
+              }
             }
           }
         }

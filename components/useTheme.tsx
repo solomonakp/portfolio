@@ -34,6 +34,7 @@ interface Theme {
     mobileMenu: string;
     resMainHeading: string;
     resSectionHeading: string;
+    resTextHeading: string;
   };
   border: {
     buttonBorder: string;
@@ -106,6 +107,7 @@ const useTheme = () => {
       sectionHeading: '2.5rem',
       paragraph: '1rem',
       textHeading: '1.5rem',
+      resTextHeading: '1.25rem',
       mobileMenu: '2rem',
     },
     border: {
@@ -115,7 +117,7 @@ const useTheme = () => {
     radius: {
       button: '5px',
       card: '10px',
-      chip: '9px',
+      chip: '8px',
     },
     shadow: {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',

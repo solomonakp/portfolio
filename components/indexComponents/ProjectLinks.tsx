@@ -25,7 +25,7 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({ repository, site }) => {
             width='24'
             height='24'
             id='project-window'
-            fill={iconColor}
+            stroke={iconColor}
           />
         </IconLink>
       ) : null}
