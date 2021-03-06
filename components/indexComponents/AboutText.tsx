@@ -28,6 +28,9 @@ const AboutText = (props: Props) => {
           @media (${maxSm}) {
             margin: 0 auto;
           }
+          h2 {
+            text-align: left !important;
+          }
         }
       `}</style>
     </div>

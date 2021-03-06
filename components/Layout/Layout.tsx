@@ -16,8 +16,8 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
     colors: { light, secondary, dark },
     effects: { bgTrans, colorTrans },
     size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
-    media: { maxSm, minXxL },
-    spacing: { sectionSpace, headingSpace },
+    media: { maxSm, minXxL, maxXs },
+    spacing: { sectionSpace, headingSpace, resSectionSpace },
   } = useTheme();
   return (
     <div id='layout'>
@@ -53,6 +53,9 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
 
           h2 {
             font-size: ${resSectionHeading};
+            @media (${maxXs}) {
+              text-align: center;
+            }
           }
           p {
             color: ${dark};
@@ -68,6 +71,9 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
           }
           .section-space {
             margin-bottom: ${sectionSpace};
+            @media (${maxSm}) {
+              margin-bottom: ${resSectionSpace};
+            }
           }
           .section-heading-space {
             margin-bottom: ${headingSpace};
@@ -84,12 +90,11 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
 
           @media (${maxSm}) {
             .image-space {
-              margin-top: 5rem;
+              margin-top: 3rem;
             }
           }
           .trim {
             display: -webkit-box;
-
             -webkit-box-orient: vertical;
             overflow: hidden;
           }

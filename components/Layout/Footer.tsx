@@ -15,28 +15,28 @@ const Footer: React.FC = (props: FooterProps) => {
     <footer>
       <div className='container'>
         <h3>looking to build a team?</h3>
-        <h5>
+        <h4>
           Send a message and{' '}
           <a href='mailto:solomonakp@gmail.com'>let’s talk</a>
-        </h5>
+        </h4>
         <FooterIcons />
       </div>
       <style jsx>{`
         footer {
           text-align: center;
-          padding-bottom: 5.625rem;
+          padding-bottom: 3.625rem;
           margin-top: auto;
         }
         h3,
-        h5 {
+        h4 {
           color: ${dark};
         }
         h3 {
           margin-bottom: 1rem;
           font-size: ${sectionHeading};
         }
-        h5 {
-          margin-bottom: 3.75rem;
+        h4 {
+          margin-bottom: 2rem;
           font-size: ${textHeading};
         }
         a {

@@ -24,6 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     colors: { dark, cardHover },
     size: { textHeading, resTextHeading },
     radius: { card },
+    media: { maxLg },
   } = useTheme();
   // maximum number of  rows for description
   const clamp = 5;
@@ -52,7 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <h3>{title}</h3>
           <p className='trim'>{description}</p>
         </div>
-        <div className='chips-container d-flex justify-content-start flex-wrap'>
+        <div className='chips-container d-flex justify-content-start'>
           {tags.map((name, index) => (
             <Chip name={name} key={index} />
           ))}
@@ -66,8 +67,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           position: relative;
           width: 20rem;
           white-space: nowrap;
-          margin-bottom: 3.125rem;
-          @media (max-width: 424.98px) {
+          margin-bottom: 4.125rem;
+          @media (${maxLg}) {
             width: 15.625rem;
           }
 
@@ -83,7 +84,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             max-width: 100%;
 
             font-size: ${textHeading};
-            @media (max-width: 424.98px) {
+            @media (${maxLg}) {
               font-size: ${resTextHeading};
             }
           }
@@ -122,9 +123,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             right: 0;
             opacity: 0;
             transform: scale(0);
+            @media (${maxLg}) {
+              top: 32%;
+            }
             .text-box,
             .chips-container {
               margin-bottom: 0.75rem;
+              text-overflow: ellipsis;
+              white-space: normal;
+              max-width: 100%;
             }
             .chips-container {
               overflow: hidden;
@@ -155,6 +162,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               h3 {
                 opacity: 0;
               }
+              @media (${maxLg}) {
+                transform: translateY(-30%) scale(0.75);
+              }
             }
             .more {
               opacity: 1;
@@ -164,9 +174,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             .background {
               transform: scale(1.2);
               opacity: 1;
-              @media (max-width: 424.98px) {
-                transform: scale(1.2) translateY(21%);
-              }
             }
           }
         }

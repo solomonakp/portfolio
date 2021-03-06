@@ -31,7 +31,14 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({ repository, site }) => {
       ) : null}
       <style jsx>
         {`
-          div :global(a:hover svg, a:active svg, a:focus svg) {
+          div
+            :global(a:hover #project-window, a:active #project-window, a:focus
+              #project-window) {
+            stroke: ${hover};
+          }
+          div
+            :global(a:hover #project-git, a:active #project-git, a:focus
+              #project-git) {
             fill: ${hover};
           }
           div :global(a:not(:last-of-type)) {

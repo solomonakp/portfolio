@@ -8,7 +8,7 @@ interface ChipProps {
 const Chip: React.FC<ChipProps> = ({ name }) => {
   const {
     colors: { dark },
-    border: { buttonBorder, chipBorder },
+    border: { chipBorder },
     radius: { chip },
   } = useTheme();
   return (

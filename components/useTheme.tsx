@@ -25,6 +25,7 @@ interface Theme {
     blogCard: string;
     blogCardSide: string;
     headingSpace: string;
+    resSectionSpace: string;
   };
   size: {
     mainHeading: string;
@@ -99,6 +100,7 @@ const useTheme = () => {
       blogCard: '7.188rem',
       blogCardSide: '5.25rem',
       headingSpace: '2.5rem',
+      resSectionSpace: '4.375rem',
     },
     size: {
       mainHeading: '3.5rem',
@@ -142,12 +144,12 @@ const useTheme = () => {
       minSm: 'min-width: 576px',
       minMd: 'min-width: 768px',
       minLg: 'min-width: 992px',
-      minXl: 'min-width: 1200px',
+      minXl: 'min-width: 1300px',
       minXxL: 'min-width: 1400px',
       maxXs: 'max-width: 575.98px',
       maxSm: 'max-width: 767.98px',
       maxMd: 'max-width: 991.98px',
-      maxLg: 'max-width: 1199.98px',
+      maxLg: 'max-width: 1299.98px',
       maxXl: 'max-width: 1399.98px',
     },
   };
