@@ -30,16 +30,16 @@ const SkillsContainer = (props: Props) => {
             grid-column-gap: calc((100% - 200px) / 2);
           }
           @media (${minSm}) {
-            grid-template-columns: repeat(3, 100px);
-            grid-column-gap: calc((100% - 300px) / 2);
-          }
-          @media (${minMd}) {
             grid-template-columns: repeat(4, 100px);
             grid-column-gap: calc((100% - 400px) / 3);
           }
-          @media (${minLg}) {
+          @media (${minMd}) {
             grid-template-columns: repeat(6, 100px);
             grid-column-gap: calc((100% - 600px) / 5);
+          }
+          @media (${minLg}) {
+            grid-template-columns: repeat(7, 100px);
+            grid-column-gap: calc((100% - 700px) / 6);
           }
 
           @media (${minXl}) {

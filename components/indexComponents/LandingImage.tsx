@@ -17,12 +17,13 @@ const LandingImage = (props: Props) => {
           src='/pictures/imagebackground.png'
           objectFit='scale-down'
           objectPosition='top'
+          alt=''
         />
         <Image
           layout='responsive'
           src='/pictures/me.png'
-          width='100%'
-          height='auto'
+          width='444.985'
+          height='444.985'
           alt='Chokor Solomon'
         />
       </div>
