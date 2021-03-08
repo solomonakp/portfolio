@@ -4,14 +4,12 @@ import { Logo } from '../Svgs';
 import useTheme from '../useTheme';
 import Footer from './Footer';
 import { Header } from './Header';
-import FloatingEmail from './FloatingEmail';
-import { FloatingContact } from './FloatingContact';
 
-interface LayoutProps {
-  children: React.ReactChild;
+export interface LayoutProps {
+  isMain: boolean;
 }
 
-export const Layout: React.FC = ({ children }: LayoutProps) => {
+export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
   const {
     colors: { light, secondary, dark },
     effects: { bgTrans, colorTrans },
@@ -19,6 +17,7 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
     media: { maxSm, minXxL, maxXs },
     spacing: { sectionSpace, headingSpace, resSectionSpace },
   } = useTheme();
+
   return (
     <div id='layout'>
       <Head>
@@ -26,9 +25,8 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
       </Head>
       <Header theme={true} logo={<Logo width={55} height={43} />} />
       <main>{children}</main>
-      <FloatingContact />
-      <FloatingEmail />
-      <Footer />
+
+      <Footer isMain={isMain} />
       <style jsx global>
         {`
           body {
@@ -69,6 +67,9 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
               margin: 0 auto;
             }
           }
+          .page-spacing {
+            margin: 100px 0;
+          }
           .section-space {
             margin-bottom: ${sectionSpace};
             @media (${maxSm}) {
@@ -104,4 +105,7 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
   );
 };
 
-export const getLayout = (page: React.ReactElement) => <Layout>{page}</Layout>;
+export const getLayout = (page: React.ReactElement, title: string) => {
+  const isMain = title === 'main page' ? true : false;
+  return <Layout isMain={isMain}>{page}</Layout>;
+};

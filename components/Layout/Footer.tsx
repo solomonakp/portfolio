@@ -1,10 +1,11 @@
 import React from 'react';
 import useTheme from '../useTheme';
 import FooterIcons from './FooterIcons';
+import { LayoutProps } from './Layout';
 
-interface FooterProps {}
+interface FooterProps extends LayoutProps {}
 
-const Footer: React.FC = (props: FooterProps) => {
+const Footer: React.FC<FooterProps> = (props) => {
   const {
     size: { sectionHeading, textHeading },
     colors: { dark, primary },
@@ -19,7 +20,7 @@ const Footer: React.FC = (props: FooterProps) => {
           Send a message and{' '}
           <a href='mailto:solomonakp@gmail.com'>let’s talk</a>
         </h4>
-        <FooterIcons />
+        <FooterIcons {...props} />
       </div>
       <style jsx>{`
         footer {

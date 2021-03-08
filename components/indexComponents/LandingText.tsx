@@ -1,13 +1,10 @@
+import Link from 'next/link';
 import React from 'react';
 import Button from '../Layout/Button';
 import useTheme from '../useTheme';
 interface Props {}
 
 const LandingText = (props: Props) => {
-  const {
-    size: { resMainHeading, mainHeading },
-    media: { minXxL },
-  } = useTheme();
   return (
     <div className='col-12 col-md-6 '>
       <div className='left-container d-flex flex-column justify-content-center'>

@@ -3,6 +3,7 @@ import React from 'react';
 import ProjectLinks from './ProjectLinks';
 import Chip from './Chip';
 import useTheme from '../useTheme';
+import Summary from '../Layout/Summary';
 
 export interface ProjectCardProps {
   tags: string[];
@@ -51,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className='more'>
         <div className='text-box'>
           <h3>{title}</h3>
-          <p className='trim'>{description}</p>
+          <Summary lines={5}>{description}</Summary>
         </div>
         <div className='chips-container d-flex justify-content-start'>
           {tags.map((name, index) => (
@@ -72,28 +73,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             width: 15.625rem;
           }
 
-          h3,
-          p {
-            color: ${dark};
+          h3 {
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: normal;
-          }
-          h3 {
             white-space: nowrap;
             max-width: 100%;
-
             font-size: ${textHeading};
+            color: ${dark};
             @media (${maxLg}) {
               font-size: ${resTextHeading};
             }
-          }
-          p {
-            height: ${(clamp * descriptionFontSize * descriptionLineHeight) /
-              16 +
-            'rem'};
-            max-width: 100%;
-            -webkit-line-clamp: ${clamp};
           }
 
           .front {

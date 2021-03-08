@@ -2,10 +2,11 @@ import React from 'react';
 import { Linkedin, Github, Twitter, Telephone } from '../Svgs';
 import useTheme from '../useTheme';
 import IconLink from './IconLink';
+import { LayoutProps } from './Layout';
 
-interface Props {}
+interface FooterIconsProps extends LayoutProps {}
 
-const FooterIcons = (props: Props) => {
+const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
   const {
     colors: { iconColor, hover },
     effects: { fillTrans },
@@ -29,7 +30,7 @@ const FooterIcons = (props: Props) => {
         div {
           display: flex;
           @media (min-width: 1049.98px) {
-            display: none !important;
+            display: ${isMain ? 'none !important' : 'flex'};
           }
         }
         div :global(a) {
