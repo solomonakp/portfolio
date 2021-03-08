@@ -22,12 +22,10 @@ const SkillsContainer = (props: Props) => {
         div {
           display: grid;
           grid-row-gap: 40px;
-          grid-template-columns: repeat(3, 100px);
-          grid-column-gap: calc((100% - 300px) / 3);
+          grid-template-columns: repeat(4, 100px);
           justify-content: center;
-          @media (max-width: 375px) {
-            grid-template-columns: repeat(2, 100px);
-            grid-column-gap: calc((100% - 200px) / 2);
+          @media (max-width: 400px) {
+            grid-template-columns: repeat(3, 100px);
           }
           @media (${minSm}) {
             grid-template-columns: repeat(4, 100px);

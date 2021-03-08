@@ -14,7 +14,7 @@ const SkillIcon: React.FC<SkillsProps> = ({
   height = '100px',
 }) => {
   const {
-    media: { minXl, minLg, minMd },
+    media: { minSm },
   } = useTheme();
   return (
     <div className='d-flex justify-content-center align-items-center'>
@@ -26,6 +26,15 @@ const SkillIcon: React.FC<SkillsProps> = ({
           width: ${width};
           height: ${height};
           background-color: ${background};
+          transform: scale(0.75);
+          @media (max-width: 400px) {
+            &:nth-of-type(16) {
+              display: none !important;
+            }
+          }
+          @media (${minSm}) {
+            transform: scale(1);
+          }
         }
       `}</style>
     </div>
