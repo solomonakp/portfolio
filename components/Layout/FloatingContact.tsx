@@ -14,7 +14,7 @@ export const FloatingContact: React.FC<FloatingProps> = ({}) => {
   } = useTheme();
 
   return (
-    <FloatingContainer bottom='0' left='71px'>
+    <FloatingContainer bottom='0' left='30px' id='left'>
       <FloatingList id='floating-icons'>
         <li>
           <IconLink href={'https://github.com/solomonakp'}>

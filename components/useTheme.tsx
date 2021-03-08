@@ -24,6 +24,8 @@ interface Theme {
     sectionSpace: string;
     blogCard: string;
     blogCardSide: string;
+    headingSpace: string;
+    resSectionSpace: string;
   };
   size: {
     mainHeading: string;
@@ -31,13 +33,18 @@ interface Theme {
     paragraph: string;
     textHeading: string;
     mobileMenu: string;
+    resMainHeading: string;
+    resSectionHeading: string;
+    resTextHeading: string;
   };
   border: {
     buttonBorder: string;
+    chipBorder: string;
   };
   radius: {
     button: string;
     card: string;
+    chip: string;
   };
   shadow: {
     contact: string;
@@ -77,7 +84,7 @@ const useTheme = () => {
     },
     colors: {
       primary: '#EF4E3C',
-      secondary: '#4BB3FD',
+      secondary: isDark ? '#4BB3FD' : '#2630A3',
       light: isDark ? '#001524 ' : '#FFFFFC', // based on state
       iconColor: isDark ? '#B2B9CD' : '#616F94', // based on state
       cardHover: isDark ? '#1B2E43' : '#ECF1F4', // based on state
@@ -86,33 +93,40 @@ const useTheme = () => {
       btnColor: isDark ? '#FFFFFC' : '#EF4E3C',
       lightColor: '#FFFFFC',
       darkColor: '#001524',
-      hover: isDark ? '#EF4E3C' : '#4BB3FD',
+      hover: isDark ? '#EF4E3C' : '#2630A3',
     },
     spacing: {
-      sectionSpace: '11rem',
+      sectionSpace: '9.375rem',
       blogCard: '7.188rem',
       blogCardSide: '5.25rem',
+      headingSpace: '2.5rem',
+      resSectionSpace: '4.375rem',
     },
     size: {
-      mainHeading: '4rem',
+      mainHeading: '3.5rem',
+      resMainHeading: 'calc(2.75rem + ((1vw - 0.2rem) * 1.0714))',
+      resSectionHeading: 'calc(2rem + ((1vw - 0.2rem) * 0.7143))',
       sectionHeading: '2.5rem',
       paragraph: '1rem',
       textHeading: '1.5rem',
+      resTextHeading: '1.25rem',
       mobileMenu: '2rem',
     },
     border: {
       buttonBorder: isDark ? '1px solid #B2B9CD' : '1px solid #EF4E3C',
+      chipBorder: '1px solid #B2B9CD',
     },
     radius: {
       button: '5px',
       card: '10px',
+      chip: '8px',
     },
     shadow: {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',
     },
     effects: {
       bgTrans: 'background-color 0.1s ease-in-out',
-      colorTrans: 'background-color 0.1s ease-in-out',
+      colorTrans: 'color 0.1s ease-in-out',
       fillTrans: 'fill 0.1s ease-in-out',
       stretch: 'scale(0.95)',
       buttonTransitionIn:
@@ -130,12 +144,12 @@ const useTheme = () => {
       minSm: 'min-width: 576px',
       minMd: 'min-width: 768px',
       minLg: 'min-width: 992px',
-      minXl: 'min-width: 1200px',
+      minXl: 'min-width: 1300px',
       minXxL: 'min-width: 1400px',
       maxXs: 'max-width: 575.98px',
       maxSm: 'max-width: 767.98px',
       maxMd: 'max-width: 991.98px',
-      maxLg: 'max-width: 1199.98px',
+      maxLg: 'max-width: 1299.98px',
       maxXl: 'max-width: 1399.98px',
     },
   };

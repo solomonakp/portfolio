@@ -6,6 +6,7 @@ interface FloatingContainerProps {
   right?: string;
   top?: string;
   bottom?: string;
+  id?: string;
 }
 
 const FloatingContainer: React.FC<FloatingContainerProps> = ({
@@ -14,13 +15,15 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
   right,
   top,
   bottom,
+  id,
+  ...props
 }) => {
   const {
     colors: { iconColor, hover },
-    effects: { fillTrans },
+    effects: { fillTrans, colorTrans },
   } = useTheme();
   return (
-    <div>
+    <div id={id} {...props}>
       {children}
       <style jsx>{`
         div {
@@ -31,6 +34,7 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           right: ${right ? right : 'initial'};
           top: ${top ? top : 'initial'};
           bottom: ${bottom ? bottom : 'initial'};
+
           & :global(#floating-icons li:last-child) {
             margin-bottom: 35px;
           }
@@ -40,15 +44,35 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           & :global(#floating-email) {
             color: ${iconColor};
             writing-mode: vertical-rl;
+            transition: ${colorTrans};
           }
-
-          & :global(a:hover svg) {
+          &
+            :global(#floating-email:hover, #floating-email:focus, #floating-email:active) {
+            color: ${hover};
+          }
+          & :global(a:hover svg, a:active svg, a:focus svg) {
             fill: ${hover};
             transition: ${fillTrans};
           }
           &
             :global(#fixed-github, #fixed-linkedin, #fixed-twitter, #fixed-telephone) {
             transition: ${fillTrans};
+          }
+        }
+        #left {
+          @media (max-width: 1250px) {
+            left: 8px;
+          }
+        }
+        #right {
+          @media (max-width: 1250px) {
+            right: 8px;
+          }
+        }
+        #left,
+        #right {
+          @media (max-width: 1050px) {
+            display: none;
           }
         }
       `}</style>

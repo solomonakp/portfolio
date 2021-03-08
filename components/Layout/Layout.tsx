@@ -13,16 +13,19 @@ interface LayoutProps {
 
 export const Layout: React.FC = ({ children }: LayoutProps) => {
   const {
-    colors: { light },
-    effects: { bgTrans },
+    colors: { light, secondary, dark },
+    effects: { bgTrans, colorTrans },
+    size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
+    media: { maxSm, minXxL, maxXs },
+    spacing: { sectionSpace, headingSpace, resSectionSpace },
   } = useTheme();
   return (
     <div id='layout'>
       <Head>
         <link rel='icon' type='image/png' href='/favicon.png' />
       </Head>
-      <Header theme={true} logo={<Logo width={96} height={64} />} />
-      {children}
+      <Header theme={true} logo={<Logo width={55} height={43} />} />
+      <main>{children}</main>
       <FloatingContact />
       <FloatingEmail />
       <Footer />
@@ -31,6 +34,69 @@ export const Layout: React.FC = ({ children }: LayoutProps) => {
           body {
             background-color: ${light};
             transition: ${bgTrans};
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            letter-spacing: -0.02em;
+            font-weight: 600;
+            color: ${secondary};
+            transition: ${colorTrans};
+            min-height: 0vw;
+          }
+          h1 {
+            font-size: ${resMainHeading};
+          }
+
+          h2 {
+            font-size: ${resSectionHeading};
+            @media (${maxXs}) {
+              text-align: center;
+            }
+          }
+          p {
+            color: ${dark};
+            transition: ${colorTrans};
+          }
+          .left-container {
+            width: 100%;
+            height: 100%;
+            max-width: 540px;
+            @media (${maxSm}) {
+              margin: 0 auto;
+            }
+          }
+          .section-space {
+            margin-bottom: ${sectionSpace};
+            @media (${maxSm}) {
+              margin-bottom: ${resSectionSpace};
+            }
+          }
+          .section-heading-space {
+            margin-bottom: ${headingSpace};
+          }
+
+          @media (${minXxL}) {
+            h1 {
+              font-size: ${mainHeading};
+            }
+            h2 {
+              font-size: ${sectionHeading};
+            }
+          }
+
+          @media (${maxSm}) {
+            .image-space {
+              margin-top: 3rem;
+            }
+          }
+          .trim {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
         `}
       </style>

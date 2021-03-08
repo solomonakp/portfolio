@@ -1,7 +1,10 @@
 {
     "cSpell.ignoreWords": [
         "icon",
+        "imagebackground",
         "link",
-        "linkedin"
-    ]
+        "linkedin",
+        "strapi"
+    ],
+    "diffEditor.wordWrap": "on"
 }

@@ -10,9 +10,6 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta2",
-    "formik": "^2.2.6",
-    "gsap": "^3.6.0",
     "next": "10.0.5",
     "next-redux-wrapper": "^6.0.2",
     "node-sass": "^5.0.0",

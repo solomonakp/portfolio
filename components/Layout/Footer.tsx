@@ -7,36 +7,36 @@ interface FooterProps {}
 const Footer: React.FC = (props: FooterProps) => {
   const {
     size: { sectionHeading, textHeading },
-    effects: { colorTrans },
     colors: { dark, primary },
     radius: { button },
   } = useTheme();
 
   return (
     <footer>
-      <h3>looking to build a team?</h3>
-      <h5>
-        Send a message and <a href='mailto:solomonakp@gmail.com'>let’s talk</a>
-      </h5>
-      <FooterIcons />
+      <div className='container'>
+        <h3>looking to build a team?</h3>
+        <h4>
+          Send a message and{' '}
+          <a href='mailto:solomonakp@gmail.com'>let’s talk</a>
+        </h4>
+        <FooterIcons />
+      </div>
       <style jsx>{`
         footer {
           text-align: center;
-          padding-bottom: 5.625rem;
+          padding-bottom: 3.625rem;
           margin-top: auto;
         }
         h3,
-        h5 {
-          font-weight: 600;
-          transition: ${colorTrans};
+        h4 {
           color: ${dark};
         }
         h3 {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           font-size: ${sectionHeading};
         }
-        h5 {
-          margin-bottom: 3.75rem;
+        h4 {
+          margin-bottom: 2rem;
           font-size: ${textHeading};
         }
         a {

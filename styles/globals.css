@@ -1,3 +1,6 @@
+@import './bootstrap-reboot.css';
+@import './bootstrap-grid.css';
+
 @font-face {
   font-family: 'Work Sans';
   font-style: normal;
@@ -68,6 +71,9 @@ h5,
 h6 {
   font-family: 'Lufga';
 }
+img {
+  image-rendering: auto;
+}
 
 button {
   white-space: nowrap;
@@ -84,4 +90,12 @@ button {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
+}
+main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.ripple {
+  display: inline-block;
 }

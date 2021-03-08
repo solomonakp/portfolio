@@ -7,11 +7,11 @@ interface Props {}
 
 const FooterIcons = (props: Props) => {
   const {
-    colors: { iconColor, primary, hover },
+    colors: { iconColor, hover },
     effects: { fillTrans },
   } = useTheme();
   return (
-    <div className='footer-icons'>
+    <div className=' justify-content-center align-items-center'>
       <IconLink href={'https://github.com/solomonakp'}>
         <Github width={24} height={24} fill={iconColor} id='github' />
       </IconLink>
@@ -26,22 +26,23 @@ const FooterIcons = (props: Props) => {
       </IconLink>
 
       <style jsx>{`
-        .footer-icons {
+        div {
           display: flex;
-          justify-content: center;
-          align-items: center;
+          @media (min-width: 1049.98px) {
+            display: none !important;
+          }
         }
-        .footer-icons :global(a) {
+        div :global(a) {
           margin-right: 1.5rem;
           &:last-of-type {
             margin-right: 0;
           }
         }
-        .footer-icons :global(a:hover svg) {
+        div :global(a:hover svg, a:active svg, a:focus svg) {
           fill: ${hover};
           transition: ${fillTrans};
         }
-        .footer-icons :global(#github, #linkedin, #twitter, #telephone) {
+        div :global(#github, #linkedin, #twitter, #telephone) {
           transition: ${fillTrans};
         }
       `}</style>

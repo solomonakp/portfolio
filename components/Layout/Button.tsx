@@ -9,7 +9,7 @@ interface ButtonProps {
   size?: number;
   bgColor?: colors;
   radius?: number;
-  id: string;
+  id?: string;
 }
 
 const Ripples = createRipples();
@@ -28,12 +28,13 @@ const Button: React.FC<ButtonProps> = ({
     effects: { buttonTransitionIn, buttonTransitionOut },
   } = useTheme();
   return (
-    <Ripples className='d-inline-block'>
+    <Ripples className='ripple'>
       <button {...props} id={id}>
         {children}
       </button>
       <style jsx>{`
         button {
+          text-align: center;
           padding: 0.75em 1em;
           text-transform: uppercase;
           font-weight: 500;
@@ -62,7 +63,7 @@ const Button: React.FC<ButtonProps> = ({
           &:focus {
             transition: ${buttonTransitionOut};
             background-color: ${outline ? primary : 'transparent'};
-            border-color: ${outline ? light : btnColor};
+            border-color: ${outline ? light : outLine};
             color: ${outline ? lightColor : btnColor};
           }
         }

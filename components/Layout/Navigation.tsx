@@ -8,6 +8,7 @@ const Navigation: React.FC<NavigationProps> = (props) => {
     media: { maxMd },
     colors: { secondary },
     size: { paragraph, mobileMenu },
+    effects: { colorTrans },
   } = useTheme();
 
   return (
@@ -49,6 +50,7 @@ const Navigation: React.FC<NavigationProps> = (props) => {
             }
           }
           a:not(#nav-logo) {
+            transition: ${colorTrans};
             color: ${secondary};
             font-size: ${paragraph};
             @media (${maxMd}) {
