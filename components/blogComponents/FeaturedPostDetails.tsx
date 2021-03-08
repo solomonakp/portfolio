@@ -1,10 +1,9 @@
 import React from 'react';
 import Avatar from './Avatar';
-import FeaturedBlogSection from './FeaturedBlogSection';
 import useTheme from '../useTheme';
 import Summary from '../Layout/Summary';
 
-export interface FeaturedBlogTextProps {
+export interface FeaturedPostDetailsProps {
   date: string;
   title: string;
   description: string;
@@ -12,7 +11,7 @@ export interface FeaturedBlogTextProps {
   image: string;
 }
 
-const FeaturedBlogText: React.FC<FeaturedBlogTextProps> = ({
+const FeaturedPostDetails: React.FC<FeaturedPostDetailsProps> = ({
   title,
   description,
   ...props
@@ -35,6 +34,7 @@ const FeaturedBlogText: React.FC<FeaturedBlogTextProps> = ({
         div {
           @media (${maxSm}) {
             margin-top: 1rem;
+            margin-left: 0;
           }
           .area {
             width: 100%;
@@ -60,4 +60,4 @@ const FeaturedBlogText: React.FC<FeaturedBlogTextProps> = ({
   );
 };
 
-export default FeaturedBlogText;
+export default FeaturedPostDetails;

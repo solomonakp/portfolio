@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
-import FeaturedBlogSection from '../../components/blogComponents/FeaturedBlogSection';
+import FeaturedPostSection from '../../components/blogComponents/FeaturedPostSection';
 import { getLayout } from '../../components/Layout/Layout';
+import PostsSection from '../../components/blogComponents/PostsSection';
 
 interface Props {}
 
@@ -11,7 +12,8 @@ const index = (props: Props) => {
   </Head>;
   return (
     <div id='page' className='page-spacing'>
-      <FeaturedBlogSection />
+      <FeaturedPostSection />
+      <PostsSection />
     </div>
   );
 };

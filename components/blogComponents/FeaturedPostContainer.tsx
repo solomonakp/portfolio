@@ -1,19 +1,19 @@
 import React from 'react';
 import { featuredObject } from './blogObject';
-import FeaturedBlogText from './FeaturedBlogText';
+import FeaturedPostDetails from './FeaturedPostDetails';
 import FeaturedImage from './FeaturedImage';
 
 interface Props {}
 
-const FeaturedBlogContainer = (props: Props) => {
+const FeaturedPostContainer = (props: Props) => {
   return (
     <div className='container'>
       <div className='row'>
         <FeaturedImage />
-        <FeaturedBlogText {...featuredObject} />
+        <FeaturedPostDetails {...featuredObject} />
       </div>
     </div>
   );
 };
 
-export default FeaturedBlogContainer;
+export default FeaturedPostContainer;

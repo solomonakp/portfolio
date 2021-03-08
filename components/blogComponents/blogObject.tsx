@@ -1,6 +1,7 @@
-import { FeaturedBlogTextProps } from './FeaturedBlogText';
+import { FeaturedPostDetailsProps } from './FeaturedPostDetails';
+import { PostDetailsProps } from './PostDetails';
 
-export const featuredObject: FeaturedBlogTextProps = {
+export const featuredObject: FeaturedPostDetailsProps = {
   date: 'Jun 30, 2020',
   title: 'Why Software Developers should work with Software Agencies',
   description:
@@ -8,3 +9,44 @@ export const featuredObject: FeaturedBlogTextProps = {
   image: '/pictures/avatar.jpeg',
   author: 'Chokor solomon',
 };
+
+const Posts: PostDetailsProps[] = [
+  {
+    title:
+      'Handling social media crisis is much easier than you think. There’s just a way to it',
+    description:
+      'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
+    date: 'Jun 28, 2020',
+    tag: 'Development',
+    image: '/pictures/card.jpg',
+  },
+  {
+    title:
+      'Handling social media crisis is much easier than you think. There’s just a way to it',
+    description:
+      'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
+    date: 'Jun 28, 2020',
+    tag: 'Development',
+    image: '/pictures/card.jpg',
+  },
+  {
+    title:
+      'Handling social media crisis is much easier than you think. There’s just a way to it',
+    description:
+      'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
+    date: 'Jun 28, 2020',
+    tag: 'Development',
+    image: '/pictures/card.jpg',
+  },
+  {
+    title:
+      'Handling social media crisis is much easier than you think. There’s just a way to it',
+    description:
+      'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
+    date: 'Jun 28, 2020',
+    tag: 'Development',
+    image: '/pictures/card.jpg',
+  },
+];
+
+export default Posts;
