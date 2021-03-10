@@ -7,8 +7,12 @@ import SkillSection from '../components/indexComponents/SkillSection';
 import { FloatingContact } from '../components/Layout/FloatingContact';
 import { getLayout } from '../components/Layout/Layout';
 import FloatingEmail from '../components/Layout/FloatingEmail';
+import useTheme from '../components/useTheme';
 
 const Index = (props) => {
+  const {
+    media: { maxXs },
+  } = useTheme();
   return (
     <div id='index-page'>
       <Head>
@@ -20,6 +24,15 @@ const Index = (props) => {
       <AboutSection />
       <SkillSection />
       <ProjectsSection />
+      <style jsx global>
+        {`
+          h2 {
+            @media (${maxXs}) {
+              text-align: center;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

@@ -49,11 +49,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
             font-size: ${resMainHeading};
           }
 
-          h2 {
+          h2,
+          .h2 {
             font-size: ${resSectionHeading};
-            @media (${maxXs}) {
-              text-align: center;
-            }
           }
           p {
             color: ${dark};
@@ -84,7 +82,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
             h1 {
               font-size: ${mainHeading};
             }
-            h2 {
+            h2,
+            .h2 {
               font-size: ${sectionHeading};
             }
           }
