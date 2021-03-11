@@ -9,7 +9,7 @@ function PostsContainer({}: Props): ReactElement {
     <div className='container'>
       <div className='row'>
         {Posts.map((post, index) => (
-          <PostDetails {...post} key={index} />
+          <PostDetails {...post} key={index} className='col-12 col-md-6' />
         ))}
       </div>
     </div>

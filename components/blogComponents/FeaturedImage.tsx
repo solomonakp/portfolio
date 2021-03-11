@@ -15,8 +15,8 @@ const FeaturedImage = (props: Props) => {
           layout='responsive'
           objectFit='cover'
           objectPosition='center'
-          width='500'
-          height='350'
+          width={500}
+          height={350}
           src='/pictures/card.jpg'
         />
       </div>

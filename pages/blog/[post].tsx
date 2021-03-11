@@ -2,6 +2,7 @@ import React from 'react';
 import { getLayout } from '../../components/Layout/Layout';
 import PostBodySection from '../../components/PostComponents/PostBodySection';
 import PostDetailSection from '../../components/PostComponents/PostDetailSection';
+import ReadMoreSection from '../../components/PostComponents/ReadMoreSection';
 
 interface Props {}
 
@@ -10,6 +11,7 @@ const Post = (props: Props) => {
     <div id='post-page' className='page-spacing'>
       <PostDetailSection />
       <PostBodySection />
+      <ReadMoreSection />
     </div>
   );
 };

@@ -9,6 +9,9 @@ export interface PostDetailsProps {
   date: string;
   tag: string;
   image: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  className?: string;
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({
@@ -17,6 +20,9 @@ const PostDetails: React.FC<PostDetailsProps> = ({
   date = 'Jun 28, 2020',
   tag = 'Development',
   image = '/pictures/card.jpg',
+  imageHeight = 330,
+  imageWidth = 618,
+  className,
 }) => {
   const {
     radius: { card },
@@ -25,12 +31,12 @@ const PostDetails: React.FC<PostDetailsProps> = ({
     media: { maxSm },
   } = useTheme();
   return (
-    <div className='col-12 col-md-6'>
+    <div className={className}>
       <div className='post-tile'>
         <Image
           src={image}
-          width='400'
-          height='300'
+          width={imageWidth}
+          height={imageHeight}
           layout='responsive'
           objectPosition='center'
           objectFit='cover'
