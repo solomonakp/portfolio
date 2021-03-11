@@ -24,8 +24,8 @@ const PostInfo: React.FC<PostInfoProps> = ({
       <Image
         src={image}
         layout='intrinsic'
-        width='800'
-        height='500'
+        width='1074'
+        height='551'
         objectFit='cover'
         objectPosition='center'
       />

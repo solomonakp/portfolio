@@ -3,10 +3,18 @@ import PostBody from './PostBody';
 
 const PostBodySection = () => {
   return (
-    <section id='post-body'>
+    <section id='post-body' className='section-space'>
       <div className='container'>
-        <PostBody />
+        <div className='row'>
+          <div className='col-12 col-md-10'>
+            <PostBody />
+          </div>
+        </div>
       </div>
+      <style jsx>{`
+        section {
+        }
+      `}</style>
     </section>
   );
 };

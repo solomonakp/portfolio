@@ -1,12 +1,17 @@
 import React from 'react';
+import useTheme from '../useTheme';
 
 interface Props {
   content?: string;
 }
 
 const PostBody = (props: Props) => {
+  const {
+    colors: { dark },
+    media: { maxSm },
+  } = useTheme();
   return (
-    <div>
+    <div className='post'>
       <p>
         Being a software developer gives you access to a lot of job
         opportunities working at global companies. Part of this opportunity is
@@ -94,11 +99,34 @@ const PostBody = (props: Props) => {
       </ul>
 
       <style jsx>{`
+        .post {
+          max-width: 90%;
+          @media (${maxSm}) {
+            max-width: 100%;
+          }
+        }
         p {
           margin-bottom: 1.5rem;
         }
         ul {
-          list-style-type: disc;
+          list-style-type: none;
+          color: ${dark};
+          padding-left: 0;
+          li {
+            margin-left: 1.5rem;
+            position: relative;
+            &:before {
+              content: '';
+              position: absolute;
+              display: block;
+              border-radius: 50%;
+              width: 0.5em;
+              height: 0.5em;
+              left: -1.5em;
+              top: 8px;
+              background-color: ${dark};
+            }
+          }
         }
       `}</style>
     </div>
