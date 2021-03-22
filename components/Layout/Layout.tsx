@@ -4,6 +4,9 @@ import { Logo } from '../Svgs';
 import useTheme from '../useTheme';
 import Footer from './Footer';
 import { Header } from './Header';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/index';
+import Loader from './Loader';
 
 export interface LayoutProps {
   isMain: boolean;
@@ -14,7 +17,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
     colors: { light, secondary, dark },
     effects: { bgTrans, colorTrans },
     size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
-    media: { maxSm, minXxL, maxXs },
+    media: { maxSm, minXxL },
     spacing: { sectionSpace, headingSpace, resSectionSpace },
   } = useTheme();
 
@@ -106,5 +109,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
 
 export const getLayout = (page: React.ReactElement, title: string) => {
   const isMain = title === 'main page' ? true : false;
+
+  const { isLoading } = useSelector((state: RootState) => state.ui);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return <Layout isMain={isMain}>{page}</Layout>;
 };
