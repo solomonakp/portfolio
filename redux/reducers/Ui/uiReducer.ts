@@ -6,13 +6,13 @@ import {
   TOGGLE_OPEN,
 } from './uiTypes';
 const initialState: UiState = {
-  isLoading: true,
+  isLoading: false,
   isDark: false,
   isOpen: false,
 };
 
-const uiReducer = (state = initialState, { type, payload }: UiActionTypes) => {
-  switch (type) {
+const uiReducer = (state = initialState, action: UiActionTypes) => {
+  switch (action.type) {
     case TOGGLE_LOADING:
       return {
         ...state,
