@@ -125,8 +125,8 @@ const useTheme = () => {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',
     },
     effects: {
-      bgTrans: 'background-color 0.1s ease-in-out',
-      colorTrans: 'color 0.1s ease-in-out',
+      bgTrans: 'background-color 0.3s ease-in-out',
+      colorTrans: 'color 0.3s ease-in-out',
       fillTrans: 'fill 0.1s ease-in-out',
       stretch: 'scale(0.95)',
       buttonTransitionIn:
