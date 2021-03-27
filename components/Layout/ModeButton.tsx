@@ -1,9 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useTheme from '../useTheme';
 import { toggleDark } from '../../redux/reducers/Ui/uiActions';
 import { RootState } from '../../redux/reducers/index';
-import anime from 'animejs';
+import anime, { set } from 'animejs';
 
 interface ModeButtonProps {
   isOpen: boolean;
@@ -13,23 +13,35 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
   const sunTickGroup = useRef<SVGPathElement>(null!);
   const sunCircle = useRef<SVGPathElement>(null!);
   const { isDark } = useSelector((state: RootState) => state.ui);
-  const {
-    media: { maxMd },
-  } = useTheme();
-  const dispatch = useDispatch();
+
+  // getting inital state for button store darkMode
+  const [initialMode, setInitialMode] = useState<boolean | null>(null);
+
+  // initial path to render
+  const initialPath = initialMode
+    ? 'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z'
+    : 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z';
+  // set the initialMode here
+  useEffect(() => {
+    if (isDark) {
+      setInitialMode(true);
+    } else {
+      setInitialMode(false);
+    }
+  }, []);
 
   const toggleMode = () => {
     const sunTicks = sunTickGroup.current.children;
     const circle = sunCircle.current;
-    const tickScale = isDark ? 1 : 0;
-    const circleScale = isDark ? 1 : 2;
-    const circleRotate = isDark ? '0deg' : '-30deg';
+    const tickScale = isDark ? 0 : 1;
+    const circleScale = isDark ? 1.5 : 1;
+    const circleRotate = isDark ? '-30deg' : '0deg';
     const tickDuration = 400;
     const circleDuration = 200;
 
-    const moonPath = isDark
-      ? 'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z'
-      : 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z';
+    const path = isDark
+      ? 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z'
+      : 'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z';
 
     const timeline = anime.timeline({
       easing: 'easeOutExpo',
@@ -38,8 +50,29 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
     if (isDark) {
       timeline
         .add({
+          targets: sunTicks,
+          scale: tickScale,
+          transformOrigin: '50% 50%',
+          delay: anime.stagger(50),
+          duration: tickDuration,
+        })
+        .add(
+          {
+            targets: circle,
+            d: [{ value: path }],
+            transformOrigin: '50% 50%',
+            scale: circleScale,
+            rotate: circleRotate,
+            fill: '#3686a0',
+            duration: circleDuration,
+          },
+          '-=200'
+        );
+    } else {
+      timeline
+        .add({
           targets: circle,
-          d: [{ value: moonPath }],
+          d: [{ value: path }],
           transformOrigin: '50% 50%',
           scale: circleScale,
           rotate: circleRotate,
@@ -56,51 +89,32 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
           },
           '-=200'
         );
-    } else {
-      timeline
-        .add({
-          targets: sunTicks,
-          scale: tickScale,
-          transformOrigin: '50% 50%',
-          delay: anime.stagger(50),
-          duration: tickDuration,
-        })
-        .add(
-          {
-            targets: circle,
-            d: [{ value: moonPath }],
-            transformOrigin: '50% 50%',
-            scale: circleScale,
-            rotate: circleRotate,
-            fill: '#3686a0',
-            duration: circleDuration,
-          },
-          '-=200'
-        );
     }
 
     dispatch(toggleDark());
   };
 
+  const {
+    media: { maxMd },
+  } = useTheme();
+
+  const dispatch = useDispatch();
+
   return (
     <button
       className='d-flex justify-content-center align-items-center'
+      role='button'
       onClick={toggleMode}
     >
       <svg
         version='1.1'
-        id='sun'
+        id='modeSvg'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 300 300'
         role='presentation'
-        width={24}
-        height={24}
         fill={'#FFC107'}
       >
-        <path
-          ref={sunCircle}
-          d='M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z'
-        />
+        <path ref={sunCircle} d={initialPath} id='circle' />
 
         <g ref={sunTickGroup} fill='#FFD54F'>
           <path d='M152.4 51.6C155.143 51.5512 157.76 50.4398 159.7 48.4999C161.64 46.56 162.751 43.943 162.8 41.2V10.4C162.8 7.64175 161.704 4.99647 159.754 3.04609C157.803 1.09571 155.158 0 152.4 0C149.642 0 146.996 1.09571 145.046 3.04609C143.096 4.99647 142 7.64175 142 10.4V41.2C142.049 43.943 143.16 46.56 145.1 48.4999C147.04 50.4398 149.657 51.5512 152.4 51.6Z' />
@@ -115,16 +129,27 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
       </svg>
       <style jsx>{`
         button {
-          margin-left: 5rem;
+          margin-left: 3.875rem;
           border-radius: 50%;
-          width: 32px;
-          height: 32px;
+          width: 40px;
+          height: 40px;
           background-color: transparent;
-
           @media (${maxMd}) {
             position: absolute;
             top: 60px;
             right: 20px;
+          }
+          #circle {
+            fill: ${initialMode ? '#FFC107' : '#3686a0'};
+            transform: scale(${initialMode ? 1 : 1.5})
+              rotate(${initialMode ? '0deg' : '-30deg'});
+            transform-origin: 50% 50%;
+          }
+          g {
+            path {
+              transform: scale(${initialMode ? 1 : 0});
+              transform-origin: 50% 50%;
+            }
           }
         }
       `}</style>

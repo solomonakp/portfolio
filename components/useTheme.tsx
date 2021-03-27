@@ -19,6 +19,7 @@ interface Theme {
     lightColor: string;
     darkColor: string;
     hover: string;
+    navColor: string;
   };
   spacing: {
     sectionSpace: string;
@@ -85,7 +86,7 @@ const useTheme = () => {
     colors: {
       primary: '#EF4E3C',
       secondary: isDark ? '#4BB3FD' : '#2630A3',
-      light: isDark ? '#001524 ' : '#FFFFFC', // based on state
+      light: isDark ? '#001524' : '#FFFFFC', // based on state
       iconColor: isDark ? '#B2B9CD' : '#616F94', // based on state
       cardHover: isDark ? '#1B2E43' : '#ECF1F4', // based on state
       dark: isDark ? '#FFFFFC' : '#001524 ',
@@ -94,6 +95,7 @@ const useTheme = () => {
       lightColor: '#FFFFFC',
       darkColor: '#001524',
       hover: isDark ? '#EF4E3C' : '#2630A3',
+      navColor: isDark ? 'rgba(0, 21, 36,0.5)' : 'rgba(255, 255, 252,0.5)',
     },
     spacing: {
       sectionSpace: '9.375rem',

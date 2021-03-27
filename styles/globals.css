@@ -33,6 +33,7 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
@@ -47,10 +48,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-font-kerning: normal;
   font-kerning: normal;
   scroll-behavior: smooth;
   overflow-x: hidden;
   min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 a,
@@ -98,4 +102,5 @@ main {
 
 .ripple {
   display: inline-block;
+  color: rgb(0, 21, 36);
 }
