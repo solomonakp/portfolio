@@ -3,8 +3,8 @@ import useTheme from '../useTheme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
 import Hamburger from './Hamburger';
-import { ModeButton } from './ModeButton';
-import Navigation from './Navigation';
+import Navigation, { navRefs } from './Navigation';
+import useNavAnimation from '../hooks/useNavAnimation';
 
 interface HeaderProps {
   logo?: React.ReactElement;
@@ -18,6 +18,9 @@ if (process.browser) {
 
 export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
   const header = useRef<HTMLElement>(null!);
+  const navElements = useRef<navRefs>([]!);
+
+  const navAnimation = useNavAnimation(navElements.current);
 
   useEffect(() => {
     // scroll event
@@ -49,10 +52,16 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
     prevPos = currentPos;
   };
 
+  const setNavRefs = (el: never) => {
+    if (el && !navElements.current.includes(el)) {
+      navElements.current.push(el);
+    }
+  };
+
   const { isOpen } = useSelector((state: RootState) => state.ui);
 
   const {
-    media: { minLg, maxMd },
+    media: { minLg },
     colors: { navColor, light },
   } = useTheme();
   return (
@@ -62,14 +71,8 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
           <a href='' id='nav-logo' className='mr-auto'>
             {logo}
           </a>
-          <Hamburger isOpen={isOpen} />
-          <div
-            className='d-none d-lg-flex justify-content-center align-items-center '
-            id='navigation'
-          >
-            <Navigation />
-            {theme ? <ModeButton isOpen={isOpen} /> : null}
-          </div>
+          <Hamburger isOpen={isOpen} animation={navAnimation} />
+          <Navigation theme={theme} open={isOpen} ref={setNavRefs} />
         </nav>
       </div>
       <style jsx>{`
@@ -80,7 +83,6 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
           right: 0;
           left: 0;
           z-index: 10;
-          overflow: hidden;
           height: 74px;
           background-color: ${light};
           transition: all ease-in-out 300ms;
@@ -103,17 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
 
         #nav-logo {
           margin-right: auto;
-        }
-        #navigation {
-          @media (${maxMd}) {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 63.988px;
-            bottom: 0;
-          }
+          z-index: 11;
         }
       `}</style>
     </header>

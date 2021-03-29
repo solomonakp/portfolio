@@ -5,14 +5,20 @@ import { toggleOpen } from '../../redux/reducers/Ui/uiActions';
 
 interface HamburgerProps {
   isOpen: boolean;
+  animation?: () => void;
 }
 
-const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
+const Hamburger: React.FC<HamburgerProps> = ({ isOpen, animation }) => {
   const {
     colors: { dark },
-    media: { maxMd },
   } = useTheme();
   const dispatch = useDispatch();
+
+  const handleMenuToggle = () => {
+    dispatch(toggleOpen());
+    animation();
+  };
+
   return (
     <button
       className='menu-btn d-flex d-lg-none justify-content-center align-items-center'
@@ -20,9 +26,9 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
       aria-label='Menu'
       aria-controls='navigation'
       aria-expanded={isOpen}
-      onClick={() => dispatch(toggleOpen())}
+      onClick={handleMenuToggle}
     >
-      <span className='menu-box'>
+      <span className='menu-box align-self-start'>
         <span className='menu-inner'></span>
       </span>
       <style jsx>{`
@@ -36,7 +42,9 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen }) => {
           margin: 0;
           overflow: visible;
           display: none;
-          padding: 5px;
+          padding: 0;
+          height: 42px;
+          z-index: 11;
         }
         .menu-box {
           width: 30px;

@@ -136,8 +136,10 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
           background-color: transparent;
           @media (${maxMd}) {
             position: absolute;
-            top: 60px;
-            right: 20px;
+            bottom: 15px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
           }
           #circle {
             fill: ${initialMode ? '#FFC107' : '#3686a0'};
