@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useTheme from '../useTheme';
 import { toggleDark } from '../../redux/reducers/Ui/uiActions';
 import { RootState } from '../../redux/reducers/index';
-import anime, { set } from 'animejs';
+import anime from 'animejs';
 
 interface ModeButtonProps {
   isOpen: boolean;
@@ -21,6 +21,7 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
   const initialPath = initialMode
     ? 'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z'
     : 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z';
+
   // set the initialMode here
   useEffect(() => {
     if (isDark) {
@@ -37,7 +38,7 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
     const circleScale = isDark ? 1.5 : 1;
     const circleRotate = isDark ? '-30deg' : '0deg';
     const tickDuration = 400;
-    const circleDuration = 200;
+    const circleDuration = 400;
 
     const path = isDark
       ? 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z'
@@ -46,6 +47,7 @@ export const ModeButton: React.FC<ModeButtonProps> = ({ isOpen }) => {
     const timeline = anime.timeline({
       easing: 'easeOutExpo',
     });
+    console.log(isDark);
 
     if (isDark) {
       timeline

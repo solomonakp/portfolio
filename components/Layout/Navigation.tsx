@@ -12,7 +12,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(
   ({ theme, open }, ref) => {
     const {
       media: { maxMd },
-      colors: { secondary },
+      colors: { secondary, navOverlay },
       size: { paragraph, mobileMenu },
       effects: { colorTrans },
     } = useTheme();
@@ -26,7 +26,12 @@ const Navigation = React.forwardRef<any, NavigationProps>(
         <svg>
           <defs>
             <clipPath id='clipPath'>
-              <circle className='circle' cx='100%' cy='0' r='0' ref={ref} />
+              {/* <circle className='circle' cx='100%' cy='0' r='0' ref={ref} /> */}
+              <path
+                d='M43,-58C49.3,-54.7,43.4,-33.4,39.3,-19.1C35.3,-4.7,33.2,2.7,30.9,10.2C28.6,17.7,26.2,25.2,21.1,38.4C15.9,51.6,7.9,70.4,0.3,70C-7.3,69.6,-14.7,49.9,-28.6,39.6C-42.6,29.3,-63.3,28.3,-70.7,19.6C-78,11,-72.1,-5.2,-62,-15.1C-51.8,-25,-37.5,-28.5,-26.5,-30.2C-15.5,-32,-7.7,-32,5.3,-39.4C18.4,-46.7,36.8,-61.3,43,-58Z'
+                ref={ref}
+                className='circle'
+              />
             </clipPath>
           </defs>
         </svg>
@@ -67,10 +72,10 @@ const Navigation = React.forwardRef<any, NavigationProps>(
                 right: 0;
                 top: 0;
                 bottom: 0;
-                background: orange;
+                background: ${navOverlay};
                 z-index: 10;
                 clip-path: url(#clipPath);
-                transform: translateY(-110%);
+                // transform: translateY(-110%);
               }
             }
             svg {
@@ -81,9 +86,10 @@ const Navigation = React.forwardRef<any, NavigationProps>(
               top: 0;
               z-index: -14;
               width: 100%;
-              circle {
-                transform: scale3d(1, 1, 0);
-                transform-origin: 50% 50%;
+              .circle {
+                // transform: scale3d(1, 1, 0);
+                // transform-origin: 50% 50%;
+                transform: translate(100%, -50%);
               }
             }
 

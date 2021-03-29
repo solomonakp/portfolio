@@ -10,7 +10,7 @@ interface HamburgerProps {
 
 const Hamburger: React.FC<HamburgerProps> = ({ isOpen, animation }) => {
   const {
-    colors: { dark },
+    colors: { dark, light },
   } = useTheme();
   const dispatch = useDispatch();
 

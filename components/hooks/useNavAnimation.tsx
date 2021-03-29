@@ -15,14 +15,18 @@ const useNavAnimation = (elements: navRefs) => {
       });
 
       document.body.style.overflowY = isOpen ? 'initial' : 'hidden';
+      anime.set(circle, {
+        translateX: '100%',
+        translateY: '-50%',
+      });
 
       if (isOpen) {
         timeLine
           .add({
             targets: circle,
-            duration: 500,
+            duration: 1000,
             easing: 'easeOutExpo',
-            r: 0,
+            scale: 0,
           })
           .add({
             targets: navigation,
@@ -40,9 +44,10 @@ const useNavAnimation = (elements: navRefs) => {
           })
           .add({
             targets: circle,
-            duration: 500,
+            duration: 1000,
             easing: 'easeOutExpo',
-            r: 1300,
+            // r: 1300,
+            scale: 26,
           });
       }
     };

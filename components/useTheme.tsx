@@ -20,6 +20,7 @@ interface Theme {
     darkColor: string;
     hover: string;
     navColor: string;
+    navOverlay: string;
   };
   spacing: {
     sectionSpace: string;
@@ -96,6 +97,7 @@ const useTheme = () => {
       darkColor: '#001524',
       hover: isDark ? '#EF4E3C' : '#2630A3',
       navColor: isDark ? 'rgba(0, 21, 36,0.5)' : 'rgba(255, 255, 252,0.5)',
+      navOverlay: isDark ? '#00243d' : '#f4f3f1',
     },
     spacing: {
       sectionSpace: '9.375rem',
