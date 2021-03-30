@@ -42,7 +42,6 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
         navBar.style.boxShadow = '0 2px 10px 0px rgba(0, 0, 0, 0.2)';
       } else {
         // box-shadow
-
         navBar.style.boxShadow = 'initial';
       }
     } else {
@@ -72,7 +71,12 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             {logo}
           </a>
           <Hamburger isOpen={isOpen} animation={navAnimation} />
-          <Navigation theme={theme} open={isOpen} ref={setNavRefs} />
+          <Navigation
+            theme={theme}
+            open={isOpen}
+            ref={setNavRefs}
+            animation={navAnimation}
+          />
         </nav>
       </div>
       <style jsx>{`

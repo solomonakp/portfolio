@@ -2,14 +2,59 @@ import React from 'react';
 import Link from 'next/link';
 import useTheme from '../useTheme';
 import { ModeButton } from './ModeButton';
+import { useDispatch } from 'react-redux';
+import { toggleOpen } from '../../redux/reducers/Ui/uiActions';
+import { animationCallback } from '../hooks/useNavAnimation';
 interface NavigationProps {
   open: boolean;
   theme: boolean;
+  animation?: (cb: animationCallback) => void;
 }
-export type navRefs = [SVGCircleElement, HTMLDivElement] | [];
+export type navRefs =
+  | [SVGCircleElement, HTMLUListElement, HTMLButtonElement, HTMLDivElement]
+  | [];
+
+interface Route {
+  text: string;
+  route: string;
+}
+
+const routes: Route[] = [
+  { text: 'About Me', route: '#about-section' },
+  { text: 'Skills', route: '#skill-section' },
+  { text: 'Projects', route: '#project-section' },
+  { text: 'Blog', route: '/' },
+];
 
 const Navigation = React.forwardRef<any, NavigationProps>(
-  ({ theme, open }, ref) => {
+  ({ theme, open, animation }, ref) => {
+    const dispatch = useDispatch();
+
+    const handleScroll = (e) => {
+      e.preventDefault();
+
+      const media = window.matchMedia('(max-width: 991.98px)');
+
+      const scrollTo = () => {
+        const href = e.target.getAttribute('href');
+        console.log();
+        const offsetTop = document.querySelector(href).offsetTop;
+        scroll({
+          top: offsetTop,
+          behavior: 'smooth',
+        });
+      };
+      // check for media query below 991.98px
+      if (media.matches) {
+        dispatch(toggleOpen());
+        animation(scrollTo);
+        // scroll to document position
+      } else {
+        // false
+        scrollTo();
+      }
+    };
+
     const {
       media: { maxMd },
       colors: { secondary, navOverlay },
@@ -36,34 +81,30 @@ const Navigation = React.forwardRef<any, NavigationProps>(
           </defs>
         </svg>
 
-        <ul className='d-lg-flex align-items-center'>
-          <li>
-            <Link href='/'>
-              <a>About Me</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/'>
-              <a>Skills</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/'>
-              <a>Projects</a>
-            </Link>
-          </li>
-          <li id='last'>
-            <Link href='/'>
-              <a>Blog</a>
-            </Link>
-          </li>
+        <ul className='d-lg-flex align-items-center' ref={ref}>
+          {routes.map(({ text, route }, index) => {
+            return (
+              <li key={index}>
+                {text === 'Blog' ? (
+                  <Link href={route} scroll={true}>
+                    <a>{text}</a>
+                  </Link>
+                ) : (
+                  <a href={route} onClick={handleScroll}>
+                    {text}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
-        {theme ? <ModeButton isOpen={open} /> : null}
+        {theme ? <ModeButton isOpen={open} ref={ref} /> : null}
 
         <style jsx>
           {`
             #navigation {
+              transform: translateY(0%) !important;
               @media (${maxMd}) {
                 width: 100%;
                 height: 100vh;
@@ -75,7 +116,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(
                 background: ${navOverlay};
                 z-index: 10;
                 clip-path: url(#clipPath);
-                // transform: translateY(-110%);
+                transform: translateY(-110%);
               }
             }
             svg {
