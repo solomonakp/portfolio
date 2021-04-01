@@ -5,6 +5,7 @@ import { RootState } from '../../redux/reducers/index';
 import Hamburger from './Hamburger';
 import Navigation, { navRefs } from './Navigation';
 import useNavAnimation from '../hooks/useNavAnimation';
+import Link from 'next/link';
 
 interface HeaderProps {
   logo?: React.ReactElement;
@@ -67,9 +68,12 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
     <header ref={header}>
       <div className='container-fluid'>
         <nav className='d-flex align-items-center'>
-          <a href='' id='nav-logo' className='mr-auto'>
-            {logo}
-          </a>
+          <Link href='/' scroll={true}>
+            <a id='nav-logo' className='mr-auto'>
+              {logo}
+            </a>
+          </Link>
+
           <Hamburger isOpen={isOpen} animation={navAnimation} />
           <Navigation
             theme={theme}

@@ -18,6 +18,7 @@ const LandingImage = (props: Props) => {
           objectFit='scale-down'
           objectPosition='top'
           alt=''
+          priority={true}
         />
         <Image
           layout='responsive'
@@ -25,6 +26,7 @@ const LandingImage = (props: Props) => {
           width='444.985'
           height='444.985'
           alt='Chokor Solomon'
+          priority={true}
         />
       </div>
       <style jsx>{`

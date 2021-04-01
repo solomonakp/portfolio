@@ -23,7 +23,7 @@ const routes: Route[] = [
   { text: 'About Me', route: '#about-section' },
   { text: 'Skills', route: '#skill-section' },
   { text: 'Projects', route: '#project-section' },
-  { text: 'Blog', route: '/' },
+  { text: 'Blog', route: 'blog' },
 ];
 
 const Navigation = React.forwardRef<any, NavigationProps>(
@@ -46,7 +46,9 @@ const Navigation = React.forwardRef<any, NavigationProps>(
       };
       // check for media query below 991.98px
       if (media.matches) {
+        // dispatch toggleOpen
         dispatch(toggleOpen());
+        // animate
         animation(scrollTo);
         // scroll to document position
       } else {
@@ -152,6 +154,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(
               transition: ${colorTrans};
               color: ${secondary};
               font-size: ${paragraph};
+              font-weight: 500;
               @media (${maxMd}) {
                 font-size: ${mobileMenu};
                 margin: 0 0 2rem 0;

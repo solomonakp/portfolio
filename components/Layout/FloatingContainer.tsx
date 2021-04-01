@@ -45,6 +45,7 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
             color: ${iconColor};
             writing-mode: vertical-rl;
             transition: ${colorTrans};
+            font-weight: 500;
           }
           &
             :global(#floating-email:hover, #floating-email:focus, #floating-email:active) {

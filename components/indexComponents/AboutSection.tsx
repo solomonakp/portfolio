@@ -16,6 +16,7 @@ const AboutSection = (props: Props) => {
       </div>
       <style jsx>{`
         #about-section {
+          padding-top: 20px;
         }
       `}</style>
     </section>
