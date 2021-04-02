@@ -23,7 +23,7 @@ const routes: Route[] = [
   { text: 'About Me', route: '#about-section' },
   { text: 'Skills', route: '#skill-section' },
   { text: 'Projects', route: '#project-section' },
-  { text: 'Blog', route: 'blog' },
+  { text: 'Blog', route: '/blog' },
 ];
 
 const Navigation = React.forwardRef<any, NavigationProps>(
