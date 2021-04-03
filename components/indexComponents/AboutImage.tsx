@@ -29,7 +29,7 @@ const AboutImage = (props: Props) => {
   };
   return (
     <div className='col-md-6 image-space'>
-      <Waypoint onEnter={animation}>
+      <Waypoint onEnter={animation} bottomOffset='10%' topOffset='50%'>
         <div className='left-container' ref={imageContainer}>
           <Image
             layout='intrinsic'
@@ -41,6 +41,9 @@ const AboutImage = (props: Props) => {
         </div>
       </Waypoint>
       <style jsx>{`
+        .left-container {
+          opacity: 0;
+        }
         .col-md-6 {
           @media (${maxSm}) {
             order: 3;
