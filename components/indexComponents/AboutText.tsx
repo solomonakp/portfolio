@@ -1,5 +1,4 @@
 import anime from 'animejs';
-import { time } from 'node:console';
 import React, { useRef } from 'react';
 import { Waypoint } from 'react-waypoint';
 import useRunOnce from '../hooks/useRunOnce';
@@ -13,25 +12,25 @@ const AboutText = (props: Props) => {
   const once = useRunOnce();
   const animation = () => {
     once(() => {
-      const media = window.matchMedia('(max-width: 767.98px)');
-      const timeLine = anime.timeline({
-        easing: 'easeOutExpo',
-        duration: 500,
-      });
-      timeLine
-        .add({
-          targets: h2.current,
-          translateX: [200, 0],
-          opacity: [0, 1],
-        })
-        .add(
-          {
-            targets: p.current,
-            translateY: [200, 0],
-            opacity: [0, 1],
-          },
-          '-=250'
-        );
+      // const media = window.matchMedia('(max-width: 767.98px)');
+      // const timeLine = anime.timeline({
+      //   easing: 'easeOutExpo',
+      //   duration: 500,
+      // });
+      // timeLine
+      //   .add({
+      //     targets: h2.current,
+      //     translateX: [200, 0],
+      //     opacity: [0, 1],
+      //   })
+      //   .add(
+      //     {
+      //       targets: p.current,
+      //       translateY: [200, 0],
+      //       opacity: [0, 1],
+      //     },
+      //     '-=250'
+      //   );
     });
   };
   const {

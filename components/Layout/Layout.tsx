@@ -113,7 +113,7 @@ export const getLayout = (page: React.ReactElement, title: string) => {
   const { isLoading } = useSelector((state: RootState) => state.ui);
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader fixed={true} />;
   }
 
   return <Layout isMain={isMain}>{page}</Layout>;

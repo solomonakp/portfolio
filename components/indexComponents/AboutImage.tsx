@@ -14,18 +14,18 @@ const AboutImage = (props: Props) => {
     media: { maxSm },
   } = useTheme();
   const animation = () => {
-    once(() => {
-      anime({
-        targets: imageContainer.current,
-        duration: 1000,
-        easing: 'easeOutExpo',
-        opacity: {
-          value: [0, 1],
-          easing: 'linear',
-        },
-        translateY: [400, 0],
-      });
-    });
+    // once(() => {
+    //   anime({
+    //     targets: imageContainer.current,
+    //     duration: 1000,
+    //     easing: 'easeOutExpo',
+    //     opacity: {
+    //       value: [0, 1],
+    //       easing: 'linear',
+    //     },
+    //     translateY: [400, 0],
+    //   });
+    // });
   };
   return (
     <div className='col-md-6 image-space'>

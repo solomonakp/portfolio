@@ -81,7 +81,7 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
             width: 100%;
             white-space: nowrap;
             height: 100%;
-            min-height: 100vh;
+            position: ${fixed ? 'fixed' : 'static'};
             fixed: ${fixed ? '0' : 'initial'};
             left: ${fixed ? '0' : 'initial'};
             right: ${fixed ? '0' : 'initial'};
