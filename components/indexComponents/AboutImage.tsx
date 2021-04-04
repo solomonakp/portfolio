@@ -41,9 +41,9 @@ const AboutImage = (props: Props) => {
         </div>
       </Waypoint>
       <style jsx>{`
-        .left-container {
+        /* .left-container {
           opacity: 0;
-        }
+        } */
         .col-md-6 {
           @media (${maxSm}) {
             order: 3;

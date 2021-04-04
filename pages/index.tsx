@@ -19,9 +19,6 @@ const Index = (props) => {
   const easeIn = () => {
     // rest position of scrollbar
     window.history.scrollRestoration = 'manual';
-    anime.set('#layout', {
-      visibility: 'visible',
-    });
 
     // create an animation timeline
     const animation = anime.timeline({
@@ -130,9 +127,6 @@ const Index = (props) => {
       <ProjectsSection />
       <style jsx global>
         {`
-          #layout {
-            visibility: hidden;
-          }
           h2 {
             @media (${maxXs}) {
               text-align: center;
