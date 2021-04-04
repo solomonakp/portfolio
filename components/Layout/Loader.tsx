@@ -38,7 +38,7 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
         '-=500'
       );
     timeline.finished.then(() => {
-      dispatch(toggleLoading());
+      // dispatch(toggleLoading());
     });
   }, []);
 
