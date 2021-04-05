@@ -91,7 +91,7 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
             svg {
               height: auto;
               width: 150px;
-              visibility: hidden;
+              // visibility: hidden;
             }
           }
         `}
