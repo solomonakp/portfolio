@@ -1,4 +1,5 @@
 import React from 'react';
+import Heading from './Heading';
 import ProjectsContainer from './ProjectsContainer';
 
 interface Props {}
@@ -7,7 +8,7 @@ const ProjectsSection = (props: Props) => {
   return (
     <section id='project-section' className='section-space'>
       <div className='container'>
-        <h2 className='section-heading-space'>Projects</h2>
+        <Heading className='section-heading-space'>Projects</Heading>
         <ProjectsContainer />
       </div>
     </section>

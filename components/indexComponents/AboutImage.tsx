@@ -1,31 +1,35 @@
 import anime from 'animejs';
 import Image from 'next/image';
-import React, { useRef } from 'react';
-import useRunOnce from '../hooks/useRunOnce';
+import React, { useRef, useEffect } from 'react';
+import useScrollTrigger from '../hooks/useScrollTrigger';
 import useTheme from '../useTheme';
 
 interface Props {}
 
 const AboutImage = (props: Props) => {
   const imageContainer = useRef<HTMLDivElement>(null!);
-  const once = useRunOnce();
+
+  useEffect(() => {
+    useScrollTrigger({
+      trigger: imageContainer.current,
+      onEnter: () => {
+        anime({
+          targets: imageContainer.current,
+          duration: 1000,
+          easing: 'easeOutExpo',
+          opacity: {
+            value: [0, 1],
+            easing: 'linear',
+          },
+          translateY: [50, 0],
+        });
+      },
+    });
+  });
+
   const {
     media: { maxSm },
   } = useTheme();
-  const animation = () => {
-    once(() => {
-      // anime({
-      //   targets: '.image-space image',
-      //   duration: 1000,
-      //   easing: 'easeOutExpo',
-      //   opacity: {
-      //     value: [0, 1],
-      //     easing: 'linear',
-      //   },
-      //   translateY: [400, 0],
-      // });
-    });
-  };
   return (
     <div className='col-md-6 image-space'>
       <div className='left-container' ref={imageContainer}>
@@ -38,9 +42,9 @@ const AboutImage = (props: Props) => {
         />
       </div>
       <style jsx>{`
-        /* .left-container {
+        .left-container {
           opacity: 0;
-        } */
+        }
         .col-md-6 {
           @media (${maxSm}) {
             order: 3;

@@ -1,37 +1,41 @@
 import anime from 'animejs';
-import React, { useRef } from 'react';
-import useRunOnce from '../hooks/useRunOnce';
+import React, { useRef, useEffect } from 'react';
+import useScrollTrigger from '../hooks/useScrollTrigger';
 import useTheme from '../useTheme';
-useTheme;
+
 interface Props {}
 
 const AboutText = (props: Props) => {
   const h2 = useRef<HTMLHeadingElement>(null!);
   const p = useRef<HTMLParagraphElement>(null!);
-  const once = useRunOnce();
-  const animation = () => {
-    once(() => {
-      // const media = window.matchMedia('(max-width: 767.98px)');
-      // const timeLine = anime.timeline({
-      //   easing: 'easeOutExpo',
-      //   duration: 500,
-      // });
-      // timeLine
-      //   .add({
-      //     targets: '.about-text h2',
-      //     translateX: [200, 0],
-      //     opacity: [0, 1],
-      //   })
-      //   .add(
-      //     {
-      //       targets: '.about-text p',
-      //       translateY: [200, 0],
-      //       opacity: [0, 1],
-      //     },
-      //     '-=250'
-      //   );
+
+  useEffect(() => {
+    useScrollTrigger({
+      trigger: h2.current,
+
+      onEnter: () => {
+        const timeLine = anime.timeline({
+          easing: 'easeOutExpo',
+          duration: 1000,
+        });
+        timeLine
+          .add({
+            targets: h2.current,
+            translateY: [50, 0],
+            opacity: [0, 1],
+          })
+          .add(
+            {
+              targets: p.current,
+              translateY: [50, 0],
+              opacity: [0, 1],
+            },
+            '-=250'
+          );
+      },
     });
-  };
+  }, []);
+
   const {
     media: { maxSm },
   } = useTheme();
@@ -57,6 +61,15 @@ const AboutText = (props: Props) => {
           @media (${maxSm}) {
             margin: 0 auto;
           }
+          .about-text {
+            overflow: hidden;
+          }
+
+          h2,
+          p {
+            opacity: 0;
+          }
+
           h2 {
             text-align: left !important;
           }
