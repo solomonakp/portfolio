@@ -1,6 +1,5 @@
 import anime from 'animejs';
 import React, { useRef } from 'react';
-import { Waypoint } from 'react-waypoint';
 import useRunOnce from '../hooks/useRunOnce';
 import useTheme from '../useTheme';
 useTheme;
@@ -19,13 +18,13 @@ const AboutText = (props: Props) => {
       // });
       // timeLine
       //   .add({
-      //     targets: h2.current,
+      //     targets: '.about-text h2',
       //     translateX: [200, 0],
       //     opacity: [0, 1],
       //   })
       //   .add(
       //     {
-      //       targets: p.current,
+      //       targets: '.about-text p',
       //       translateY: [200, 0],
       //       opacity: [0, 1],
       //     },
@@ -38,22 +37,21 @@ const AboutText = (props: Props) => {
   } = useTheme();
   return (
     <div className='col-12 col-md-6 col-lg-5'>
-      <Waypoint onEnter={animation}>
-        <div className='about-text'>
-          <h2 ref={h2}>About Me</h2>
-          <p ref={p}>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit. Exercitation
-            veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-            ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-            duis enim velit mollit. Exercitation veniam Amet minim mollit non
-            deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
-            consequat duis enim velit mollit. Exercitation veniam consequat sunt
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
-          </p>
-        </div>
-      </Waypoint>
+      <div className='about-text'>
+        <h2 ref={h2}>About Me</h2>
+        <p ref={p}>
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          sint. Velit officia consequat duis enim velit mollit. Exercitation
+          veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
+          ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+          duis enim velit mollit. Exercitation veniam Amet minim mollit non
+          deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
+          consequat duis enim velit mollit. Exercitation veniam consequat sunt
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          sint. Velit officia consequat duis enim velit mollit.
+        </p>
+      </div>
+
       <style jsx>{`
         .col-12 {
           @media (${maxSm}) {

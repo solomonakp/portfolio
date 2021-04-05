@@ -20,6 +20,12 @@ const Index = (props) => {
     // rest position of scrollbar
     window.history.scrollRestoration = 'manual';
 
+    const media = window.matchMedia('(max-width: 991.98px)');
+
+    // anime.set('#layout', {
+    //   visibility: 'visible',
+    // });
+
     // create an animation timeline
     const animation = anime.timeline({
       easing: 'easeOutExpo',
@@ -115,7 +121,7 @@ const Index = (props) => {
     media: { maxXs },
   } = useTheme();
   return (
-    <div id='index-page'>
+    <div id='index-page' className='page'>
       <Head>
         <title>Chokor Solomon</title>
       </Head>
@@ -127,6 +133,12 @@ const Index = (props) => {
       <ProjectsSection />
       <style jsx global>
         {`
+          #layout {
+            // visibility: hidden;
+          }
+          #index-page {
+            width: 100%;
+          }
           h2 {
             @media (${maxXs}) {
               text-align: center;

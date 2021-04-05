@@ -68,7 +68,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
               margin: 0 auto;
             }
           }
+
           .page-spacing {
+            width: 100%;
             margin: 100px 0;
           }
           .section-space {

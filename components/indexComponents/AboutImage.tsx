@@ -1,7 +1,6 @@
 import anime from 'animejs';
 import Image from 'next/image';
 import React, { useRef } from 'react';
-import { Waypoint } from 'react-waypoint';
 import useRunOnce from '../hooks/useRunOnce';
 import useTheme from '../useTheme';
 
@@ -14,32 +13,30 @@ const AboutImage = (props: Props) => {
     media: { maxSm },
   } = useTheme();
   const animation = () => {
-    // once(() => {
-    //   anime({
-    //     targets: imageContainer.current,
-    //     duration: 1000,
-    //     easing: 'easeOutExpo',
-    //     opacity: {
-    //       value: [0, 1],
-    //       easing: 'linear',
-    //     },
-    //     translateY: [400, 0],
-    //   });
-    // });
+    once(() => {
+      // anime({
+      //   targets: '.image-space image',
+      //   duration: 1000,
+      //   easing: 'easeOutExpo',
+      //   opacity: {
+      //     value: [0, 1],
+      //     easing: 'linear',
+      //   },
+      //   translateY: [400, 0],
+      // });
+    });
   };
   return (
     <div className='col-md-6 image-space'>
-      <Waypoint onEnter={animation} bottomOffset='10%' topOffset='50%'>
-        <div className='left-container' ref={imageContainer}>
-          <Image
-            layout='intrinsic'
-            width='540'
-            height='426'
-            src='/pictures/working.jpg'
-            alt='Chokor Solomon'
-          />
-        </div>
-      </Waypoint>
+      <div className='left-container' ref={imageContainer}>
+        <Image
+          layout='intrinsic'
+          width='540'
+          height='426'
+          src='/pictures/working.jpg'
+          alt='Chokor Solomon'
+        />
+      </div>
       <style jsx>{`
         /* .left-container {
           opacity: 0;
