@@ -14,32 +14,32 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    anime.set([primary.current, secondary.current], {
-      visibility: 'visible',
-    });
-    const timeline = anime.timeline({
-      easing: 'easeInOutQuad',
-      duration: 1500,
-      direction: 'alternate',
-      loop: 4,
-    });
-    timeline
-      .add({
-        targets: primary.current,
-        strokeDashoffset: [anime.setDashoffset, 0],
-      })
-      .add(
-        {
-          targets: secondary.current,
-          strokeDashoffset: [anime.setDashoffset, 0],
-          duration: 500,
-          direction: 'normal',
-        },
-        '-=500'
-      );
-    timeline.finished.then(() => {
-      // dispatch(toggleLoading());
-    });
+    // anime.set([primary.current, secondary.current], {
+    //   visibility: 'visible',
+    // });
+    // const timeline = anime.timeline({
+    //   easing: 'easeInOutQuad',
+    //   duration: 1500,
+    //   direction: 'alternate',
+    //   loop: 4,
+    // });
+    // timeline
+    //   .add({
+    //     targets: primary.current,
+    //     strokeDashoffset: [anime.setDashoffset, 0],
+    //   })
+    //   .add(
+    //     {
+    //       targets: secondary.current,
+    //       strokeDashoffset: [anime.setDashoffset, 0],
+    //       duration: 500,
+    //       direction: 'normal',
+    //     },
+    //     '-=500'
+    //   );
+    // timeline.finished.then(() => {
+    //   // dispatch(toggleLoading());
+    // });
   }, []);
 
   const {
