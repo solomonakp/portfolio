@@ -11,19 +11,13 @@ interface ModeButtonProps {
 
 export const ModeButton = React.forwardRef<any, ModeButtonProps>(
   ({ isOpen }, ref) => {
-    const sunTickGroup = useRef<SVGPathElement>(null!);
-    const sunCircle = useRef<SVGPathElement>(null!);
+    const dispatch = useDispatch();
+
     const { isDark } = useSelector((state: RootState) => state.ui);
 
     // getting inital state for button store darkMode
     const [initialMode, setInitialMode] = useState<boolean | null>(null);
 
-    // initial path to render
-    const initialPath = initialMode
-      ? 'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z'
-      : 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z';
-
-    // set the initialMode here
     useEffect(() => {
       if (isDark) {
         setInitialMode(true);
@@ -32,76 +26,119 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
       }
     }, []);
 
+    const sunTickGroup = useRef<SVGPathElement>(null!);
+
+    const sunCircle = useRef<SVGPathElement>(null!);
+
+    // initial path to render
+
+    const moonPath =
+      'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z';
+
+    const sunPath =
+      'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z';
+    const moonTickScale = 0;
+
+    const sunTickScale = 1;
+
+    const moonScale = 1.5;
+
+    const sunScale = 1;
+
+    const moonRotate = '-40deg';
+
+    const sunRotate = '0deg';
+
+    const sunColor = '#FFC107';
+
+    const moonColor = '#3686a0';
+
+    const initialPath = initialMode ? sunPath : moonPath;
+
+    // set the initialMode here
+
     const toggleMode = () => {
       const sunTicks = sunTickGroup.current.children;
-      const circle = sunCircle.current;
-      const tickScale = isDark ? 0 : 1;
-      const circleScale = isDark ? 1.5 : 1;
-      const circleRotate = isDark ? '-30deg' : '0deg';
-      const tickDuration = 400;
-      const circleDuration = 400;
 
-      const path = isDark
-        ? 'M140 147C140 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 140 105.026 140 147Z'
-        : 'M227 147C227 188.974 192.974 223 151 223C109.026 223 75 188.974 75 147C75 105.026 109.026 71 151 71C192.974 71 227 105.026 227 147Z';
+      const circle = sunCircle.current;
+
+      const duration = 500;
 
       const timeline = anime.timeline({
         easing: 'easeOutExpo',
       });
-      console.log(isDark);
 
       if (isDark) {
+        // set initial value to animate from
+        anime.set(circle, {
+          d: sunPath,
+          scale: sunScale,
+          rotate: sunRotate,
+          fill: sunColor,
+        });
+
+        anime.set(sunTicks, {
+          scale: sunTickScale,
+        });
+
         timeline
           .add({
             targets: sunTicks,
-            scale: tickScale,
-            transformOrigin: '50% 50%',
+            scale: moonTickScale,
             delay: anime.stagger(50),
-            duration: tickDuration,
+            duration: duration,
           })
+
           .add(
             {
               targets: circle,
-              d: [{ value: path }],
-              transformOrigin: '50% 50%',
-              scale: circleScale,
-              rotate: circleRotate,
-              fill: '#3686a0',
-              duration: circleDuration,
+              d: moonPath,
+              scale: moonScale,
+              rotate: moonRotate,
+              fill: moonColor,
+              duration: duration,
             },
-            '-=200'
+            '-=250'
           );
       } else {
+        // set initial value to animate from
+        anime.set(circle, {
+          d: moonPath,
+          scale: moonScale,
+          rotate: moonRotate,
+          fill: moonColor,
+        });
+
+        anime.set(sunTicks, {
+          scale: moonTickScale,
+        });
+
         timeline
           .add({
             targets: circle,
-            d: [{ value: path }],
-            transformOrigin: '50% 50%',
-            scale: circleScale,
-            rotate: circleRotate,
-            duration: circleDuration,
-            fill: '#FFC107',
+            d: sunPath,
+            scale: sunScale,
+            rotate: sunRotate,
+            duration: duration,
+            fill: sunColor,
           })
           .add(
             {
               targets: sunTicks,
-              scale: tickScale,
-              transformOrigin: '50% 50%',
+              scale: sunTickScale,
               delay: anime.stagger(50),
-              duration: tickDuration,
+              duration: duration,
             },
-            '-=200'
+            '-=250'
           );
       }
-
+      //  dispatch mode
       dispatch(toggleDark());
     };
 
     const {
       media: { maxMd, minLg },
     } = useTheme();
-
-    const dispatch = useDispatch();
 
     return (
       <button
@@ -118,7 +155,6 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 300 300'
           role='presentation'
-          fill={'#FFC107'}
         >
           <path ref={sunCircle} d={initialPath} id='circle' />
 
@@ -151,14 +187,14 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
               opacity: 1 !important;
             }
             #circle {
-              fill: ${initialMode ? '#FFC107' : '#3686a0'};
-              transform: scale(${initialMode ? 1 : 1.5})
-                rotate(${initialMode ? '0deg' : '-30deg'});
+              fill: ${initialMode ? sunColor : moonColor};
+              transform: scale(${initialMode ? sunScale : moonScale})
+                rotate(${initialMode ? sunRotate : moonRotate});
               transform-origin: 50% 50%;
             }
             g {
               path {
-                transform: scale(${initialMode ? 1 : 0});
+                transform: scale(${initialMode ? sunTickScale : moonTickScale});
                 transform-origin: 50% 50%;
               }
             }
