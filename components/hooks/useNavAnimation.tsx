@@ -10,30 +10,46 @@ const useNavAnimation = (elements: navRefs) => {
   const { isOpen } = useSelector((state: RootState) => state.ui);
   if (process.browser) {
     const animation = (cb?: animationCallback) => {
-      const [circle, list, modeBtn, navigation] = elements;
-      const timeLine = anime.timeline({
-        easing: 'easeOutExpo',
-      });
+      const [list, modeBtn, navigation] = elements;
+
       const anchorList = list.querySelectorAll('a');
 
-      anime.set(circle, {
-        translateX: '100%',
-        translateY: '-50%',
+      const timeLine = anime.timeline({
+        easing: 'easeOutExpo',
       });
 
       if (isOpen) {
         document.body.style.overflowY = 'initial';
         timeLine
           .add({
-            targets: circle,
-            duration: 1000,
-            scale: 0,
+            targets: modeBtn,
+            opacity: [1, 0],
+            translateX: ['0', '-40px'],
+            easing: 'spring(2, 60, 20, 10)',
           })
-          .add({
-            targets: navigation,
-            translateY: '-100%',
-            duration: 100,
-          });
+          .add(
+            {
+              targets: anchorList,
+              opacity: {
+                value: [1, 0],
+                easing: 'linear',
+                duration: 100,
+              },
+              translateX: ['0px', '-40px'],
+              delay: anime.stagger(100),
+              easing: 'spring(2, 60, 20, 10)',
+            },
+            '-=1500'
+          )
+          .add(
+            {
+              targets: navigation,
+              translateX: '-100%',
+              easing: 'spring(2, 80, 50, 5)',
+            },
+            '-=1500'
+          );
+
         timeLine.finished.then(() => {
           if (cb) {
             cb();
@@ -41,35 +57,38 @@ const useNavAnimation = (elements: navRefs) => {
         });
       } else {
         document.body.style.overflowY = 'hidden';
+        anime.set(navigation, {
+          translateX: '-100%',
+        });
         timeLine
           .add({
             targets: navigation,
-            duration: 0,
-            translateY: '0%',
-          })
-          .add({
-            targets: circle,
+            translateX: '0%',
             duration: 1000,
-            scale: 26,
+            easing: 'spring(2, 80, 50, 3)',
           })
           .add(
             {
               targets: anchorList,
-              opacity: [0, 1],
+              opacity: {
+                value: [0, 1],
+                easing: 'linear',
+                duration: 100,
+              },
               translateX: ['-40px', '0'],
-              duration: 200,
               delay: anime.stagger(100),
+              easing: 'spring(2, 60, 20, 10)',
             },
-            '-=800'
+            '-=1000'
           )
           .add(
             {
               targets: modeBtn,
               opacity: [0, 1],
               translateX: ['-40px', '0'],
-              duration: 200,
+              easing: 'spring(2, 60, 20, 10)',
             },
-            '-=400'
+            '-=1500'
           );
       }
     };

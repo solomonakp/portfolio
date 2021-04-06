@@ -22,9 +22,9 @@ const Index = (props) => {
 
     const media = window.matchMedia('(max-width: 991.98px)');
 
-    // anime.set('#layout', {
-    //   visibility: 'visible',
-    // });
+    anime.set('#layout', {
+      visibility: 'visible',
+    });
 
     // create an animation timeline
     const animation = anime.timeline({
@@ -134,7 +134,7 @@ const Index = (props) => {
       <style jsx global>
         {`
           #layout {
-            // visibility: hidden;
+            visibility: hidden;
           }
           #index-page {
             width: 100%;

@@ -98,7 +98,7 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
     };
 
     const {
-      media: { maxMd },
+      media: { maxMd, minLg },
     } = useTheme();
 
     const dispatch = useDispatch();
@@ -109,6 +109,8 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
         role='button'
         onClick={toggleMode}
         ref={ref}
+        title='website theme button'
+        type='button'
       >
         <svg
           version='1.1'
@@ -144,6 +146,9 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
               right: 10px;
               width: 60px;
               height: 60px;
+            }
+            @media (${minLg}) {
+              opacity: 1 !important;
             }
             #circle {
               fill: ${initialMode ? '#FFC107' : '#3686a0'};

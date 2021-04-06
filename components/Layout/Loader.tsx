@@ -8,12 +8,16 @@ interface LoaderProps {
 }
 
 const Loader: React.FC<LoaderProps> = ({ fixed }) => {
+  const loader = useRef<HTMLDivElement>(null!);
   const primary = useRef<SVGPathElement>(null!);
   const secondary = useRef<SVGPathElement>(null!);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    anime.set(loader.current, {
+      opacity: 1,
+    });
     const timeline = anime.timeline({
       easing: 'easeInOutQuad',
       duration: 1500,
@@ -43,7 +47,10 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
     colors: { light },
   } = useTheme();
   return (
-    <div className='d-flex align-items-center justify-content-center'>
+    <div
+      className='d-flex align-items-center justify-content-center'
+      ref={loader}
+    >
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 385.44 277.65'
@@ -85,6 +92,7 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
             top: ${fixed ? '0' : 'initial'};
             bottom: ${fixed ? '0' : 'initial'};
             background: ${light};
+            opacity: 0;
             svg {
               height: auto;
               width: 150px;
