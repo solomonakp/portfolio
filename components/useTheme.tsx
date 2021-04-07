@@ -131,7 +131,7 @@ const useTheme = () => {
     effects: {
       bgTrans: 'background-color 0.3s ease-in-out',
       colorTrans: 'color 0.3s ease-in-out',
-      fillTrans: 'fill 0.1s ease-in-out',
+      fillTrans: 'fill 0.3s ease-in-out',
       stretch: 'scale(0.95)',
       buttonTransitionIn:
         'color 100ms ease-in, border-color 100ms ease-in, background-color 100ms ease-in;',
