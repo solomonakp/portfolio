@@ -1,17 +1,18 @@
 import React from 'react';
-import Link from 'next/link';
+
 import useTheme from '../useTheme';
 import { ModeButton } from './ModeButton';
 import { useDispatch } from 'react-redux';
 import { toggleOpen } from '../../redux/reducers/Ui/uiActions';
 import { animationCallback } from '../hooks/useNavAnimation';
-import { gsap } from 'gsap/dist/gsap';
-import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+
+import { useRouter } from 'next/router';
+import { getLayout } from './Layout';
 
 interface NavigationProps {
   open: boolean;
   theme: boolean;
-  animation?: (cb: animationCallback) => void;
+  animation?: (cb?: animationCallback) => void;
 }
 export type navRefs =
   | [HTMLUListElement, HTMLButtonElement, HTMLDivElement]
@@ -32,27 +33,74 @@ const routes: Route[] = [
 const Navigation = React.forwardRef<any, NavigationProps>(
   ({ theme, open, animation }, ref) => {
     const dispatch = useDispatch();
-    gsap.registerPlugin(ScrollToPlugin);
 
-    const handleScroll = (e) => {
+    const router = useRouter();
+
+    console.log(router);
+    // register plugin
+
+    const handleRouting = (e) => {
       e.preventDefault();
+
+      // eslint-disable-next-line global-require
+      const SmoothScroll = require('smooth-scroll');
+
+      // get href
+      const href = e.target.getAttribute('href');
 
       const media = window.matchMedia('(max-width: 991.98px)');
 
       const scrollTo = () => {
-        const href = e.target.getAttribute('href');
+        const element = document.querySelector(href);
 
-        gsap.to(window, { duration: 0.01, scrollTo: href });
+        const scroll = new SmoothScroll();
+
+        const options = {
+          header: 'header',
+          speed: 500,
+        };
+
+        scroll.animateScroll(element, undefined, options);
+
+        scroll.destroy();
       };
+
       // check for media query below 991.98px
       if (media.matches) {
         // dispatch toggleOpen
         dispatch(toggleOpen());
-        // animate
+
+        if (href === '/blog') {
+          animation();
+          router.push(href, href, { scroll: true });
+          return;
+        }
+        // if we are aren't on the root path
+        if (router.pathname !== '/') {
+          router.push(`/${href}`, `/${href}`).then(() => {
+            animation(scrollTo);
+          });
+          return;
+        }
+
+        // // animate
         animation(scrollTo);
         // scroll to document position
       } else {
         // false
+
+        // if link clicked is the blog link
+        if (href === '/blog') {
+          router.push(href, href, { scroll: true });
+          return;
+        }
+
+        // if we are aren't on the root path
+        if (router.pathname !== '/') {
+          router.push(`/${href}`, `/${href}`).then(scrollTo);
+          return;
+        }
+
         scrollTo();
       }
     };
@@ -74,15 +122,9 @@ const Navigation = React.forwardRef<any, NavigationProps>(
           {routes.map(({ text, route }, index) => {
             return (
               <li key={index}>
-                {text === 'Blog' ? (
-                  <Link href={route} scroll={true}>
-                    <a>{text}</a>
-                  </Link>
-                ) : (
-                  <a href={route} onClick={handleScroll}>
-                    {text}
-                  </a>
-                )}
+                <a href={route} onClick={handleRouting}>
+                  {text}
+                </a>
               </li>
             );
           })}
