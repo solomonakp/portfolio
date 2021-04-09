@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useTheme from '../useTheme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
@@ -6,6 +6,7 @@ import Hamburger from './Hamburger';
 import Navigation, { navRefs } from './Navigation';
 import useNavAnimation from '../hooks/useNavAnimation';
 import Link from 'next/link';
+import useDocumentScrollThrottled from '../hooks/useDocumentScrollThrottled';
 
 interface HeaderProps {
   logo?: React.ReactElement;
@@ -23,34 +24,28 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
 
   const navAnimation = useNavAnimation(navElements.current);
 
-  useEffect(() => {
-    // scroll event
-    window.addEventListener('scroll', animate);
-    return () => {
-      window.removeEventListener('scroll', animate);
-    };
-  }, []);
+  const [hideHeader, setHideHeader] = useState(false);
+  const [ShowShadow, setShowShadow] = useState(false);
 
-  const animate = () => {
-    const navBar = header.current;
-    let currentPos = window.pageYOffset;
-    if (prevPos > currentPos) {
-      // animation
-      navBar.style.transform = 'translate3d(0,0px,0)';
+  const MINIMUM_SCROLL = 74;
+  const TIMEOUT_DELAY = 400;
 
-      if (prevPos > 100) {
-        // box-shadow
-        navBar.style.boxShadow = '0 2px 10px 0px rgba(0, 0, 0, 0.2)';
-      } else {
-        // box-shadow
-        navBar.style.boxShadow = 'initial';
-      }
-    } else {
-      // animation
-      navBar.style.transform = 'translate3d(0,-74px,0)';
-    }
-    prevPos = currentPos;
-  };
+  useDocumentScrollThrottled((callbackData) => {
+    const { previousScrollTop, currentScrollTop } = callbackData;
+    const isScrolledDown = previousScrollTop < currentScrollTop;
+    const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
+
+    setShowShadow(currentScrollTop > 2);
+
+    setTimeout(() => {
+      setHideHeader(isScrolledDown && isMinimumScrolled);
+    }, TIMEOUT_DELAY);
+  });
+
+  const shadowStyle = ShowShadow ? 'shadow' : '';
+  const hiddenStyle = hideHeader ? 'hidden' : '';
+
+  console.log(shadowStyle, hiddenStyle);
 
   const setNavRefs = (el: never) => {
     if (el && !navElements.current.includes(el)) {
@@ -92,8 +87,15 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
           left: 0;
           z-index: 10;
           height: 74px;
-          background-color: ${light};
           transition: all ease-in-out 300ms;
+          background-color: ${light};
+          box-shadow: ${ShowShadow
+            ? '0 2px 10px 0px rgba(0, 0, 0, 0.2)'
+            : 'initial'};
+          transform: ${hideHeader
+            ? 'translate3d(0,-74px,0)'
+            : 'translate3d(0,0px,0)'};
+
           @media screen and (-webkit-min-device-pixel-ratio: 0) {
             background: ${navColor};
             backdrop-filter: blur(5px);

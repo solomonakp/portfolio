@@ -36,9 +36,6 @@ const Navigation = React.forwardRef<any, NavigationProps>(
 
     const router = useRouter();
 
-    console.log(router);
-    // register plugin
-
     const handleRouting = (e) => {
       e.preventDefault();
 
@@ -58,12 +55,15 @@ const Navigation = React.forwardRef<any, NavigationProps>(
         const options = {
           header: 'header',
           speed: 500,
+          speedAsDuration: true,
         };
 
         scroll.animateScroll(element, undefined, options);
 
         scroll.destroy();
       };
+
+      const pushToSection = () => router.push(`/${href}`, `/${href}`);
 
       // check for media query below 991.98px
       if (media.matches) {
@@ -77,9 +77,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(
         }
         // if we are aren't on the root path
         if (router.pathname !== '/') {
-          router.push(`/${href}`, `/${href}`).then(() => {
-            animation(scrollTo);
-          });
+          animation(pushToSection);
           return;
         }
 
@@ -97,7 +95,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(
 
         // if we are aren't on the root path
         if (router.pathname !== '/') {
-          router.push(`/${href}`, `/${href}`).then(scrollTo);
+          pushToSection();
           return;
         }
 
