@@ -6,7 +6,7 @@ import {
   TOGGLE_OPEN,
 } from './uiTypes';
 const initialState: UiState = {
-  isLoading: true,
+  isLoading: false,
   isDark: false,
   isOpen: false,
 };

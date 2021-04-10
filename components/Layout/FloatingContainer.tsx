@@ -43,7 +43,9 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           }
           & :global(#floating-email) {
             color: ${iconColor};
-            writing-mode: vertical-rl;
+            transform: rotate(90deg);
+            position: relative;
+            top: -70px;
             transition: ${colorTrans};
             font-weight: 500;
           }

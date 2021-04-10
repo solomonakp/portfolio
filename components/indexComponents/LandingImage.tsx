@@ -15,7 +15,7 @@ const LandingImage = (props: Props) => {
           className='back-image'
           layout='fill'
           src='/pictures/imagebackground.png'
-          objectFit='scale-down'
+          objectFit='contain'
           objectPosition='top'
           alt=''
           priority={true}
