@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import useTheme from '../useTheme';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/index';
@@ -11,11 +11,6 @@ import useDocumentScrollThrottled from '../hooks/useDocumentScrollThrottled';
 interface HeaderProps {
   logo?: React.ReactElement;
   theme?: boolean;
-}
-
-let prevPos;
-if (process.browser) {
-  prevPos = window.pageYOffset;
 }
 
 export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
@@ -32,7 +27,9 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
 
   useDocumentScrollThrottled((callbackData) => {
     const { previousScrollTop, currentScrollTop } = callbackData;
+
     const isScrolledDown = previousScrollTop < currentScrollTop;
+
     const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
 
     setShowShadow(currentScrollTop > 2);
@@ -41,11 +38,6 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
       setHideHeader(isScrolledDown && isMinimumScrolled);
     }, TIMEOUT_DELAY);
   });
-
-  const shadowStyle = ShowShadow ? 'shadow' : '';
-  const hiddenStyle = hideHeader ? 'hidden' : '';
-
-  console.log(shadowStyle, hiddenStyle);
 
   const setNavRefs = (el: never) => {
     if (el && !navElements.current.includes(el)) {
@@ -107,6 +99,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             }
           }
         }
+
         .container-fluid {
           @media (${minLg}) {
             padding: 0 2.5rem;

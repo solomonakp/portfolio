@@ -4,10 +4,7 @@ import useTheme from '../useTheme';
 
 interface Props {}
 
-const LandingImage = (props: Props) => {
-  const {
-    media: { maxSm },
-  } = useTheme();
+const LandingImage = () => {
   return (
     <div className='col-12 col-md-6 col-lg-5 image-space'>
       <div className='image-container'>
