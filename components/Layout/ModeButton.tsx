@@ -155,8 +155,8 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 300 300'
           role='presentation'
-          width={35}
-          height={35}
+          width={50}
+          height={50}
         >
           <path ref={sunCircle} d={initialPath} id='circle' />
 
@@ -180,13 +180,19 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
             background-color: transparent;
             @media (${maxMd}) {
               position: absolute;
-              bottom: 15px;
-              right: 10px;
+              bottom: 15%;
+              right: 5%;
               width: 60px;
               height: 60px;
             }
             @media (${minLg}) {
               opacity: 1 !important;
+            }
+            svg {
+              @media (${maxMd}) {
+                width: 50px !important ;
+                height: 50px important;
+              }
             }
             #circle {
               fill: ${initialMode ? sunColor : moonColor};
