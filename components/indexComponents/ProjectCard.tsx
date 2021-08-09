@@ -1,9 +1,11 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ProjectLinks from './ProjectLinks';
 import Chip from './Chip';
 import useTheme from '../useTheme';
 import Summary from '../Layout/Summary';
+import useScrollTrigger from '../hooks/useScrollTrigger';
+import anime from 'animejs';
 
 export interface ProjectCardProps {
   tags: string[];
@@ -21,18 +23,35 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   thumbnail,
   ...props
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null!);
+
+  useEffect(() => {
+    const mediaLg = window.matchMedia('(min-width: 991.98px)');
+    const mediaSm = window.matchMedia('(max-width: 575.98px)');
+    useScrollTrigger({
+      trigger: cardRef.current,
+      onEnter: () => {
+        anime({
+          targets: mediaLg.matches ? '#project-section .card' : cardRef.current,
+          delay: anime.stagger(100),
+          duration: 1000,
+          easing: 'easeOutExpo',
+          translateY: [50, 0],
+          opacity: [0, 1],
+        });
+      },
+    });
+  }, []);
+
   const {
     colors: { dark, cardHover },
     size: { textHeading, resTextHeading },
     radius: { card },
     media: { maxLg },
   } = useTheme();
-  // maximum number of  rows for description
-  const clamp = 5;
-  const descriptionFontSize = 16;
-  const descriptionLineHeight = 1.5;
+
   return (
-    <div className='card'>
+    <div className='card' ref={cardRef}>
       <div className='front'>
         <div className='image-container'>
           <Image

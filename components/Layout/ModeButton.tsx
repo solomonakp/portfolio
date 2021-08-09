@@ -180,7 +180,7 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
             background-color: transparent;
             @media (${maxMd}) {
               position: absolute;
-              bottom: 15%;
+              bottom: 17%;
               right: 5%;
               width: 60px;
               height: 60px;
@@ -191,7 +191,7 @@ export const ModeButton = React.forwardRef<any, ModeButtonProps>(
             svg {
               @media (${maxMd}) {
                 width: 50px !important ;
-                height: 50px important;
+                height: 50px !important;
               }
             }
             #circle {

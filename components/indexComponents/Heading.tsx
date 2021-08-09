@@ -10,6 +10,7 @@ const Heading: React.FC<HeadingProps> = ({ children, className }) => {
   useEffect(() => {
     useScrollTrigger({
       trigger: heading.current,
+      once: true,
       onEnter: () => {
         anime({
           targets: heading.current,

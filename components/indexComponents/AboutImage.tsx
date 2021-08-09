@@ -12,6 +12,7 @@ const AboutImage = (props: Props) => {
   useEffect(() => {
     useScrollTrigger({
       trigger: imageContainer.current,
+      once: true,
       onEnter: () => {
         anime({
           targets: imageContainer.current,

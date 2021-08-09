@@ -65,7 +65,7 @@ const useNavAnimation = (elements: navRefs) => {
             targets: navigation,
             translateX: '0%',
             duration: 1000,
-            easing: 'spring(2, 80, 50, 10)',
+            easing: 'spring(2, 80, 50, 7)',
           })
           .add(
             {
