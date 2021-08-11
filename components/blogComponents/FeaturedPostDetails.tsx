@@ -1,14 +1,14 @@
-import React from 'react';
-import Avatar from './Avatar';
-import useTheme from '../useTheme';
-import Summary from '../Layout/Summary';
+import React from 'react'
+import Avatar from './Avatar'
+import useTheme from '../useTheme'
+import Summary from '../layout/Summary'
 
 export interface FeaturedPostDetailsProps {
-  date: string;
-  title: string;
-  description: string;
-  author: string;
-  image: string;
+  date: string
+  title: string
+  description: string
+  author: string
+  image: string
 }
 
 const FeaturedPostDetails: React.FC<FeaturedPostDetailsProps> = ({
@@ -19,15 +19,15 @@ const FeaturedPostDetails: React.FC<FeaturedPostDetailsProps> = ({
   const {
     size: { textHeading },
     media: { maxSm },
-  } = useTheme();
+  } = useTheme()
   return (
-    <div className='col-12 col-md-5'>
-      <div className='area d-flex flex-column '>
+    <div className="col-12 col-md-5">
+      <div className="area d-flex flex-column ">
         <h1>{title}</h1>
-        <Summary className='description' lines={6}>
+        <Summary className="description" lines={6}>
           {description}
         </Summary>
-        <Avatar id='featured-avi' {...props} />
+        <Avatar id="featured-avi" {...props} />
       </div>
 
       <style jsx>{`
@@ -57,7 +57,7 @@ const FeaturedPostDetails: React.FC<FeaturedPostDetailsProps> = ({
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default FeaturedPostDetails;
+export default FeaturedPostDetails

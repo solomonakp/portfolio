@@ -1,24 +1,24 @@
-import Link from 'next/link';
-import React from 'react';
-import Button from '../Layout/Button';
-import useTheme from '../useTheme';
+import Link from 'next/link'
+import React from 'react'
+import Button from '../layout/Button'
+import useTheme from '../useTheme'
 interface Props {}
 
 const LandingText = (props: Props) => {
   return (
-    <div className='col-12 col-md-6 '>
-      <div className='left-container d-flex flex-column justify-content-center'>
+    <div className="col-12 col-md-6 ">
+      <div className="left-container d-flex flex-column justify-content-center">
         <h1>Hire Freelancers With better reviews</h1>
         <p>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit. Exercitation
           veniam consequat sunt nostrud ametnostrud amet.
         </p>
-        <div className='d-flex'>
-          <div className='contact-btn-container'>
+        <div className="d-flex">
+          <div className="contact-btn-container">
             <Button>Contact me</Button>
           </div>
-          <div className='download-btn-btn-container'>
+          <div className="download-btn-btn-container">
             <Button outline={true}>Download Cv</Button>
           </div>
         </div>
@@ -36,7 +36,7 @@ const LandingText = (props: Props) => {
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default LandingText;
+export default LandingText

@@ -1,17 +1,17 @@
-import React from 'react';
-import Image from 'next/image';
-import Summary from '../Layout/Summary';
-import useTheme from '../useTheme';
+import React from 'react'
+import Image from 'next/image'
+import Summary from '../layout/Summary'
+import useTheme from '../useTheme'
 
 export interface PostDetailsProps {
-  title: string;
-  description: string;
-  date: string;
-  tag: string;
-  image: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  className?: string;
+  title: string
+  description: string
+  date: string
+  tag: string
+  image: string
+  imageWidth?: number
+  imageHeight?: number
+  className?: string
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({
@@ -29,22 +29,22 @@ const PostDetails: React.FC<PostDetailsProps> = ({
     colors: { primary },
     size: { textHeading, resTextHeading },
     media: { maxSm },
-  } = useTheme();
+  } = useTheme()
   return (
     <div className={className}>
-      <div className='post-tile'>
+      <div className="post-tile">
         <Image
           src={image}
           width={imageWidth}
           height={imageHeight}
-          layout='responsive'
-          objectPosition='center'
-          objectFit='cover'
+          layout="responsive"
+          objectPosition="center"
+          objectFit="cover"
         />
-        <p className='d-flex align-items-center'>
-          <span className='tag'>{tag}</span>
-          <span className='dot'></span>
-          <span className='date'>{date}</span>
+        <p className="d-flex align-items-center">
+          <span className="tag">{tag}</span>
+          <span className="dot"></span>
+          <span className="date">{date}</span>
         </p>
         <h2>{title}</h2>
         <Summary lines={3}>{description}</Summary>
@@ -77,7 +77,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default PostDetails;
+export default PostDetails

@@ -1,25 +1,24 @@
-import anime from 'animejs';
-import React from 'react';
-import { navRefs } from '../Layout/Navigation';
-import { RootState } from '../../redux/reducers/index';
-import { useSelector } from 'react-redux';
+import anime from 'animejs'
+import { navRefs } from '../layout/Navigation'
+import { RootState } from '../../redux/reducers/index'
+import { useSelector } from 'react-redux'
 
-export type animationCallback = () => void;
+export type animationCallback = () => void
 
 const useNavAnimation = (elements: navRefs) => {
-  const { isOpen } = useSelector((state: RootState) => state.ui);
+  const { isOpen } = useSelector((state: RootState) => state.ui)
   if (process.browser) {
     const animation = (cb?: animationCallback) => {
-      const [list, modeBtn, navigation] = elements;
+      const [list, modeBtn, navigation] = elements
 
-      const anchorList = list.querySelectorAll('a');
+      const anchorList = list.querySelectorAll('a')
 
       const timeLine = anime.timeline({
         easing: 'easeOutExpo',
-      });
+      })
 
       if (isOpen) {
-        document.body.style.overflowY = 'initial';
+        document.body.style.overflowY = 'initial'
         timeLine
           .add({
             targets: modeBtn,
@@ -48,18 +47,18 @@ const useNavAnimation = (elements: navRefs) => {
               easing: 'spring(2, 80, 50, 10)',
             },
             '-=1500'
-          );
+          )
 
         timeLine.finished.then(() => {
           if (cb) {
-            cb();
+            cb()
           }
-        });
+        })
       } else {
-        document.body.style.overflowY = 'hidden';
+        document.body.style.overflowY = 'hidden'
         anime.set(navigation, {
           translateX: '-100%',
-        });
+        })
         timeLine
           .add({
             targets: navigation,
@@ -89,10 +88,10 @@ const useNavAnimation = (elements: navRefs) => {
               easing: 'spring(2, 60, 20, 10)',
             },
             '-=1500'
-          );
+          )
       }
-    };
-    return animation;
+    }
+    return animation
   }
-};
-export default useNavAnimation;
+}
+export default useNavAnimation

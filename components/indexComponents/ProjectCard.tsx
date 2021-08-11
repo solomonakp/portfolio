@@ -1,19 +1,19 @@
-import Image from 'next/image';
-import React, { useEffect, useRef } from 'react';
-import ProjectLinks from './ProjectLinks';
-import Chip from './Chip';
-import useTheme from '../useTheme';
-import Summary from '../Layout/Summary';
-import useScrollTrigger from '../hooks/useScrollTrigger';
-import anime from 'animejs';
+import Image from 'next/image'
+import React, { useEffect, useRef } from 'react'
+import ProjectLinks from './ProjectLinks'
+import Chip from './Chip'
+import useTheme from '../useTheme'
+import Summary from '../layout/Summary'
+import useScrollTrigger from '../hooks/useScrollTrigger'
+import anime from 'animejs'
 
 export interface ProjectCardProps {
-  tags: string[];
-  title: string;
-  description: string;
-  thumbnail: string;
-  repository: string;
-  site: string;
+  tags: string[]
+  title: string
+  description: string
+  thumbnail: string
+  repository: string
+  site: string
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -23,11 +23,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   thumbnail,
   ...props
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null!);
+  const cardRef = useRef<HTMLDivElement>(null!)
 
   useEffect(() => {
-    const mediaLg = window.matchMedia('(min-width: 991.98px)');
-    const mediaSm = window.matchMedia('(max-width: 575.98px)');
+    const mediaLg = window.matchMedia('(min-width: 991.98px)')
+    const mediaSm = window.matchMedia('(max-width: 575.98px)')
     useScrollTrigger({
       trigger: cardRef.current,
       onEnter: () => {
@@ -38,42 +38,42 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           easing: 'easeOutExpo',
           translateY: [50, 0],
           opacity: [0, 1],
-        });
+        })
       },
-    });
-  }, []);
+    })
+  }, [])
 
   const {
     colors: { dark, cardHover },
     size: { textHeading, resTextHeading },
     radius: { card },
     media: { maxLg },
-  } = useTheme();
+  } = useTheme()
 
   return (
-    <div className='card' ref={cardRef}>
-      <div className='front'>
-        <div className='image-container'>
+    <div className="card" ref={cardRef}>
+      <div className="front">
+        <div className="image-container">
           <Image
-            layout='intrinsic'
-            width='320'
-            height='340'
+            layout="intrinsic"
+            width="320"
+            height="340"
             src={thumbnail}
-            className='thumbnail'
-            alt='Project thumbnail'
-            objectFit='cover'
-            objectPosition='top'
+            className="thumbnail"
+            alt="Project thumbnail"
+            objectFit="cover"
+            objectPosition="top"
           />
         </div>
         <h3>{title}</h3>
         <ProjectLinks {...props} />
       </div>
-      <div className='more'>
-        <div className='text-box'>
+      <div className="more">
+        <div className="text-box">
           <h3>{title}</h3>
           <Summary lines={5}>{description}</Summary>
         </div>
-        <div className='chips-container d-flex justify-content-start'>
+        <div className="chips-container d-flex justify-content-start">
           {tags.map((name, index) => (
             <Chip name={name} key={index} />
           ))}
@@ -81,7 +81,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <ProjectLinks {...props} />
       </div>
 
-      <div className='background'></div>
+      <div className="background"></div>
       <style jsx>{`
         .card {
           position: relative;
@@ -187,7 +187,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectCard;
+export default ProjectCard

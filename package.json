@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "lint": "next lint"
   },
   "dependencies": {
     "animejs": "^3.2.1",
@@ -32,9 +33,14 @@
     "@types/node": "^16.4.13",
     "@types/react": "^17.0.16",
     "@types/react-redux": "^7.1.18",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
     "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
+    "prettier": "^2.3.2",
     "typescript": "^4.3.5"
   }
 }

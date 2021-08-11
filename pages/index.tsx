@@ -1,36 +1,32 @@
-import Head from 'next/head';
-import { useSelector, useDispatch } from 'react-redux';
-import AboutSection from '../components/indexComponents/AboutSection';
-import LandingSection from '../components/indexComponents/LandingSection';
-import ProjectsSection from '../components/indexComponents/ProjectsSection';
-import SkillSection from '../components/indexComponents/SkillSection';
-import { FloatingContact } from '../components/Layout/FloatingContact';
-import { getLayout } from '../components/Layout/Layout';
-import FloatingEmail from '../components/Layout/FloatingEmail';
-import useTheme from '../components/useTheme';
-import { useEffect } from 'react';
-import anime from 'animejs';
+import Head from 'next/head'
+import AboutSection from '../components/indexComponents/AboutSection'
+import LandingSection from '../components/indexComponents/LandingSection'
+import ProjectsSection from '../components/indexComponents/ProjectsSection'
+import { FloatingContact } from '../components/layout/FloatingContact'
+import { getLayout } from '../components/layout/Layout'
+import FloatingEmail from '../components/layout/FloatingEmail'
+import useTheme from '../components/useTheme'
+import { useEffect } from 'react'
+import anime from 'animejs'
 
-const Index = (props) => {
+const Index = () => {
   useEffect(() => {
-    easeIn();
-  }, []);
+    easeIn()
+  }, [])
 
   const easeIn = () => {
     // rest position of scrollbar
-    window.history.scrollRestoration = 'manual';
-
-    const media = window.matchMedia('(max-width: 991.98px)');
+    window.history.scrollRestoration = 'manual'
 
     anime.set('#layout', {
       visibility: 'visible',
-    });
+    })
 
     // create an animation timeline
     const animation = anime.timeline({
       easing: 'easeOutExpo',
       duration: 500,
-    });
+    })
 
     animation
       .add({
@@ -114,22 +110,20 @@ const Index = (props) => {
           translateY: [30, 0],
         },
         '-=500'
-      );
-  };
+      )
+  }
 
   const {
     media: { maxXs },
-  } = useTheme();
+  } = useTheme()
   return (
-    <div id='index-page' className='page'>
+    <div id="index-page" className="page">
       <Head>
         <title>Chokor Solomon</title>
       </Head>
       <FloatingContact />
-      <FloatingEmail />
       <LandingSection />
       <AboutSection />
-      <SkillSection />
       <ProjectsSection />
       <style jsx global>
         {`
@@ -147,9 +141,9 @@ const Index = (props) => {
         `}
       </style>
     </div>
-  );
-};
-Index.title = 'main page';
-Index.getLayout = getLayout;
+  )
+}
+Index.title = 'main page'
+Index.getLayout = getLayout
 
-export default Index;
+export default Index
