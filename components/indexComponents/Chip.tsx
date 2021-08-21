@@ -1,16 +1,16 @@
-import React from 'react';
-import useTheme from '../useTheme';
+import React from 'react'
+import useTheme from 'hooks/useTheme'
 
 interface ChipProps {
-  name: string;
+  name: string
 }
 
 const Chip: React.FC<ChipProps> = ({ name }) => {
   const {
-    colors: { dark },
+    colors: { lightColor },
     border: { chipBorder },
     radius: { chip },
-  } = useTheme();
+  } = useTheme()
   return (
     <span>
       {name}
@@ -24,15 +24,15 @@ const Chip: React.FC<ChipProps> = ({ name }) => {
           margin-bottom: 0.625rem;
           border-radius: ${chip};
           min-height: 0vw;
-          color: ${dark};
+          color: ${lightColor};
           border: ${chipBorder};
           &:not(:last-of-type) {
-            margin-right: 0.75rem;
+            margin-right: 1rem;
           }
         }
       `}</style>
     </span>
-  );
-};
+  )
+}
 
-export default Chip;
+export default Chip

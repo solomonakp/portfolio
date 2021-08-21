@@ -1,19 +1,19 @@
-import React from 'react';
-import { featuredObject } from './blogObject';
-import FeaturedPostDetails from './FeaturedPostDetails';
-import FeaturedImage from './FeaturedImage';
+import React from 'react'
+import { featuredObject } from '@blogComponents/blogObject'
+import FeaturedPostDetails from '@blogComponents/FeaturedPostDetails'
+import FeaturedImage from '@blogComponents/FeaturedImage'
 
 interface Props {}
 
 const FeaturedPostContainer = (props: Props) => {
   return (
-    <div className='container'>
-      <div className='row'>
+    <div className="container">
+      <div className="row">
         <FeaturedImage />
         <FeaturedPostDetails {...featuredObject} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FeaturedPostContainer;
+export default FeaturedPostContainer

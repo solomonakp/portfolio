@@ -1,28 +1,25 @@
-import React from 'react';
-import Image from 'next/image';
-import useTheme from '../useTheme';
-
-interface Props {}
+import React from 'react'
+import Image from 'next/image'
 
 const LandingImage = () => {
   return (
-    <div className='col-12 col-md-6 col-lg-5 image-space'>
-      <div className='image-container'>
+    <div className="d-none d-lg-block col-12 col-md-6 col-lg-5 image-space">
+      <div className="image-container">
         <Image
-          className='back-image'
-          layout='fill'
-          src='/pictures/imagebackground.png'
-          objectFit='contain'
-          objectPosition='top'
-          alt=''
+          className="back-image"
+          layout="fill"
+          src="/pictures/imagebackground.png"
+          objectFit="contain"
+          objectPosition="top"
+          alt=""
           priority={true}
         />
         <Image
-          layout='responsive'
-          src='/pictures/me.png'
-          width='444.985'
-          height='444.985'
-          alt='Chokor Solomon'
+          layout="responsive"
+          src="/pictures/me.png"
+          width="444.985"
+          height="444.985"
+          alt="Chokor Solomon"
           priority={true}
         />
       </div>
@@ -36,7 +33,7 @@ const LandingImage = () => {
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default LandingImage;
+export default LandingImage

@@ -1,7 +1,7 @@
 import React from 'react'
-import Avatar from './Avatar'
-import useTheme from '../useTheme'
-import Summary from '../layout/Summary'
+import Avatar from '@blogComponents/Avatar'
+import useTheme from '@hooks/useTheme'
+import Summary from '@layout/Summary'
 
 export interface FeaturedPostDetailsProps {
   date: string

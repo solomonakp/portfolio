@@ -1,16 +1,20 @@
-import React from 'react';
-import AboutImage from './AboutImage';
-import AboutText from './AboutText';
+import AboutImage from '@indexComponents/AboutImage'
+import AboutText from '@indexComponents/AboutText'
+import useReveal from '@hooks/useReveal'
 
 interface Props {}
 
 const AboutSection = (props: Props) => {
+  useReveal({
+    ref: '#about-section',
+  })
+
   return (
-    <section id='about-section' className='section-space'>
-      <div className='container'>
-        <div className='row'>
+    <section id="about-section" className="section-space">
+      <div className="container">
+        <div className="row">
           <AboutImage />
-          <div className='d-none d-lg-block col-1'></div>
+          <div className="d-none d-lg-block col-1"></div>
           <AboutText />
         </div>
       </div>
@@ -20,7 +24,7 @@ const AboutSection = (props: Props) => {
         }
       `}</style>
     </section>
-  );
-};
+  )
+}
 
-export default AboutSection;
+export default AboutSection

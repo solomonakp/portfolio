@@ -1,15 +1,13 @@
-import Image from 'next/image';
-import React from 'react';
-import Avatar from '../blogComponents/Avatar';
-import { FeaturedPostDetailsProps } from '../blogComponents/FeaturedPostDetails';
-import useTheme from '../useTheme';
+import Image from 'next/image'
+import React from 'react'
+import Avatar from '@blogComponents/Avatar'
 
 interface PostInfoProps {
-  date?: string;
-  title?: string;
-  author?: string;
-  image?: string;
-  avatar?: string;
+  date?: string
+  title?: string
+  author?: string
+  image?: string
+  avatar?: string
 }
 
 const PostInfo: React.FC<PostInfoProps> = ({
@@ -23,13 +21,14 @@ const PostInfo: React.FC<PostInfoProps> = ({
     <div>
       <Image
         src={image}
-        layout='intrinsic'
-        width='1074'
-        height='551'
-        objectFit='cover'
-        objectPosition='center'
+        layout="intrinsic"
+        width="1074"
+        height="551"
+        objectFit="cover"
+        objectPosition="center"
+        alt=""
       />
-      <h2 className='h2'>{title}</h2>
+      <h2 className="h2">{title}</h2>
       <Avatar image={avatar} date={date} author={author} />
       <style jsx>{`
         h2 {
@@ -40,7 +39,7 @@ const PostInfo: React.FC<PostInfoProps> = ({
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default PostInfo;
+export default PostInfo

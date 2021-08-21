@@ -19,7 +19,6 @@
     "no-inline-styles",
     "no-protocol-relative-urls",
     "scoped-svg-styles",
-    "sri",
     "typescript-config/consistent-casing",
     "typescript-config/is-valid",
     "typescript-config/no-comments",

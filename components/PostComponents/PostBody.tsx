@@ -1,17 +1,17 @@
-import React from 'react';
-import useTheme from '../useTheme';
+import React from 'react'
+import useTheme from 'hooks/useTheme'
 
 interface Props {
-  content?: string;
+  content?: string
 }
 
 const PostBody = (props: Props) => {
   const {
     colors: { dark },
     media: { maxSm },
-  } = useTheme();
+  } = useTheme()
   return (
-    <div className='post'>
+    <div className="post">
       <p>
         Being a software developer gives you access to a lot of job
         opportunities working at global companies. Part of this opportunity is
@@ -130,7 +130,7 @@ const PostBody = (props: Props) => {
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default PostBody;
+export default PostBody

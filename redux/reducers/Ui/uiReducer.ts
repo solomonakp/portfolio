@@ -4,12 +4,12 @@ import {
   TOGGLE_LOADING,
   TOGGLE_DARK,
   TOGGLE_OPEN,
-} from './uiTypes';
+} from './uiTypes'
 const initialState: UiState = {
-  isLoading: true,
+  isLoading: false,
   isDark: false,
   isOpen: false,
-};
+}
 
 const uiReducer = (state = initialState, action: UiActionTypes) => {
   switch (action.type) {
@@ -17,22 +17,22 @@ const uiReducer = (state = initialState, action: UiActionTypes) => {
       return {
         ...state,
         isLoading: !state.isLoading,
-      };
+      }
     case TOGGLE_DARK:
       return {
         ...state,
         isDark: !state.isDark,
-      };
+      }
 
     case TOGGLE_OPEN:
       return {
         ...state,
         isOpen: !state.isOpen,
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default uiReducer;
+export default uiReducer

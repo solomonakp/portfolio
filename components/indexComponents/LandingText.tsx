@@ -1,12 +1,9 @@
-import Link from 'next/link'
 import React from 'react'
-import Button from '../layout/Button'
-import useTheme from '../useTheme'
-interface Props {}
+import Button from '@layout/Button'
 
-const LandingText = (props: Props) => {
+const LandingText = () => {
   return (
-    <div className="col-12 col-md-6 ">
+    <div className="col-12 col-lg-6">
       <div className="left-container d-flex flex-column justify-content-center">
         <h1>Hire Freelancers With better reviews</h1>
         <p>

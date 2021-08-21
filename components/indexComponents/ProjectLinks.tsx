@@ -1,7 +1,7 @@
 import React from 'react'
-import IconLink from '../layout/IconLink'
-import { Github, MaxWindow } from '../Svgs'
-import useTheme from '../useTheme'
+import IconLink from '@layout/IconLink'
+import { Github, MaxWindow } from '@svgs'
+import useTheme from '@hooks/useTheme'
 
 interface ProjectLinksProps {
   repository: string
@@ -10,13 +10,19 @@ interface ProjectLinksProps {
 
 const ProjectLinks: React.FC<ProjectLinksProps> = ({ repository, site }) => {
   const {
-    colors: { iconColor, hover },
+    colors: { projectIconColor, primary },
+    media: { minMd },
   } = useTheme()
   return (
     <div className="link-container">
       {repository ? (
         <IconLink href={repository}>
-          <Github width="24" height="24" id="project-git" fill={iconColor} />
+          <Github
+            width="24"
+            height="24"
+            id="project-git"
+            fill={projectIconColor}
+          />
         </IconLink>
       ) : null}
       {site ? (
@@ -25,21 +31,29 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({ repository, site }) => {
             width="24"
             height="24"
             id="project-window"
-            stroke={iconColor}
+            stroke={projectIconColor}
           />
         </IconLink>
       ) : null}
       <style jsx>
         {`
+          .link-container {
+            text-align: left;
+            @media (${minMd}) {
+              position: absolute;
+              bottom: 0.5rem;
+              right: 0;
+            }
+          }
           div
             :global(a:hover #project-window, a:active #project-window, a:focus
               #project-window) {
-            stroke: ${hover};
+            stroke: ${primary};
           }
           div
             :global(a:hover #project-git, a:active #project-git, a:focus
               #project-git) {
-            fill: ${hover};
+            fill: ${primary};
           }
           div :global(a:not(:last-of-type)) {
             margin-right: 1rem;

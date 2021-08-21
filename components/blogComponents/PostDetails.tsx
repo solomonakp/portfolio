@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import Summary from '../layout/Summary'
-import useTheme from '../useTheme'
+import Summary from '@layout/Summary'
+import useTheme from '@hooks/useTheme'
 
 export interface PostDetailsProps {
   title: string
@@ -40,6 +40,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
           layout="responsive"
           objectPosition="center"
           objectFit="cover"
+          alt="post-image"
         />
         <p className="d-flex align-items-center">
           <span className="tag">{tag}</span>

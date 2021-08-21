@@ -1,12 +1,10 @@
 import React from 'react'
-import { getLayout } from '../../components/layout/Layout'
-import PostBodySection from '../../components/PostComponents/PostBodySection'
-import PostDetailSection from '../../components/PostComponents/PostDetailSection'
-import ReadMoreSection from '../../components/PostComponents/ReadMoreSection'
+import { getLayout } from '@layout/Layout'
+import PostBodySection from '@postComponents/PostBodySection'
+import PostDetailSection from '@postComponents/PostDetailSection'
+import ReadMoreSection from '@components/postComponents/ReadMoreSection'
 
-interface Props {}
-
-const Post = (props: Props) => {
+const Post = () => {
   return (
     <div id="post-page" className="page-spacing">
       <PostDetailSection />

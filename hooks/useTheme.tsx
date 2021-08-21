@@ -1,83 +1,86 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/reducers/index';
+import { useSelector } from 'react-redux'
+import { RootState } from '@redux/reducers/index'
 
 interface Theme {
   fontFamily: {
-    headingFont: string;
-    textFont: string;
-  };
+    headingFont: string
+    textFont: string
+  }
   colors: {
-    primary: string;
-    secondary: string;
-    dark: string;
-    light: string;
-    iconColor: string;
-    cardHover: string;
-    outLine: string;
-    btnColor: string;
-    lightColor: string;
-    darkColor: string;
-    hover: string;
-    navColor: string;
-    navOverlay: string;
-  };
+    primary: string
+    secondary: string
+    dark: string
+    light: string
+    iconColor: string
+    cardHover: string
+    outLine: string
+    btnColor: string
+    lightColor: string
+    darkColor: string
+    hover: string
+    navColor: string
+    navOverlay: string
+    projectCardColor: string
+    projectParagraphColor: string
+    projectCardHoverColor: string
+    projectIconColor: string
+  }
   spacing: {
-    sectionSpace: string;
-    blogCard: string;
-    blogCardSide: string;
-    headingSpace: string;
-    resSectionSpace: string;
-  };
+    sectionSpace: string
+    blogCard: string
+    blogCardSide: string
+    headingSpace: string
+    resSectionSpace: string
+  }
   size: {
-    mainHeading: string;
-    sectionHeading: string;
-    paragraph: string;
-    textHeading: string;
-    mobileMenu: string;
-    resMainHeading: string;
-    resSectionHeading: string;
-    resTextHeading: string;
-  };
+    mainHeading: string
+    sectionHeading: string
+    paragraph: string
+    textHeading: string
+    mobileMenu: string
+    resMainHeading: string
+    resSectionHeading: string
+    resTextHeading: string
+  }
   border: {
-    buttonBorder: string;
-    chipBorder: string;
-  };
+    buttonBorder: string
+    chipBorder: string
+  }
   radius: {
-    button: string;
-    card: string;
-    chip: string;
-  };
+    button: string
+    card: string
+    chip: string
+  }
   shadow: {
-    contact: string;
-  };
+    contact: string
+  }
   effects: {
-    stretch: string;
-    buttonTransitionIn: string;
-    buttonTransitionOut: string;
-    fillTrans: string;
-    bgTrans: string;
-    colorTrans: string;
-    allIn: (duration: number) => string;
-    allOut: (duration: number) => string;
-  };
+    stretch: string
+    buttonTransitionIn: string
+    buttonTransitionOut: string
+    fillTrans: string
+    bgTrans: string
+    colorTrans: string
+    allIn: (duration: number) => string
+    allOut: (duration: number) => string
+  }
   media: {
-    minSm: string;
-    minMd: string;
-    minLg: string;
-    minXl: string;
-    minXxL: string;
-    maxXs: string;
-    maxSm: string;
-    maxMd: string;
-    maxLg: string;
-    maxXl: string;
-  };
+    minSm: string
+    minMd: string
+    minLg: string
+    minXl: string
+    minXxL: string
+    maxXs: string
+    maxSm: string
+    maxMd: string
+    maxLg: string
+    maxXl: string
+  }
   // [key: string]: string | {} | ((param: string) => string);
 }
 
 const useTheme = () => {
-  const isDark = useSelector((state: RootState) => state.ui.isDark);
+  const isDark = useSelector((state: RootState) => state.ui.isDark)
 
   const theme: Theme = {
     fontFamily: {
@@ -98,6 +101,10 @@ const useTheme = () => {
       hover: isDark ? '#EF4E3C' : '#2630A3',
       navColor: isDark ? 'rgba(0, 21, 36,0.5)' : 'rgba(255, 255, 252,0.5)',
       navOverlay: isDark ? '#00243d' : '#f4f3f1',
+      projectCardColor: '#3B465A',
+      projectCardHoverColor: '#5A6984',
+      projectParagraphColor: '#E3ECFA',
+      projectIconColor: '#B2B9CD',
     },
     spacing: {
       sectionSpace: '9.375rem',
@@ -122,8 +129,8 @@ const useTheme = () => {
     },
     radius: {
       button: '5px',
-      card: '10px',
-      chip: '8px',
+      card: '8px',
+      chip: '11px',
     },
     shadow: {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',
@@ -138,10 +145,10 @@ const useTheme = () => {
       buttonTransitionOut:
         'color 100ms ease-out, border-color 80ms ease-out,background-color 100ms ease-out',
       allIn: (duration: number): string => {
-        return `all ${duration}ms ease-in`;
+        return `all ${duration}ms ease-in`
       },
       allOut: (duration: number): string => {
-        return `all ${duration}ms ease-out`;
+        return `all ${duration}ms ease-out`
       },
     },
     media: {
@@ -156,9 +163,9 @@ const useTheme = () => {
       maxLg: 'max-width: 1299.98px',
       maxXl: 'max-width: 1399.98px',
     },
-  };
+  }
 
-  return theme;
-};
+  return theme
+}
 
-export default useTheme;
+export default useTheme

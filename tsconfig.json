@@ -20,9 +20,16 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@redux/*": ["redux/*"],
-      "@layout/*": ["components/layout/*"]
+      "@layout/*": ["components/layout/*"],
+      "@blogComponents/*": ["components/blogComponents/*"],
+      "@svgs": ["components/Svgs"],
+      "@theme": ["components/useTheme"],
+      "@indexComponents/*": ["components/indexComponents/*"],
+      "@postComponents/*": ["components/postComponents/*"],
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"],
   "exclude": ["node_modules"]
 }

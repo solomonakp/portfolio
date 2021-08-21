@@ -1,6 +1,6 @@
 import anime from 'animejs'
-import { navRefs } from '../layout/Navigation'
-import { RootState } from '../../redux/reducers/index'
+import { navRefs } from '@layout/Navigation'
+import { RootState } from '@redux/reducers/index'
 import { useSelector } from 'react-redux'
 
 export type animationCallback = () => void
@@ -14,7 +14,7 @@ const useNavAnimation = (elements: navRefs) => {
       const anchorList = list.querySelectorAll('a')
 
       const timeLine = anime.timeline({
-        easing: 'easeOutExpo',
+        easing: 'cubicBezier(0.645, 0.045, 0.355, 1)',
       })
 
       if (isOpen) {
@@ -23,31 +23,24 @@ const useNavAnimation = (elements: navRefs) => {
           .add({
             targets: modeBtn,
             opacity: [1, 0],
-            translateX: ['0', '-40px'],
-            easing: 'spring(2, 60, 20, 10)',
+            translateY: ['0', '40px'],
+            duration: 300,
           })
           .add(
             {
               targets: anchorList,
-              opacity: {
-                value: [1, 0],
-                easing: 'linear',
-                duration: 100,
-              },
-              translateX: ['0px', '-40px'],
+              opacity: [1, 0],
+              translateY: ['0px', '40px'],
               delay: anime.stagger(100),
-              easing: 'spring(2, 60, 20, 10)',
+              duration: 300,
             },
-            '-=1500'
+            '-=100'
           )
-          .add(
-            {
-              targets: navigation,
-              translateX: '-100%',
-              easing: 'spring(2, 80, 50, 10)',
-            },
-            '-=1500'
-          )
+          .add({
+            targets: navigation,
+            translateX: '-100%',
+            easing: 'spring(2, 80, 50, 10)',
+          })
 
         timeLine.finished.then(() => {
           if (cb) {
@@ -63,20 +56,15 @@ const useNavAnimation = (elements: navRefs) => {
           .add({
             targets: navigation,
             translateX: '0%',
-            duration: 1000,
             easing: 'spring(2, 80, 50, 7)',
           })
           .add(
             {
               targets: anchorList,
-              opacity: {
-                value: [0, 1],
-                easing: 'linear',
-                duration: 100,
-              },
-              translateX: ['-40px', '0'],
+              opacity: [0, 1],
+              translateY: ['40px', '0'],
               delay: anime.stagger(100),
-              easing: 'spring(2, 60, 20, 10)',
+              duration: 300,
             },
             '-=1000'
           )
@@ -84,10 +72,10 @@ const useNavAnimation = (elements: navRefs) => {
             {
               targets: modeBtn,
               opacity: [0, 1],
-              translateX: ['-40px', '0'],
-              easing: 'spring(2, 60, 20, 10)',
+              translateY: ['40px', '0'],
+              duration: 300,
             },
-            '-=1500'
+            '-=750'
           )
       }
     }

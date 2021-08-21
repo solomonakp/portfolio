@@ -1,46 +1,17 @@
 @import './bootstrap-reboot.css';
 @import './bootstrap-grid.css';
 
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/work_sans/WorkSans-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/work_sans/WorkSans-Medium.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Lufga';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lufga-Regular'),
-    url('/fonts/lufga_fonts/Lufga-Regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Lufga-SemiBold'),
-    url('/fonts/lufga_fonts/Lufga-SemiBold.otf') format('opentype');
-}
-
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
 }
 
 html,
 body {
-  font-family: 'Work Sans';
+  font-family: 'Work Sans', sans-serif;
 }
 
 body {
@@ -73,7 +44,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lufga';
+  font-family: 'Roboto', sans-serif;
 }
 img {
   image-rendering: auto;

@@ -1,39 +1,17 @@
-import anime from 'animejs';
-import React, { useEffect, useRef } from 'react';
-import useScrollTrigger from '../hooks/useScrollTrigger';
+import React, { useRef } from 'react'
 
 interface HeadingProps {
-  className: string;
+  className?: string
+  id?: string
 }
-const Heading: React.FC<HeadingProps> = ({ children, className }) => {
-  const heading = useRef<HTMLHeadingElement>(null!);
-  useEffect(() => {
-    useScrollTrigger({
-      trigger: heading.current,
-      once: true,
-      onEnter: () => {
-        anime({
-          targets: heading.current,
-          duration: 1000,
-          easing: 'easeOutExpo',
-          translateY: [50, 0],
-          opacity: [0, 1],
-        });
-      },
-    });
-  });
-  return (
-    <h2 ref={heading} className={className}>
-      {children}
-      <style jsx>
-        {`
-          h2 {
-            opacity: 0;
-          }
-        `}
-      </style>
-    </h2>
-  );
-};
+const Heading: React.FC<HeadingProps> = ({ children, className, id }) => {
+  const heading = useRef<HTMLHeadingElement>(null)
 
-export default Heading;
+  return (
+    <h2 ref={heading} className={className} id={id}>
+      {children}
+    </h2>
+  )
+}
+
+export default Heading
