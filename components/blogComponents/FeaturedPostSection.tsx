@@ -1,9 +1,7 @@
 import React from 'react'
 import FeaturedPostContainer from '@blogComponents/FeaturedPostContainer'
 
-interface Props {}
-
-const FeaturedPostSection = (props: Props) => {
+const FeaturedPostSection = () => {
   return (
     <section id="featured-section" className="section-space">
       <FeaturedPostContainer />

@@ -2,9 +2,7 @@ import React, { ReactElement } from 'react'
 import Posts from '@blogComponents/blogObject'
 import PostDetails from '@blogComponents/PostDetails'
 
-interface Props {}
-
-function PostsContainer({}: Props): ReactElement {
+function PostsContainer(): ReactElement {
   return (
     <div className="container">
       <div className="row">

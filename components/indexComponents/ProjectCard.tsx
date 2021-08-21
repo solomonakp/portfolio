@@ -26,7 +26,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const {
     colors: {
       lightColor,
-      cardHover,
       projectCardColor,
       projectParagraphColor,
       projectCardHoverColor,

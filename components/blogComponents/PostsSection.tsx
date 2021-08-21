@@ -1,9 +1,7 @@
 import React from 'react'
 import PostsContainer from '@blogComponents/PostsContainer'
 
-interface Props {}
-
-const PostsSection = (props: Props) => {
+const PostsSection = () => {
   return (
     <section id="posts" className="section-space">
       <PostsContainer />

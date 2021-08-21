@@ -20,12 +20,12 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@redux/*": ["redux/*"],
-      "@layout/*": ["components/layout/*"],
-      "@blogComponents/*": ["components/blogComponents/*"],
       "@svgs": ["components/Svgs"],
       "@theme": ["components/useTheme"],
+      "@layout/*": ["components/layout/*"],
       "@indexComponents/*": ["components/indexComponents/*"],
       "@postComponents/*": ["components/postComponents/*"],
+      "@blogComponents/*": ["components/blogComponents/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"]
     }

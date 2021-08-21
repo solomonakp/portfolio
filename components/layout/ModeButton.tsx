@@ -137,7 +137,7 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
     }
 
     const {
-      media: { maxMd, minLg },
+      media: { maxMd },
     } = useTheme()
 
     return (

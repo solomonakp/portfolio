@@ -1,12 +1,12 @@
-import React from 'react';
-import PostBody from './PostBody';
+import React from 'react'
+import PostBody from '@postComponents/PostBody'
 
 const PostBodySection = () => {
   return (
-    <section id='post-body' className='section-space'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12 col-md-10'>
+    <section id="post-body" className="section-space">
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-10">
             <PostBody />
           </div>
         </div>
@@ -16,7 +16,7 @@ const PostBodySection = () => {
         }
       `}</style>
     </section>
-  );
-};
+  )
+}
 
-export default PostBodySection;
+export default PostBodySection

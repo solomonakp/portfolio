@@ -1,14 +1,12 @@
-import React from 'react';
-import PostInfo from './PostInfo';
+import React from 'react'
+import PostInfo from '@postComponents/PostInfo'
 
-interface Props {}
-
-const PostDetailSection = (props: Props) => {
+const PostDetailSection = () => {
   return (
-    <section id='post-detail-section'>
-      <div className='container'>
-        <div className='row flex-column'>
-          <div className='col-12 col-md-10'>
+    <section id="post-detail-section">
+      <div className="container">
+        <div className="row flex-column">
+          <div className="col-12 col-md-10">
             <PostInfo />
           </div>
         </div>
@@ -19,7 +17,7 @@ const PostDetailSection = (props: Props) => {
         }
       `}</style>
     </section>
-  );
-};
+  )
+}
 
-export default PostDetailSection;
+export default PostDetailSection

@@ -2,9 +2,7 @@ import AboutImage from '@indexComponents/AboutImage'
 import AboutText from '@indexComponents/AboutText'
 import useReveal from '@hooks/useReveal'
 
-interface Props {}
-
-const AboutSection = (props: Props) => {
+const AboutSection = () => {
   useReveal({
     ref: '#about-section',
   })

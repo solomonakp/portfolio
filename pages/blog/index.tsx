@@ -4,14 +4,12 @@ import FeaturedPostSection from '../../components/blogComponents/FeaturedPostSec
 import { getLayout } from '../../components/layout/Layout'
 import PostsSection from '../../components/blogComponents/PostsSection'
 
-interface Props {}
-
-const index = (props: Props) => {
-  ;<Head>
-    <title>Blog</title>
-  </Head>
+const index = () => {
   return (
     <div id="page" className="page-spacing">
+      <Head>
+        <title>Blog</title>
+      </Head>
       <FeaturedPostSection />
       <PostsSection />
     </div>

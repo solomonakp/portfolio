@@ -3,9 +3,7 @@ import { featuredObject } from '@blogComponents/blogObject'
 import FeaturedPostDetails from '@blogComponents/FeaturedPostDetails'
 import FeaturedImage from '@blogComponents/FeaturedImage'
 
-interface Props {}
-
-const FeaturedPostContainer = (props: Props) => {
+const FeaturedPostContainer = () => {
   return (
     <div className="container">
       <div className="row">
