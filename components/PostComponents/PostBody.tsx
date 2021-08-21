@@ -1,17 +1,21 @@
 import React from 'react'
-import useTheme from 'hooks/useTheme'
+import useTheme from '@hooks/useTheme'
 
 interface Props {
   content?: string
 }
 
 const PostBody = (props: Props) => {
+  const { content } = props
+
   const {
     colors: { dark },
     media: { maxSm },
   } = useTheme()
+
   return (
     <div className="post">
+      {content}
       <p>
         Being a software developer gives you access to a lot of job
         opportunities working at global companies. Part of this opportunity is

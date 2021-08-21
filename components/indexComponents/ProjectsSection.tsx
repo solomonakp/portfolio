@@ -2,9 +2,8 @@ import React from 'react'
 import Heading from '@indexComponents/Heading'
 import ProjectsContainer from '@indexComponents/ProjectsContainer'
 import useReveal from '@hooks/useReveal'
-interface Props {}
 
-const ProjectsSection = (props: Props) => {
+const ProjectsSection = () => {
   useReveal({
     ref: '#projects-heading',
   })
