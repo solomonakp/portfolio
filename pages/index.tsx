@@ -106,7 +106,7 @@ const Index = () => {
       )
 
     if (isMobile === false) {
-      animation = animation
+      animation
         .add(
           {
             targets: '#landing-section .image-container',
