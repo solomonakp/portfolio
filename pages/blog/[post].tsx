@@ -1,7 +1,7 @@
 import React from 'react'
 import { getLayout } from '@layout/Layout'
-import PostBodySection from '@postComponents/PostBodySection'
-import PostDetailSection from '@postComponents/PostDetailSection'
+import PostBodySection from '@components/postComponents/PostBodySection'
+import PostDetailSection from '@components/postComponents/PostDetailSection'
 import ReadMoreSection from '@components/postComponents/ReadMoreSection'
 
 const Post = () => {
