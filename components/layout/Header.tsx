@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import useTheme from 'hooks/useTheme'
+import useTheme from '@hooks/useTheme'
 import { useSelector } from 'react-redux'
 import { RootState } from '@redux/reducers/index'
 import Hamburger from '@layout/Hamburger'
@@ -15,6 +15,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
   const header = useRef<HTMLElement>(null)
+
   const navElements = useRef<navRefs>([])
 
   const navAnimation = useNavAnimation(navElements.current)

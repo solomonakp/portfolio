@@ -13,7 +13,7 @@ interface NavigationProps {
   theme: boolean
   animation?: (cb?: animationCallback) => void
 }
-export type navRefs = [HTMLUListElement, HTMLButtonElement, HTMLDivElement]
+export type navRefs = [HTMLUListElement, HTMLButtonElement, HTMLDivElement] | []
 
 interface Route {
   text: string
