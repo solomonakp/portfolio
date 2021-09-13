@@ -1,6 +1,6 @@
 import React from 'react'
-import { ReadMore } from '../blogComponents/blogObject'
-import PostDetails from '../blogComponents/PostDetails'
+import { ReadMore } from '@blogComponents/blogObject'
+import PostDetails from '@blogComponents/PostDetails'
 
 const ReadMoreContainer = () => {
   return (

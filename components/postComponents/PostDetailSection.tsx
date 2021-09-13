@@ -1,5 +1,5 @@
 import React from 'react'
-import PostInfo from './PostInfo'
+import PostInfo from '@postComponents/PostInfo'
 
 const PostDetailSection = () => {
   return (

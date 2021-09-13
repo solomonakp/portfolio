@@ -1,5 +1,5 @@
 import React from 'react'
-import PostBody from './PostBody'
+import PostBody from '@postComponents/PostBody'
 
 const PostBodySection = () => {
   return (

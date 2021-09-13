@@ -1,5 +1,5 @@
 import React from 'react'
-import ReadMoreContainer from './ReadMoreContainer'
+import ReadMoreContainer from '@postComponents/ReadMoreContainer'
 
 const ReadMoreSection = () => {
   return (
