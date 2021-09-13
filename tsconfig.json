@@ -17,6 +17,7 @@
     "removeComments": true,
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@redux/*": ["redux/*"],
