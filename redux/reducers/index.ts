@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import uiReducer from './Ui/uiReducer'
+import uiReducer from './ui/uiReducer'
 import blogReducer from './blog/blogReducer'
 
 const rootReducer = combineReducers({
