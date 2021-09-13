@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
-import FeaturedPostSection from '../../components/blogComponents/FeaturedPostSection'
-import { getLayout } from '../../components/layout/Layout'
-import PostsSection from '../../components/blogComponents/PostsSection'
+import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
+import { getLayout } from '@layout/Layout'
+import PostsSection from '@blogComponents/PostsSection'
 
 const index = () => {
   return (
