@@ -20,8 +20,6 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@redux/*": ["redux/*"],
-      "@blog*": ["redux/reducers/blog/*"],
-      "@ui/*": ["redux/reducers/ui/*"],
       "@svgs": ["components/Svgs"],
       "@theme": ["components/useTheme"],
       "@layout/*": ["components/layout/*"],
