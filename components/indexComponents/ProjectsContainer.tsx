@@ -2,9 +2,7 @@ import React from 'react'
 import ProjectCard from '@indexComponents/ProjectCard'
 import projects from '@indexComponents/ProjectsObject'
 
-interface Props {}
-
-const ProjectsContainer = (props: Props) => {
+const ProjectsContainer = () => {
   return (
     <div className="projects-container">
       {projects.map((props, index) => {
