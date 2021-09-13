@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useTheme from '@hooks/useTheme'
-import { toggleDark } from '@redux/reducers/Ui/uiActions'
+import { toggleDark } from '@redux/reducers/ui/uiActions'
 import { RootState } from '@redux/reducers/index'
 import anime from 'animejs'
 

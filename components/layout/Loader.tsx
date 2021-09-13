@@ -2,7 +2,7 @@ import anime from 'animejs'
 import React, { useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import useTheme from '@hooks/useTheme'
-import { toggleLoading } from '@redux/reducers/Ui/uiActions'
+import { toggleLoading } from '@redux/reducers/ui/uiActions'
 interface LoaderProps {
   fixed?: boolean
 }
