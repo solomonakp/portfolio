@@ -1,5 +1,5 @@
 import React from 'react'
-import useTheme from 'hooks/useTheme'
+import useTheme from '@hooks/useTheme'
 import FooterIcons from '@layout/FooterIcons'
 import { LayoutProps } from '@layout/Layout'
 import useReveal from '@hooks/useReveal'

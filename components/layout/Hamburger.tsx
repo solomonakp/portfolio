@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import useTheme from 'hooks/useTheme'
-import { toggleOpen } from '../../redux/reducers/Ui/uiActions'
+import useTheme from '@hooks/useTheme'
+import { toggleOpen } from '@redux/reducers/Ui/uiActions'
 
 interface HamburgerProps {
   isOpen: boolean

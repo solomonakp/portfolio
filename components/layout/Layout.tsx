@@ -1,12 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
-import { Logo } from '../Svgs'
-import useTheme from 'hooks/useTheme'
-import Footer from './Footer'
-import { Header } from './Header'
+import { Logo } from '@svgs'
+import useTheme from '@hooks/useTheme'
+import Footer from '@layout/Footer'
+import { Header } from '@layout/Header'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/reducers/index'
-import Loader from './Loader'
+import { RootState } from '@redux/reducers/index'
+import Loader from '@layout/Loader'
 
 export interface LayoutProps {
   isMain: boolean

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import useTheme from 'hooks/useTheme'
+import useTheme from '@hooks/useTheme'
 
 const FeaturedImage = () => {
   const {

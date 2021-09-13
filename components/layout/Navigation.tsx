@@ -1,10 +1,10 @@
 import React from 'react'
 
-import useTheme from 'hooks/useTheme'
-import { ModeButton } from './ModeButton'
+import useTheme from '@hooks/useTheme'
+import { ModeButton } from '@layout/ModeButton'
 import { useDispatch } from 'react-redux'
-import { toggleOpen } from '../../redux/reducers/Ui/uiActions'
-import { animationCallback } from '../../hooks/useNavAnimation'
+import { toggleOpen } from '@redux/reducers/Ui/uiActions'
+import { animationCallback } from '@hooks/useNavAnimation'
 
 import { useRouter } from 'next/router'
 

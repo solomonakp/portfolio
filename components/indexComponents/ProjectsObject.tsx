@@ -1,4 +1,4 @@
-import { ProjectCardProps } from './ProjectCard';
+import { ProjectCardProps } from '@indexComponents/ProjectCard'
 
 const projects: ProjectCardProps[] = [
   {
@@ -28,6 +28,6 @@ const projects: ProjectCardProps[] = [
     repository: '/',
     site: '/',
   },
-];
+]
 
-export default projects;
+export default projects

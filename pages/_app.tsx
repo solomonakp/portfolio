@@ -1,11 +1,11 @@
-import React from 'react';
-import { wrapper } from '../redux/store';
-import '../styles/globals.css';
+import React from 'react'
+import { wrapper } from '@redux/store'
+import '@styles/globals.css'
 
 const MyApp = ({ Component, pageProps }) => {
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout = Component.getLayout || ((page) => page)
 
-  return getLayout(<Component {...pageProps}></Component>, Component.title);
-};
+  return getLayout(<Component {...pageProps}></Component>, Component.title)
+}
 
-export default wrapper.withRedux(MyApp);
+export default wrapper.withRedux(MyApp)

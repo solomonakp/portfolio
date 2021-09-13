@@ -1,5 +1,5 @@
 import React from 'react'
-import { Linkedin, Github, Twitter, Telephone } from '../Svgs'
+import { Linkedin, Github, Twitter, Telephone } from '@svgs'
 
 import IconLink from '@layout/IconLink'
 import useTheme from '@hooks/useTheme'
