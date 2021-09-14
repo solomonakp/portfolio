@@ -12,7 +12,10 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
     effects: { fillTrans },
   } = useTheme()
   return (
-    <div className=" justify-content-center align-items-center">
+    <div
+      className=" justify-content-center align-items-center"
+      id="footer-icons"
+    >
       <IconLink href={'https://github.com/solomonakp'}>
         <Github width={24} height={24} fill={iconColor} id="github" />
       </IconLink>
@@ -27,7 +30,7 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
       </IconLink>
 
       <style jsx>{`
-        div {
+        #footer-icons {
           display: flex;
           @media (min-width: 1049.98px) {
             display: ${isMain ? 'none !important' : 'flex'};
@@ -39,7 +42,9 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
             margin-right: 0;
           }
         }
-        div :global(a:hover svg, a:active svg, a:focus svg) {
+        :global(#footer-icons a:hover svg, #footer-icons
+            a:active
+            svg, #footer-icons a:focus svg) {
           fill: ${hover};
           transition: ${fillTrans};
         }

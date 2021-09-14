@@ -23,7 +23,7 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
     effects: { fillTrans, colorTrans },
   } = useTheme()
   return (
-    <div id={id} {...props}>
+    <div id={id} {...props} className="floating-container">
       {children}
       <style jsx>{`
         div {

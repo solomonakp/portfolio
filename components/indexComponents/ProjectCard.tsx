@@ -76,12 +76,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           width: 100%;
           white-space: nowrap;
           margin-bottom: 2rem;
-          padding: 1.8rem;
+          padding: 1.8rem 0.8rem 1.8rem 0;
           transition: all 150ms cubic-bezier(0.49, 0.99, 0.78, 1.04);
           background-color: ${projectCardColor};
           border-radius: ${card};
           @media (${maxMd}) {
-            padding: 1rem 0;
+            padding: 1.8 rem 0;
           }
           .row {
             width: 100%;
