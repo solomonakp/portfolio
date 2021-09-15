@@ -41,6 +41,31 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
             background-color: ${light};
             transition: ${bgTrans};
           }
+
+          body::-webkit-scrollbar {
+            background-color: ${light};
+            width: 16px;
+            transition: ${bgTrans};
+          }
+          body {
+            scrollbar-width: thin;
+            scrollbar-color: #babac0;
+          }
+          body::-webkit-scrollbar-track {
+            background-color: ${light};
+            transition: ${bgTrans};
+          }
+          body::-webkit-scrollbar-thumb {
+            background-color: #babac0;
+            border-radius: 16px;
+            border: 4px solid ${light};
+            transition: ${bgTrans};
+          }
+
+          body::-webkit-scrollbar-button {
+            display: none;
+          }
+
           h1,
           h2,
           h3,
