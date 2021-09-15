@@ -9,7 +9,7 @@ export interface ProjectCardProps {
   tags: string[]
   title: string
   description: string
-  thumbnail: string
+  thumbnail: StaticImageData
   repository: string
   site: string
 }
@@ -50,6 +50,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 alt="Project thumbnail"
                 objectFit="cover"
                 objectPosition="top"
+                placeholder="blur"
               />
             </div>
           </div>

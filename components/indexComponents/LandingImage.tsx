@@ -1,5 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
+import background from 'public/pictures/imagebackground.png'
+
+import me from 'public/pictures/me.png'
 
 const LandingImage = () => {
   return (
@@ -8,19 +11,21 @@ const LandingImage = () => {
         <Image
           className="back-image"
           layout="fill"
-          src="/pictures/imagebackground.png"
+          src={background}
           objectFit="contain"
           objectPosition="top"
           alt=""
           priority={true}
+          placeholder="blur"
         />
         <Image
           layout="responsive"
-          src="/pictures/me.png"
+          src={me}
           width="444.985"
           height="444.985"
           alt="Chokor Solomon"
           priority={true}
+          placeholder="blur"
         />
       </div>
       <style jsx>{`

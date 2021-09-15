@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import useTheme from '@hooks/useTheme'
+import working from 'public/pictures/working.jpg'
 
 const AboutImage = () => {
   const {
@@ -13,8 +14,9 @@ const AboutImage = () => {
           layout="intrinsic"
           width="540"
           height="426"
-          src="/pictures/working.jpg"
+          src={working}
           alt="Chokor Solomon"
+          placeholder="blur"
         />
       </div>
       <style jsx>{`
