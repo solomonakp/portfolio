@@ -7,7 +7,7 @@ import {
 } from './uiTypes'
 
 const initialState: UiState = {
-  isLoading: false,
+  isLoading: true,
   isDark: false,
   isOpen: false,
 }

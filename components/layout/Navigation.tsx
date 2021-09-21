@@ -21,7 +21,7 @@ interface Route {
 }
 
 const routes: Route[] = [
-  { text: 'About Me', route: '#about-section' },
+  { text: 'About', route: '#about-section' },
   { text: 'Projects', route: '#project-section' },
   { text: 'Blog', route: '/blog' },
 ]
@@ -103,7 +103,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
 
   const {
     media: { maxMd, minLg },
-    colors: { secondary, navOverlay },
+    colors: { secondary, navOverlay, primary },
     size: { paragraph, mobileMenu },
     effects: { colorTrans },
   } = useTheme()
@@ -126,6 +126,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
                     ? router.prefetch('/blog')
                     : router.prefetch('/')
                 }
+                data-item={text}
               >
                 {text}
               </a>
@@ -144,7 +145,6 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
             }
             @media (${maxMd}) {
               width: 100%;
-              height: 100vh;
               position: fixed;
               left: 0;
               right: 0;
@@ -188,6 +188,30 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
             color: ${secondary};
             font-size: ${paragraph};
             font-weight: 500;
+            text-transformation: uppercase;
+            position: relative;
+            &::before {
+              content: attr(data-item);
+              transition: all 300ms ease-in-out;
+              color: ${primary};
+              position: absolute;
+              font: inherit;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              width: 0;
+              overflow: hidden;
+              will-change: width;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+              &::before {
+                width: 100%;
+              }
+            }
             @media (${minLg}) {
             }
             @media (${maxMd}) {

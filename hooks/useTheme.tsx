@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux'
-import { RootState } from '@redux/reducers/index'
+import useDarkMode from 'use-dark-mode'
 
 interface Theme {
   fontFamily: {
@@ -77,10 +76,12 @@ interface Theme {
     maxXl: string
   }
   // [key: string]: string | {} | ((param: string) => string);
+  isDark: boolean
+  toggle: () => void
 }
 
 const useTheme = () => {
-  const isDark = useSelector((state: RootState) => state.ui.isDark)
+  const { value: isDark, toggle } = useDarkMode(false)
 
   const theme: Theme = {
     fontFamily: {
@@ -163,6 +164,8 @@ const useTheme = () => {
       maxLg: 'max-width: 1299.98px',
       maxXl: 'max-width: 1399.98px',
     },
+    isDark,
+    toggle,
   }
 
   return theme

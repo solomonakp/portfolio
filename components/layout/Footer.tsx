@@ -48,7 +48,14 @@ const Footer: React.FC<FooterProps> = (props) => {
         a {
           position: relative;
           cursor: pointer;
-          &:before {
+
+          &:hover {
+            &::before {
+              transform: perspective(700px) scale3d(1, 1, 1);
+            }
+          }
+
+          &::before {
             content: '';
             display: block;
             position: absolute;
@@ -56,6 +63,8 @@ const Footer: React.FC<FooterProps> = (props) => {
             height: 3px;
             left: 0;
             right: 0;
+            transform: perspective(500px) scale3d(0, 1, 1);
+            transition: transform 200ms linear;
             border-radius: ${button};
             background-color: ${primary};
           }

@@ -32,7 +32,7 @@ const LandingImage = () => {
         .image-container {
           width: 100%;
           height: 100%;
-          position: 'relative';
+          position: relative;
           max-width: 445px;
           margin: 0 auto;
         }

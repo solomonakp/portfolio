@@ -23,29 +23,25 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
 
   const { isLoading } = useSelector((state: RootState) => state.ui)
 
+  if (isLoading) {
+    return <Loader fixed={true} />
+  }
+
   return (
     <div id="layout">
       <Head>
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <Header theme={true} logo={<Logo width={55} height={43} />} />
-      <main>
-        {isLoading && <Loader fixed={true} />}
-        {children}
-      </main>
+      <main>{children}</main>
 
       <Footer isMain={isMain} />
       <style jsx global>
         {`
-          body {
-            background-color: ${light};
-            transition: ${bgTrans};
-          }
-
           body::-webkit-scrollbar {
             background-color: ${light};
             width: 16px;
-            transition: ${bgTrans};
+            transition: all 300ms ease-in-out;
           }
           body {
             scrollbar-width: thin;

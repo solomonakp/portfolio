@@ -1,8 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import useTheme from '@hooks/useTheme'
-import { toggleDark } from '@redux/reducers/ui/uiActions'
-import { RootState } from '@redux/reducers/index'
 import anime from 'animejs'
 
 interface ModeButtonProps {
@@ -11,11 +8,12 @@ interface ModeButtonProps {
 
 export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
   ({}, ref) => {
-    const dispatch = useDispatch()
+    const {
+      media: { maxMd },
+      isDark,
+      toggle,
+    } = useTheme()
 
-    const { isDark } = useSelector((state: RootState) => state.ui)
-
-    // getting inital state for button store darkMode
     const [initialMode, setInitialMode] = useState<boolean | null>(null)
 
     useEffect(() => {
@@ -133,12 +131,8 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
           )
       }
       //  dispatch mode
-      dispatch(toggleDark())
+      toggle()
     }
-
-    const {
-      media: { maxMd },
-    } = useTheme()
 
     return (
       <button

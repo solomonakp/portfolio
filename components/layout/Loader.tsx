@@ -1,7 +1,6 @@
 import anime from 'animejs'
 import React, { useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import useTheme from '@hooks/useTheme'
 import { toggleLoading } from '@redux/reducers/ui/uiActions'
 interface LoaderProps {
   fixed?: boolean
@@ -43,12 +42,10 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
     })
   }, [])
 
-  const {
-    colors: { light },
-  } = useTheme()
   return (
     <div
-      className="d-flex align-items-center justify-content-center"
+      className="d-flex align-items-center justify-content-center "
+      id="loader-container"
       ref={loader}
     >
       <svg
@@ -81,18 +78,18 @@ const Loader: React.FC<LoaderProps> = ({ fixed }) => {
       </svg>
       <style jsx>
         {`
-          div {
+          #loader-container {
             width: 100%;
             white-space: nowrap;
             height: 100%;
             position: ${fixed ? 'fixed' : 'static'};
-            fixed: ${fixed ? '0' : 'initial'};
             left: ${fixed ? '0' : 'initial'};
             right: ${fixed ? '0' : 'initial'};
             top: ${fixed ? '0' : 'initial'};
             bottom: ${fixed ? '0' : 'initial'};
-            background: ${light};
+            background-color: inherit;
             opacity: 0;
+            z-index: 10000;
             svg {
               height: auto;
               width: 150px;
