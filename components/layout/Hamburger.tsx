@@ -1,18 +1,20 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import useTheme from '@hooks/useTheme'
-import { toggleOpen } from '@redux/reducers/ui/uiActions'
+import { toggleOpen } from '@context/ui/uiActions'
+import { Dispatch } from '@context/ui/uiTypes'
 
 interface HamburgerProps {
   isOpen: boolean
   animation?: () => void
+  dispatch: Dispatch
 }
 
-const Hamburger: React.FC<HamburgerProps> = ({ isOpen, animation }) => {
+const Hamburger: React.FC<HamburgerProps> = (props) => {
+  const { isOpen, animation, dispatch } = props
+
   const {
     colors: { dark },
   } = useTheme()
-  const dispatch = useDispatch()
 
   const handleMenuToggle = () => {
     dispatch(toggleOpen())

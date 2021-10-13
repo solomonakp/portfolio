@@ -7,6 +7,7 @@ import { Header } from '@layout/Header'
 import { useSelector } from 'react-redux'
 import { RootState } from '@redux/reducers/index'
 import Loader from '@layout/Loader'
+import { UiProvider, useUi } from '@context/ui/uiContext'
 
 export interface LayoutProps {
   isMain: boolean
@@ -21,10 +22,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
     spacing: { sectionSpace, headingSpace, resSectionSpace },
   } = useTheme()
 
-  const { isLoading } = useSelector((state: RootState) => state.ui)
+  const {
+    state: { isLoading },
+    dispatch,
+  } = useUi()
 
   if (isLoading) {
-    return <Loader fixed={true} />
+    return <Loader fixed={true} dispatch={dispatch} />
   }
 
   return (
@@ -138,5 +142,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
 export const getLayout = (page: React.ReactElement, title: string) => {
   const isMain = title === 'main page' ? true : false
 
-  return <Layout isMain={isMain}>{page}</Layout>
+  return (
+    <UiProvider>
+      <Layout isMain={isMain}>{page}</Layout>
+    </UiProvider>
+  )
 }

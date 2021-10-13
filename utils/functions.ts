@@ -1,13 +1,22 @@
-export const shimmer = (w, h) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`
+import { Posts } from '@utils/types'
+
+export function getStrapiURL(path = '') {
+  return `${
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337/'
+  }${path}`
+}
+
+// Helper to make GET requests to Strapi
+export async function fetchAPI(path: string) {
+  const requestUrl = getStrapiURL(path)
+  const response = await fetch(requestUrl)
+  const data: Posts = await response.json()
+  return data
+}
+
+export function getStrapiMedia(media) {
+  const imageUrl = media.url.startsWith('/')
+    ? getStrapiURL(media.url)
+    : media.url
+  return imageUrl
+}

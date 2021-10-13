@@ -1,17 +1,16 @@
 import anime from 'animejs'
 import React, { useRef, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { toggleLoading } from '@redux/reducers/ui/uiActions'
+import { toggleLoading } from '@context/ui/uiActions'
+import { Dispatch } from '@context/ui/uiTypes'
 interface LoaderProps {
   fixed?: boolean
+  dispatch: Dispatch
 }
 
-const Loader: React.FC<LoaderProps> = ({ fixed }) => {
+const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
   const loader = useRef<HTMLDivElement>(null)
   const primary = useRef<SVGPathElement>(null)
   const secondary = useRef<SVGPathElement>(null)
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     anime.set(loader.current, {

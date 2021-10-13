@@ -1,12 +1,13 @@
 import anime from 'animejs'
 import { navRefs } from '@layout/Navigation'
-import { RootState } from '@redux/reducers/index'
-import { useSelector } from 'react-redux'
+import { useUi } from '@context/ui/uiContext'
 
 export type animationCallback = () => void
 
 const useNavAnimation = (elements: navRefs) => {
-  const { isOpen } = useSelector((state: RootState) => state.ui)
+  const {
+    state: { isOpen },
+  } = useUi()
   if (process.browser) {
     const animation = (cb?: animationCallback) => {
       const [list, modeBtn, navigation] = elements

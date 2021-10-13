@@ -1,5 +1,4 @@
 import React from 'react'
-import { wrapper } from '@redux/store'
 import '@styles/globals.css'
 
 const MyApp = ({ Component, pageProps }) => {
@@ -8,4 +7,4 @@ const MyApp = ({ Component, pageProps }) => {
   return getLayout(<Component {...pageProps}></Component>, Component.title)
 }
 
-export default wrapper.withRedux(MyApp)
+export default MyApp

@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react'
 import useTheme from '@hooks/useTheme'
-import { useSelector } from 'react-redux'
-import { RootState } from '@redux/reducers/index'
 import Hamburger from '@layout/Hamburger'
 import Navigation, { navRefs } from '@layout/Navigation'
 import useNavAnimation from '@hooks/useNavAnimation'
 import Link from 'next/link'
 import useDocumentScrollThrottled from '@hooks/useDocumentScrollThrottled'
+import { useUi } from '@context/ui/uiContext'
 
 interface HeaderProps {
   logo?: React.ReactElement
@@ -46,7 +45,10 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
     }
   }
 
-  const { isOpen } = useSelector((state: RootState) => state.ui)
+  const {
+    state: { isOpen },
+    dispatch,
+  } = useUi()
 
   const {
     media: { minLg, maxMd },
@@ -62,12 +64,17 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
             </a>
           </Link>
 
-          <Hamburger isOpen={isOpen} animation={navAnimation} />
+          <Hamburger
+            isOpen={isOpen}
+            animation={navAnimation}
+            dispatch={dispatch}
+          />
           <Navigation
             theme={theme}
             open={isOpen}
             ref={setNavRefs}
             animation={navAnimation}
+            dispatch={dispatch}
           />
         </nav>
       </div>

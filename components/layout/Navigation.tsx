@@ -1,17 +1,16 @@
 import React from 'react'
-
 import useTheme from '@hooks/useTheme'
 import { ModeButton } from '@layout/ModeButton'
-import { useDispatch } from 'react-redux'
-import { toggleOpen } from '@redux/reducers/ui/uiActions'
+import { toggleOpen } from '@context/ui/uiActions'
 import { animationCallback } from '@hooks/useNavAnimation'
-
 import { useRouter } from 'next/router'
+import { Dispatch } from '@context/ui/uiTypes'
 
 interface NavigationProps {
   open: boolean
   theme: boolean
   animation?: (cb?: animationCallback) => void
+  dispatch: Dispatch
 }
 export type navRefs = [HTMLUListElement, HTMLButtonElement, HTMLDivElement] | []
 
@@ -27,11 +26,9 @@ const routes: Route[] = [
 ]
 
 const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
-  { theme, open, animation },
+  { theme, open, animation, dispatch },
   ref
 ) {
-  const dispatch = useDispatch()
-
   const router = useRouter()
 
   const handleRouting = (e) => {

@@ -1,15 +1,4 @@
-import {
-  UiActionTypes,
-  TOGGLE_DARK,
-  TOGGLE_LOADING,
-  TOGGLE_OPEN,
-} from './uiTypes'
-
-export const toggleDark = (): UiActionTypes => {
-  return {
-    type: TOGGLE_DARK,
-  }
-}
+import { UiActionTypes, TOGGLE_LOADING, TOGGLE_OPEN } from './uiTypes'
 
 export const toggleLoading = (): UiActionTypes => {
   return {

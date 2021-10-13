@@ -19,7 +19,6 @@
     "paths": {
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
-      "@redux/*": ["redux/*"],
       "@svgs": ["components/Svgs"],
       "@theme": ["components/useTheme"],
       "@layout/*": ["components/layout/*"],
@@ -27,7 +26,8 @@
       "@postComponents/*": ["components/postComponents/*"],
       "@blogComponents/*": ["components/blogComponents/*"],
       "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@context/*": ["context/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.ts"],

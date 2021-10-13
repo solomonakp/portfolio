@@ -3,8 +3,11 @@ import React from 'react'
 import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
 import PostsSection from '@blogComponents/PostsSection'
+import { fetchAPI } from '@utils/functions'
+import { Posts } from '@utils/types'
 
-const index = () => {
+const Index = ({ posts }: { posts: Posts }) => {
+  console.log(posts, 'data from api')
   return (
     <div id="page" className="page-spacing">
       <Head>
@@ -16,6 +19,17 @@ const index = () => {
   )
 }
 
-index.getLayout = getLayout
+export const getStaticProps = async () => {
+  const posts = await fetchAPI('articles')
 
-export default index
+  return {
+    props: {
+      posts,
+    },
+    revalidate: 1,
+  }
+}
+
+Index.getLayout = getLayout
+
+export default Index
