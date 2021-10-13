@@ -1,6 +1,6 @@
 // import Head from 'next/head'
 // import { useContext } from 'react'
-// import { GlobalContext } from '../pages/_app'
+
 // import { getStrapiMedia } from '@utils/functions'
 
 // const Seo = ({ seo }) => {
@@ -47,3 +47,5 @@
 // }
 
 // export default Seo
+
+export const obj = { hi: 'hi' }
