@@ -71,3 +71,20 @@ export const createFeaturedData = (post: Post) => {
 
   return { featuredObject, featuredImage }
 }
+
+export const createPostsData = (posts: Posts) => {
+  const postsData = posts.map((post) => {
+    const postData = {
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      image: getStrapiMedia(post.image),
+      tag: post.category.name,
+      date: dayjs(post.created_at).format('MMMM D, YYYY'),
+      id: post.id,
+    }
+    return postData
+  })
+
+  return postsData
+}

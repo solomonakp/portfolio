@@ -1,13 +1,21 @@
-import React, { ReactElement } from 'react'
-import Posts from '@blogComponents/blogObject'
-import PostDetails from '@blogComponents/PostDetails'
+import React, { FC } from 'react'
 
-function PostsContainer(): ReactElement {
+import PostDetails, { PostDetailsProps } from '@blogComponents/PostDetails'
+
+interface PostsContainerProps {
+  posts: PostDetailsProps[]
+}
+
+const PostsContainer: FC<PostsContainerProps> = ({ posts }) => {
   return (
     <div className="container">
       <div className="row">
-        {Posts.map((post, index) => (
-          <PostDetails {...post} key={index} className="col-12 col-md-6" />
+        {posts.map((post) => (
+          <PostDetails
+            {...post}
+            key={post.id}
+            className="col-12 col-md-6 d-block"
+          />
         ))}
       </div>
     </div>

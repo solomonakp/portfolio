@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Summary from '@layout/Summary'
 import useTheme from '@hooks/useTheme'
+import Link from 'next/link'
 
 export interface PostDetailsProps {
   title: string
@@ -12,17 +13,20 @@ export interface PostDetailsProps {
   imageWidth?: number
   imageHeight?: number
   className?: string
+  id: number
+  slug: string
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({
-  title = 'Handling social media crisis is much easier than you think. There’s just a way to it',
-  description = 'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
-  date = 'Jun 28, 2020',
-  tag = 'Development',
-  image = '/pictures/card.jpg',
+  title,
+  description,
+  date,
+  tag,
+  image,
   imageHeight = 330,
   imageWidth = 618,
   className,
+  slug,
 }) => {
   const {
     radius: { card },
@@ -31,53 +35,55 @@ const PostDetails: React.FC<PostDetailsProps> = ({
     media: { maxSm },
   } = useTheme()
   return (
-    <div className={className}>
-      <div className="post-tile">
-        <Image
-          src={image}
-          width={imageWidth}
-          height={imageHeight}
-          layout="responsive"
-          objectPosition="center"
-          objectFit="cover"
-          alt="post-image"
-        />
-        <p className="d-flex align-items-center">
-          <span className="tag">{tag}</span>
-          <span className="dot"></span>
-          <span className="date">{date}</span>
-        </p>
-        <h2>{title}</h2>
-        <Summary lines={3}>{description}</Summary>
-      </div>
-      <style jsx>{`
-        div {
-          margin-bottom: 2.5rem;
-          & :global(img) {
-            border-radius: ${card};
-          }
-          p {
-            margin-top: 1rem;
-            font-weight: 500;
-            .dot {
-              margin: 0 0.5rem;
-              width: 4px;
-              height: 4px;
-              border-radius: 50%;
-              background-color: ${primary};
-              display: inline-block;
+    <Link as={`/blog/${slug}`} href="/blog/[id]">
+      <a className={className}>
+        <div className="post-tile">
+          <Image
+            src={image}
+            width={imageWidth}
+            height={imageHeight}
+            layout="responsive"
+            objectPosition="center"
+            objectFit="cover"
+            alt="post-image"
+          />
+          <p className="d-flex align-items-center">
+            <span className="tag">{tag}</span>
+            <span className="dot"></span>
+            <span className="date">{date}</span>
+          </p>
+          <h2>{title}</h2>
+          <Summary lines={3}>{description}</Summary>
+        </div>
+        <style jsx>{`
+          div {
+            margin-bottom: 2.5rem;
+            & :global(img) {
+              border-radius: ${card};
+            }
+            p {
+              margin-top: 1rem;
+              font-weight: 500;
+              .dot {
+                margin: 0 0.5rem;
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background-color: ${primary};
+                display: inline-block;
+              }
+            }
+            h2 {
+              font-size: ${textHeading};
+              text-align: left !important;
+              @media (${maxSm}) {
+                font-size: ${resTextHeading};
+              }
             }
           }
-          h2 {
-            font-size: ${textHeading};
-            text-align: left !important;
-            @media (${maxSm}) {
-              font-size: ${resTextHeading};
-            }
-          }
-        }
-      `}</style>
-    </div>
+        `}</style>
+      </a>
+    </Link>
   )
 }
 

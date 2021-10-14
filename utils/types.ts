@@ -148,7 +148,7 @@ export interface BlogSeo {
 
 export interface PostSections {
   featuredPost: Post
-  Posts: Posts
+  posts: Posts
 }
 
 export type BlogResponse = [Posts, BlogSeo]
