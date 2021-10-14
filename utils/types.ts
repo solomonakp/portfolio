@@ -126,3 +126,29 @@ export interface Post {
 }
 
 export type Posts = Post[]
+
+export interface SeoType {
+  id: string
+  metaTitle: string
+  metaDescription: string
+  shareImage?: Image
+  siteName: string
+}
+
+export interface Hero {
+  id: string
+  title: string
+}
+
+export interface BlogSeo {
+  id: string
+  seo: SeoType
+  hero: Hero
+}
+
+export interface PostSections {
+  featuredPost: Post
+  Posts: Posts
+}
+
+export type BlogResponse = [Posts, BlogSeo]

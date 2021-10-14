@@ -1,8 +1,12 @@
 import Image from 'next/image'
-import React from 'react'
+import { FC } from 'react'
 import useTheme from '@hooks/useTheme'
 
-const FeaturedImage = () => {
+interface FeaturedImageProps {
+  src: string
+}
+
+const FeaturedImage: FC<FeaturedImageProps> = ({ src }) => {
   const {
     radius: { card },
   } = useTheme()
@@ -16,7 +20,7 @@ const FeaturedImage = () => {
           objectPosition="center"
           width={500}
           height={350}
-          src="/pictures/card.jpg"
+          src={src}
           alt=""
         />
       </div>

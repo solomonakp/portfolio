@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import AboutSection from '@components/indexComponents/AboutSection'
 import LandingSection from '@components/indexComponents/LandingSection'
 import ProjectsSection from '@components/indexComponents/ProjectsSection'
@@ -8,6 +7,9 @@ import { useEffect } from 'react'
 import anime from 'animejs'
 import { useMediaPredicate } from 'react-media-hook'
 import useTheme from '@hooks/useTheme'
+import Seo from '@components/Seo'
+import { portfolioSeo } from '@utils/config'
+portfolioSeo
 
 const Index = () => {
   useEffect(() => {
@@ -128,9 +130,7 @@ const Index = () => {
 
   return (
     <div id="index-page" className="page">
-      <Head>
-        <title>Chokor Solomon</title>
-      </Head>
+      <Seo {...portfolioSeo} />
       <FloatingContact />
       <LandingSection />
       <AboutSection />

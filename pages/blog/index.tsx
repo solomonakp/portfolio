@@ -1,30 +1,48 @@
-import Head from 'next/head'
 import React from 'react'
 import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
 import PostsSection from '@blogComponents/PostsSection'
 import { fetchAPI } from '@utils/functions'
-import { Posts } from '@utils/types'
+import { BlogSeo, BlogResponse, PostSections } from '@utils/types'
+import Seo from '@components/Seo'
+import { getPostSections } from '@utils/functions'
+import { BlogProvider } from '@context/blog/blogContext'
+import { GetStaticProps } from 'next'
 
-const Index = ({ posts }: { posts: Posts }) => {
-  console.log(posts, 'data from api')
+interface blogPageProps {
+  sections: PostSections
+  blogPage: BlogSeo
+}
+
+const Index = ({ sections, blogPage }: blogPageProps) => {
+  const { seo } = blogPage
+
+  console.log(sections, 'sections')
+
   return (
-    <div id="page" className="page-spacing">
-      <Head>
-        <title>Blog</title>
-      </Head>
-      <FeaturedPostSection />
-      <PostsSection />
-    </div>
+    <BlogProvider value={sections}>
+      <div id="page" className="page-spacing">
+        <Seo {...seo} />
+        <FeaturedPostSection />
+        <PostsSection />
+      </div>
+    </BlogProvider>
   )
 }
 
-export const getStaticProps = async () => {
-  const posts = await fetchAPI('articles')
+export const getStaticProps: GetStaticProps = async () => {
+  // Run API calls in parallel
+  const [posts, blogPage]: BlogResponse = await Promise.all([
+    fetchAPI('/articles'),
+    fetchAPI('/homepage'),
+  ])
+
+  const sections = getPostSections(posts)
 
   return {
     props: {
-      posts,
+      sections,
+      blogPage,
     },
     revalidate: 1,
   }

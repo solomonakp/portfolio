@@ -82,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           background-color: ${projectCardColor};
           border-radius: ${card};
           @media (${maxMd}) {
-            padding: 1.8 rem 0;
+            padding: 1.8rem 0;
           }
           .row {
             width: 100%;

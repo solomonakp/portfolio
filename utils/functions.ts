@@ -1,8 +1,9 @@
-import { Posts } from '@utils/types'
+import { Posts, Post, Image } from './types'
+import dayjs from 'dayjs'
 
 export function getStrapiURL(path = '') {
   return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337/'
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
   }${path}`
 }
 
@@ -10,13 +11,63 @@ export function getStrapiURL(path = '') {
 export async function fetchAPI(path: string) {
   const requestUrl = getStrapiURL(path)
   const response = await fetch(requestUrl)
-  const data: Posts = await response.json()
+  const data = await response.json()
   return data
 }
 
-export function getStrapiMedia(media) {
+export function getStrapiMedia(media: Image) {
   const imageUrl = media.url.startsWith('/')
     ? getStrapiURL(media.url)
     : media.url
   return imageUrl
+}
+
+export const sortPosts = (posts: Posts) => {
+  // sorts post from most recent to least recent
+  return posts.slice().sort((a, b) => {
+    const dateA = new Date(a.published_at)
+    const dateB = new Date(b.published_at)
+
+    return dateA < dateB ? 1 : -1
+  })
+}
+
+export const getPostSections = (posts: Posts) => {
+  // get featured  posts
+  const featuredPosts = posts.filter((post) => {
+    return post.featured
+  })
+
+  // get remaining posts
+  const notFeaturedPosts = posts.filter((post) => {
+    return post.featured !== true
+  })
+
+  //  sorting out featured posts to most recent posts
+  const sortedFeaturedPosts = sortPosts(featuredPosts)
+
+  // sorting out remaining posts
+  const sortedNotFeaturedPosts = sortPosts(notFeaturedPosts)
+
+  // get featured post object
+  const featuredPost = sortedFeaturedPosts[0]
+
+  return {
+    featuredPost,
+    posts: sortedNotFeaturedPosts,
+  }
+}
+
+export const createFeaturedData = (post: Post) => {
+  const featuredImage = getStrapiMedia(post.image)
+  const featuredObject = {
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    image: getStrapiMedia(post.author.picture),
+    author: post.author.name,
+    date: dayjs(post.created_at).format('MMMM D, YYYY'),
+  }
+
+  return { featuredObject, featuredImage }
 }
