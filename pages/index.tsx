@@ -9,9 +9,13 @@ import { useMediaPredicate } from 'react-media-hook'
 import useTheme from '@hooks/useTheme'
 import Seo from '@components/Seo'
 import { portfolioSeo } from '@utils/config'
-portfolioSeo
+import useReveal from '@hooks/useReveal'
 
 const Index = () => {
+  useReveal({
+    ref: 'footer',
+  })
+
   useEffect(() => {
     easeIn()
   }, [])

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Avatar from '@blogComponents/Avatar'
 
-interface PostInfoProps {
+export interface PostInfoProps {
   date?: string
   title?: string
   author?: string
@@ -11,11 +11,11 @@ interface PostInfoProps {
 }
 
 const PostInfo: React.FC<PostInfoProps> = ({
-  image = '/pictures/card.jpg',
-  title = 'Why Software Developers should work with Software Agencies',
-  author = 'Chokor Solomon',
-  avatar = '/pictures/avatar.jpeg',
-  date = 'Jun 28, 2020',
+  image,
+  title,
+  author,
+  avatar,
+  date,
 }) => {
   return (
     <div>

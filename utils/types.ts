@@ -128,11 +128,11 @@ export interface Post {
 export type Posts = Post[]
 
 export interface SeoType {
-  id: string
+  id?: string
   metaTitle: string
   metaDescription: string
   shareImage?: Image
-  siteName: string
+  siteName?: string
 }
 
 export interface Hero {
@@ -141,7 +141,7 @@ export interface Hero {
 }
 
 export interface BlogSeo {
-  id: string
+  id?: string
   seo: SeoType
   hero: Hero
 }

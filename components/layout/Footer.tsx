@@ -2,7 +2,6 @@ import React from 'react'
 import useTheme from '@hooks/useTheme'
 import FooterIcons from '@layout/FooterIcons'
 import { LayoutProps } from '@layout/Layout'
-import useReveal from '@hooks/useReveal'
 
 type FooterProps = LayoutProps
 
@@ -12,10 +11,6 @@ const Footer: React.FC<FooterProps> = (props) => {
     colors: { dark, primary },
     radius: { button },
   } = useTheme()
-
-  useReveal({
-    ref: 'footer',
-  })
 
   return (
     <footer>

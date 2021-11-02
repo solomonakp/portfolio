@@ -1,13 +1,13 @@
-import React from 'react'
-import PostInfo from '@postComponents/PostInfo'
+import React, { FC } from 'react'
+import PostInfo, { PostInfoProps } from '@postComponents/PostInfo'
 
-const PostDetailSection = () => {
+const PostDetailSection: FC<PostInfoProps> = (props) => {
   return (
     <section id="post-detail-section">
       <div className="container">
         <div className="row flex-column">
           <div className="col-12 col-md-10">
-            <PostInfo />
+            <PostInfo {...props} />
           </div>
         </div>
       </div>

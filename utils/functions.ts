@@ -88,3 +88,26 @@ export const createPostsData = (posts: Posts) => {
 
   return postsData
 }
+
+export const formatPost = (post: Post) => {
+  const postDetails = {
+    date: dayjs(post.created_at).format('MMMM D, YYYY'),
+    title: post.title,
+    author: post.author.name,
+    image: getStrapiMedia(post.image),
+    avatar: getStrapiMedia(post.author.picture),
+  }
+
+  const seo = {
+    metaTitle: post.title,
+    metaDescription: post.description,
+    shareImage: post.image,
+    article: true,
+  }
+
+  return {
+    postDetails,
+    content: post.content,
+    seo,
+  }
+}

@@ -13,8 +13,8 @@ export interface PostDetailsProps {
   imageWidth?: number
   imageHeight?: number
   className?: string
-  id: number
-  slug: string
+  id?: number
+  slug?: string
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({
@@ -35,7 +35,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
     media: { maxSm },
   } = useTheme()
   return (
-    <Link as={`/blog/${slug}`} href="/blog/[id]">
+    <Link as={`/blog/${slug}`} href="/blog/[post]">
       <a className={className}>
         <div className="post-tile">
           <Image
