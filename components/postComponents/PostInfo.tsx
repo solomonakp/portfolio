@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Avatar from '@blogComponents/Avatar'
+import useTheme from '@hooks/useTheme'
 
 export interface PostInfoProps {
   date?: string
@@ -17,6 +18,10 @@ const PostInfo: React.FC<PostInfoProps> = ({
   avatar,
   date,
 }) => {
+  const {
+    radius: { card },
+  } = useTheme()
+
   return (
     <div>
       <Image
@@ -26,7 +31,8 @@ const PostInfo: React.FC<PostInfoProps> = ({
         height="551"
         objectFit="cover"
         objectPosition="center"
-        alt=""
+        alt=" "
+        className="post-image"
       />
       <h2 className="h2">{title}</h2>
       <Avatar image={avatar} date={date} author={author} />
@@ -36,6 +42,9 @@ const PostInfo: React.FC<PostInfoProps> = ({
           width: 100%;
           margin-bottom: 1.5rem;
           margin-top: 20px;
+        }
+        :global(.post-image) {
+          border-radius: ${card};
         }
       `}</style>
     </div>
