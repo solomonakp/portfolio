@@ -5,7 +5,7 @@ import PostDetailSection from '@postComponents/PostDetailSection'
 // import ReadMoreSection from '@postComponents/ReadMoreSection'
 import { fetchAPI } from '@utils/functions'
 import { Post, Posts } from '@utils/types'
-import { formatPost } from '../../utils/functions'
+import { formatPost } from '@utils/functions'
 import Seo from '@components/Seo'
 
 interface PostComponentProps {

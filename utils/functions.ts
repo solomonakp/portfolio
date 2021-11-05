@@ -53,7 +53,7 @@ export const getPostSections = (posts: Posts) => {
   const featuredPost = sortedFeaturedPosts[0]
 
   return {
-    featuredPost,
+    featuredPost: featuredPost || null,
     posts: sortedNotFeaturedPosts,
   }
 }

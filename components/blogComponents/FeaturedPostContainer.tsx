@@ -14,7 +14,7 @@ const FeaturedPostContainer = () => {
   } = createFeaturedData(featuredPost)
 
   return (
-    <Link as={`/blog/${slug}`} href="/blog/[id]">
+    <Link as={`/blog/post/${slug}`} href="/blog/post/[slug]">
       <a className="container d-block">
         <div className="row">
           <FeaturedImage src={featuredImage} />

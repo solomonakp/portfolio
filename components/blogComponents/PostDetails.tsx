@@ -35,7 +35,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
     media: { maxSm },
   } = useTheme()
   return (
-    <Link as={`/blog/${slug}`} href="/blog/[slug]">
+    <Link as={`/blog/post/${slug}`} href="/blog/post/[slug]">
       <a className={className}>
         <div className="post-tile">
           <Image
