@@ -1,18 +1,16 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { getLayout } from '@layout/Layout'
 import PostBodySection from '@postComponents/PostBodySection'
 import PostDetailSection from '@postComponents/PostDetailSection'
 // import ReadMoreSection from '@postComponents/ReadMoreSection'
 import { fetchAPI } from '@utils/functions'
-import { Post, Posts } from '@utils/types'
+import { Posts } from '@utils/types'
 import { formatPost } from '@utils/functions'
 import Seo from '@components/Seo'
 
-interface PostComponentProps {
-  post: Post
-}
-
-const PostComponent = (props: PostComponentProps) => {
+const PostComponent = (
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) => {
   const { post } = props
 
   const { postDetails, seo, content } = formatPost(post)

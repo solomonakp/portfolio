@@ -32,31 +32,10 @@ export const sortPosts = (posts: Posts) => {
   })
 }
 
-export const getPostSections = (posts: Posts) => {
-  // get featured  posts
-  const featuredPosts = posts.filter((post) => {
-    return post.featured
-  })
-
-  // get remaining posts
-  const notFeaturedPosts = posts.filter((post) => {
-    return post.featured !== true
-  })
-
-  //  sorting out featured posts to most recent posts
-  const sortedFeaturedPosts = sortPosts(featuredPosts)
-
-  // sorting out remaining posts
-  const sortedNotFeaturedPosts = sortPosts(notFeaturedPosts)
-
-  // get featured post object
-  const featuredPost = sortedFeaturedPosts[0]
-
-  return {
-    featuredPost: featuredPost || null,
-    posts: sortedNotFeaturedPosts,
-  }
-}
+export const createPostsSections = (posts: Posts, featuredPost: Post) => ({
+  featuredPost: featuredPost,
+  posts: posts,
+})
 
 export const createFeaturedData = (post: Post) => {
   const featuredImage = getStrapiMedia(post.image)
