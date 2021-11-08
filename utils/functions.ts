@@ -7,6 +7,18 @@ export function getStrapiURL(path = '') {
   }${path}`
 }
 
+export const range = (from: number, to: number, step = 1) => {
+  let i = from
+  const range = []
+
+  while (i <= to) {
+    range.push(i)
+    i += step
+  }
+
+  return range
+}
+
 // Helper to make GET requests to Strapi
 export async function fetchAPI(path: string) {
   const requestUrl = getStrapiURL(path)

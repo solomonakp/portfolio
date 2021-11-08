@@ -49,6 +49,7 @@ interface Theme {
     button: string
     card: string
     chip: string
+    paginationRadius: string
   }
   shadow: {
     contact: string
@@ -132,6 +133,7 @@ const useTheme = () => {
       button: '5px',
       card: '8px',
       chip: '11px',
+      paginationRadius: '10px',
     },
     shadow: {
       contact: '0px 4px 20px rgba(0, 0, 0, 0.1)',

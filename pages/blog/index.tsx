@@ -8,7 +8,7 @@ import { BlogResponse } from '@utils/types'
 import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
-import { useRouter } from 'next/router'
+import Pagination from '@components/layout/Pagination'
 
 const Index = ({
   sections,
@@ -19,12 +19,6 @@ const Index = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { seo } = blogPage
 
-  const router = useRouter()
-
-  console.log(sections, 'sections')
-
-  const lastPage = Math.ceil(totalPosts / postPerPage)
-
   return (
     <BlogProvider value={sections}>
       <div id="page" className="page-spacing">
@@ -32,18 +26,12 @@ const Index = ({
         <FeaturedPostSection />
         <PostsSection />
       </div>
-      <button
-        onClick={() => router.push(`/blog?page=${page - 1}`)}
-        disabled={page <= 1}
-      >
-        previous
-      </button>
-      <button
-        onClick={() => router.push(`/blog?page=${page + 1}`)}
-        disabled={page === lastPage}
-      >
-        Next
-      </button>
+      <Pagination
+        currentPage={page}
+        totalItems={totalPosts}
+        itemsPerPage={postPerPage}
+        pageNeighbours={0}
+      />
     </BlogProvider>
   )
 }
@@ -80,11 +68,14 @@ export const getServerSideProps: GetServerSideProps = async ({
   // total post is  total post count  minus featured post
   const postsCount = totalPosts - 1
 
+  // convert page to number
+  const currentPage = Number(page)
+
   return {
     props: {
       sections,
       blogPage,
-      page: +page,
+      page: currentPage,
       totalPosts: postsCount,
       postPerPage,
     },
