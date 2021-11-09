@@ -1,10 +1,19 @@
-import React from 'react'
+import { FC } from 'react'
 import ReadMoreContainer from '@postComponents/ReadMoreContainer'
+import { Posts } from '@utils/types'
+import { createPostsData } from '@utils/functions'
 
-const ReadMoreSection = () => {
+interface ReadMoreSectionProps {
+  posts: Posts
+}
+
+const ReadMoreSection: FC<ReadMoreSectionProps> = (props) => {
+  const { posts } = props
+  const postData = createPostsData(posts)
+
   return (
     <section id="read-more-section">
-      <ReadMoreContainer />
+      <ReadMoreContainer posts={postData} />
     </section>
   )
 }

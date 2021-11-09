@@ -30,7 +30,7 @@ const Index = ({
         currentPage={page}
         totalItems={totalPosts}
         itemsPerPage={postPerPage}
-        pageNeighbours={0}
+        pageNeighbours={2}
       />
     </BlogProvider>
   )

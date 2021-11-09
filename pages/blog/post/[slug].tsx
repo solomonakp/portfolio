@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { getLayout } from '@layout/Layout'
 import PostBodySection from '@postComponents/PostBodySection'
 import PostDetailSection from '@postComponents/PostDetailSection'
-// import ReadMoreSection from '@postComponents/ReadMoreSection'
+import ReadMoreSection from '@postComponents/ReadMoreSection'
 import { fetchAPI } from '@utils/functions'
 import { Posts } from '@utils/types'
 import { formatPost } from '@utils/functions'
@@ -11,7 +11,7 @@ import Seo from '@components/Seo'
 const PostComponent = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
-  const { post } = props
+  const { post, morePosts } = props
 
   const { postDetails, seo, content } = formatPost(post)
 
@@ -20,7 +20,7 @@ const PostComponent = (
       <Seo {...seo} />
       <PostDetailSection {...postDetails} />
       <PostBodySection content={content} />
-      {/* <ReadMoreSection /> */}
+      <ReadMoreSection posts={morePosts} />
     </div>
   )
 }
@@ -41,8 +41,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const posts: Posts = await fetchAPI(`/articles?slug=${params.slug}`)
 
+  const post = posts[0]
+
+  const morePosts: Posts = await fetchAPI(
+    `/articles?slug_ne=${post.slug}&_limit=${3}&_sort=published_at:DESC`
+  )
+
   return {
-    props: { post: posts[0] },
+    props: { post, morePosts },
     revalidate: 1,
   }
 }

@@ -153,4 +153,4 @@ export interface PostSections {
 
 export type PostsCount = number
 
-export type BlogResponse = [Posts, BlogSeo, PostsCount, Posts]
+export type BlogResponse = [BlogSeo, PostsCount, Posts]
