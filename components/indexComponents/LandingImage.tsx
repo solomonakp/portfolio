@@ -15,7 +15,7 @@ const LandingImage = () => {
           objectFit="contain"
           objectPosition="top"
           alt=""
-          priority={true}
+          priority
           placeholder="blur"
         />
         <Image

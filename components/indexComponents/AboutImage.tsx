@@ -2,10 +2,12 @@ import Image from 'next/image'
 import React from 'react'
 import useTheme from '@hooks/useTheme'
 import working from 'public/pictures/working.jpg'
+import { toBase64, shimmer } from '@utils/functions'
 
 const AboutImage = () => {
   const {
     media: { maxSm },
+    colors: { projectCardColor },
   } = useTheme()
   return (
     <div className="col-md-6 image-space">
@@ -17,6 +19,9 @@ const AboutImage = () => {
           src={working}
           alt="Chokor Solomon"
           placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(540, 426, projectCardColor)
+          )}`}
         />
       </div>
       <style jsx>{`

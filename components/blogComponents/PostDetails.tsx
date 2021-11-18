@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Summary from '@layout/Summary'
 import useTheme from '@hooks/useTheme'
 import Link from 'next/link'
+import { toBase64, shimmer } from '@utils/functions'
 
 export interface PostDetailsProps {
   title: string
@@ -30,7 +31,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
 }) => {
   const {
     radius: { card },
-    colors: { primary },
+    colors: { primary, projectCardColor },
     size: { textHeading, resTextHeading },
     media: { maxSm },
   } = useTheme()
@@ -46,6 +47,10 @@ const PostDetails: React.FC<PostDetailsProps> = ({
             objectPosition="center"
             objectFit="cover"
             alt="post-image"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(imageWidth, imageHeight, projectCardColor)
+            )}`}
           />
           <p className="d-flex align-items-center">
             <span className="tag">{tag}</span>

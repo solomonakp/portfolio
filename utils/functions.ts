@@ -102,3 +102,19 @@ export const formatPost = (post: Post) => {
     seo,
   }
 }
+
+export const shimmer = (w, h, color) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs id="g">
+    <filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" id="r" />
+    </filter>
+  </defs>
+  <rect width="${w}" height="${h}" fill="${color}" filter="url(#f1)"/>
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="stdDeviation" values="0;50;0" dur="1s" repeatCount="indefinite"    calcMode="paced" /></svg>`
+
+export const toBase64 = (str) =>
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str)

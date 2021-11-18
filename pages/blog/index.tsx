@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   query: { page = 1 },
 }) => {
   //  post to be displayed per page
-  const postPerPage = 3
+  const postPerPage = 10
 
   //   start position to query data from
   const start = +page === 1 ? 0 : (+page - 1) * postPerPage

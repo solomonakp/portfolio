@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-
+import { toBase64, shimmer } from '@utils/functions'
+import useTheme from '@hooks/useTheme'
 interface Props {
   author: string
   date: string
@@ -10,6 +11,10 @@ interface Props {
 }
 
 const Avatar: React.FC<Props> = ({ author, date, image, ...props }) => {
+  const {
+    colors: { projectCardColor },
+  } = useTheme()
+
   return (
     <div className="d-flex align-items-center" {...props}>
       <div className="avatar d-flex justify-content-center align-items-center">
@@ -21,6 +26,10 @@ const Avatar: React.FC<Props> = ({ author, date, image, ...props }) => {
           objectPosition="center"
           layout="fixed"
           alt={`picture of ${author}`}
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(60, 60, projectCardColor)
+          )}`}
         />
       </div>
       <div className="avatar-text">

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 import useTheme from '@hooks/useTheme'
-
+import { toBase64, shimmer } from '@utils/functions'
 interface FeaturedImageProps {
   src: string
 }
@@ -9,6 +9,7 @@ interface FeaturedImageProps {
 const FeaturedImage: FC<FeaturedImageProps> = ({ src }) => {
   const {
     radius: { card },
+    colors: { projectCardColor },
   } = useTheme()
 
   return (
@@ -22,6 +23,11 @@ const FeaturedImage: FC<FeaturedImageProps> = ({ src }) => {
           height={350}
           src={src}
           alt=""
+          priority
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(500, 350, projectCardColor)
+          )}`}
         />
       </div>
       <style jsx>{`

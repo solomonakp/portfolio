@@ -4,6 +4,7 @@ import ProjectLinks from '@indexComponents/ProjectLinks'
 import Chip from '@indexComponents/Chip'
 import useTheme from '@hooks/useTheme'
 import Summary from '@layout/Summary'
+import { toBase64, shimmer } from '@utils/functions'
 
 export interface ProjectCardProps {
   tags: string[]
@@ -29,6 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       projectCardColor,
       projectParagraphColor,
       projectCardHoverColor,
+      projectLoaderColor,
     },
     size: { textHeading, resTextHeading },
     radius: { card },
@@ -50,7 +52,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 alt="Project thumbnail"
                 objectFit="cover"
                 objectPosition="top"
-                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(564, 344, projectLoaderColor)
+                )}`}
               />
             </div>
           </div>

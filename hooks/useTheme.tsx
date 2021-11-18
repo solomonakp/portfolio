@@ -23,6 +23,7 @@ interface Theme {
     projectParagraphColor: string
     projectCardHoverColor: string
     projectIconColor: string
+    projectLoaderColor: string
   }
   spacing: {
     sectionSpace: string
@@ -107,6 +108,7 @@ const useTheme = () => {
       projectCardHoverColor: '#5A6984',
       projectParagraphColor: '#E3ECFA',
       projectIconColor: '#B2B9CD',
+      projectLoaderColor: '#7F90AE',
     },
     spacing: {
       sectionSpace: '9.375rem',
