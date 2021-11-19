@@ -4,9 +4,11 @@ import useTheme from '@hooks/useTheme'
 import { toBase64, shimmer } from '@utils/functions'
 interface FeaturedImageProps {
   src: string
+  alt: string
+  title: string
 }
 
-const FeaturedImage: FC<FeaturedImageProps> = ({ src }) => {
+const FeaturedImage: FC<FeaturedImageProps> = ({ src, alt, title }) => {
   const {
     radius: { card },
     colors: { projectCardColor },
@@ -22,7 +24,7 @@ const FeaturedImage: FC<FeaturedImageProps> = ({ src }) => {
           width={500}
           height={350}
           src={src}
-          alt=""
+          alt={alt ? alt : `Image for Blog Post titled:${title}`}
           priority
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(

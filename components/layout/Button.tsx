@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   outline = false,
   size = 16,
-  bgColor = '#EF4E3C',
+  bgColor = 'primary',
   radius = 5,
   id,
   ...props
@@ -60,7 +60,6 @@ const Button: React.FC<ButtonProps> = ({
             ? light
             : bgColor};
           color: ${outline ? btnColor : lightColor};
-
           &:hover,
           &:focus {
             transition: ${buttonTransitionOut};

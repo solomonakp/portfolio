@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { getStrapiMedia } from '@utils/functions'
-import { SeoType } from '../utils/types'
+import { SeoType } from '@utils/types'
 import { FC } from 'react'
 
 interface SeoProps extends SeoType {

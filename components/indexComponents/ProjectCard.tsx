@@ -13,6 +13,7 @@ export interface ProjectCardProps {
   thumbnail: StaticImageData
   repository: string
   site: string
+  index: number
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({

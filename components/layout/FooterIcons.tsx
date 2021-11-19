@@ -16,17 +16,65 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
       className=" justify-content-center align-items-center"
       id="footer-icons"
     >
-      <IconLink href={'https://github.com/solomonakp'}>
-        <Github width={24} height={24} fill={iconColor} id="github" />
+      <IconLink
+        href={'https://github.com/solomonakp'}
+        aria-labelledby="footer-github-label"
+      >
+        <Github
+          width={24}
+          height={24}
+          fill={iconColor}
+          id="github"
+          aria-hidden
+        />
+        <span id="footer-github-label" hidden>
+          Github
+        </span>
       </IconLink>
-      <IconLink href={'https://www.linkedin.com/in/chokor-solomon-110177131/'}>
-        <Linkedin width={24} height={24} fill={iconColor} id="linkedin" />
+      <IconLink
+        href={'https://www.linkedin.com/in/chokor-solomon-110177131/'}
+        aria-labelledby="footer-linkedin-label"
+      >
+        <Linkedin
+          width={24}
+          height={24}
+          fill={iconColor}
+          id="linkedin"
+          aria-hidden
+        />
+        <span id="footer-linkedin-label" hidden>
+          Linkedin
+        </span>
       </IconLink>
-      <IconLink href={'https://twitter.com/dev_chuck'}>
-        <Twitter width={24} height={24} fill={iconColor} id="twitter" />
+      <IconLink
+        href={'https://twitter.com/dev_chuck'}
+        aria-labelledby="footer-twitter-label"
+      >
+        <Twitter
+          width={24}
+          height={24}
+          fill={iconColor}
+          id="twitter"
+          aria-hidden
+        />
+        <span id="footer-twitter-label" hidden>
+          Twitter
+        </span>
       </IconLink>
-      <IconLink href={'tel:+2347036583505'}>
-        <Telephone width={24} height={24} fill={iconColor} id="telephone" />
+      <IconLink
+        href={'tel:+2347036583505'}
+        aria-labelledby="footer-telephone-label"
+      >
+        <Telephone
+          width={24}
+          height={24}
+          fill={iconColor}
+          id="telephone"
+          aria-hidden
+        />
+        <span id="footer-telephone-label" hidden>
+          Telephone
+        </span>
       </IconLink>
 
       <style jsx>{`

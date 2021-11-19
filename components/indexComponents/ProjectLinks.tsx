@@ -6,9 +6,14 @@ import useTheme from '@hooks/useTheme'
 interface ProjectLinksProps {
   repository: string
   site: string
+  index: number
 }
 
-const ProjectLinks: React.FC<ProjectLinksProps> = ({ repository, site }) => {
+const ProjectLinks: React.FC<ProjectLinksProps> = ({
+  repository,
+  site,
+  index,
+}) => {
   const {
     colors: { projectIconColor, primary },
     media: { minMd },
@@ -16,23 +21,34 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({ repository, site }) => {
   return (
     <div className="link-container">
       {repository ? (
-        <IconLink href={repository}>
+        <IconLink
+          href={repository}
+          aria-labelledby={`project-github-label-${index}`}
+        >
           <Github
             width="24"
             height="24"
             id="project-git"
             fill={projectIconColor}
+            aria-hidden
           />
+          <span id={`project-github-label-${index}`} hidden>
+            Github
+          </span>
         </IconLink>
       ) : null}
       {site ? (
-        <IconLink href={site}>
+        <IconLink href={site} aria-labelledby={`live-label-${index}`}>
           <MaxWindow
             width="24"
             height="24"
             id="project-window"
             stroke={projectIconColor}
+            aria-hidden
           />
+          <span id={`live-label-${index}`} hidden>
+            Live Version
+          </span>
         </IconLink>
       ) : null}
       <style jsx>

@@ -14,7 +14,7 @@ const PostBody = (props: PostBodyProps) => {
   } = useTheme()
 
   return (
-    <article className="post">
+    <article className="post" role="article">
       <ReactMarkdown className="post-content">{content}</ReactMarkdown>
       <style jsx>{`
         .post {

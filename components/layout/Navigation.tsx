@@ -5,7 +5,7 @@ import { toggleOpen } from '@context/ui/uiActions'
 import { animationCallback } from '@hooks/useNavAnimation'
 import { useRouter } from 'next/router'
 import { Dispatch } from '@context/ui/uiTypes'
-
+import { useUi } from '@context/ui/uiContext'
 interface NavigationProps {
   open: boolean
   theme: boolean
@@ -105,6 +105,8 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
     effects: { colorTrans },
   } = useTheme()
 
+  const {} = useUi()
+
   return (
     <div
       className="d-flex justify-content-center align-items-center "
@@ -124,6 +126,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
                     : router.prefetch('/')
                 }
                 data-item={text}
+                role="link"
               >
                 {text}
               </a>

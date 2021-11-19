@@ -13,7 +13,7 @@ const LandingText = () => {
         </p>
         <div className="d-flex">
           <div className="contact-btn-container">
-            <Button>Contact me</Button>
+            <Button bgColor="primary">Contact me</Button>
           </div>
           <div className="download-btn-btn-container">
             <Button outline={true}>Download Cv</Button>

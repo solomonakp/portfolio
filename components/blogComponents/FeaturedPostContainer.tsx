@@ -9,15 +9,15 @@ const FeaturedPostContainer = () => {
   const { featuredPost } = useBlog()
 
   const {
-    featuredImage,
     featuredObject: { slug, ...rest },
+    featuredImageData,
   } = createFeaturedData(featuredPost)
 
   return (
     <Link as={`/blog/post/${slug}`} href="/blog/post/[slug]">
       <a className="container d-block">
         <div className="row">
-          <FeaturedImage src={featuredImage} />
+          <FeaturedImage {...featuredImageData} />
           <FeaturedPostDetails {...rest} />
         </div>
       </a>

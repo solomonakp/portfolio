@@ -25,10 +25,10 @@ const Hamburger: React.FC<HamburgerProps> = (props) => {
     <button
       className="menu-btn d-flex d-lg-none justify-content-center align-items-center"
       type="button"
-      aria-label="Menu"
       aria-controls="navigation"
       aria-expanded={isOpen}
       onClick={handleMenuToggle}
+      role="button"
     >
       <span className="menu-box align-self-start">
         <span className="menu-inner"></span>

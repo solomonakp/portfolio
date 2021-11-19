@@ -32,7 +32,7 @@ const PostInfo: React.FC<PostInfoProps> = ({
         height="551"
         objectFit="cover"
         objectPosition="center"
-        alt=" "
+        alt={`Image for Blog Post titled:${title}`}
         className="post-image"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(
           shimmer(1074, 551, projectCardColor)

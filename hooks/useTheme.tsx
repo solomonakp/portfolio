@@ -91,17 +91,17 @@ const useTheme = () => {
       textFont: 'Work Sans',
     },
     colors: {
-      primary: '#EF4E3C',
+      primary: '#CC4233',
       secondary: isDark ? '#4BB3FD' : '#2630A3',
       light: isDark ? '#001524' : '#FFFFFC', // based on state
       iconColor: isDark ? '#B2B9CD' : '#616F94', // based on state
       cardHover: isDark ? '#1B2E43' : '#ECF1F4', // based on state
       dark: isDark ? '#FFFFFC' : '#001524 ',
-      outLine: isDark ? '#616F94' : '#EF4E3C',
-      btnColor: isDark ? '#FFFFFC' : '#EF4E3C',
+      outLine: isDark ? '#616F94' : '#CC4233',
+      btnColor: isDark ? '#FFFFFC' : '#CC4233',
       lightColor: '#FFFFFC',
       darkColor: '#001524',
-      hover: isDark ? '#EF4E3C' : '#2630A3',
+      hover: isDark ? '#CC4233' : '#2630A3',
       navColor: isDark ? 'rgba(0, 21, 36,0.5)' : 'rgba(255, 255, 252,0.5)',
       navOverlay: isDark ? '#00243d' : '#f4f3f1',
       projectCardColor: '#3B465A',
@@ -128,7 +128,7 @@ const useTheme = () => {
       mobileMenu: '2rem',
     },
     border: {
-      buttonBorder: isDark ? '1px solid #B2B9CD' : '1px solid #EF4E3C',
+      buttonBorder: isDark ? '1px solid #B2B9CD' : '1px solid #CC4233',
       chipBorder: '1px solid #B2B9CD',
     },
     radius: {

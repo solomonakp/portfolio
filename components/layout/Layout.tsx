@@ -34,7 +34,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
       <Head>
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
-      <Header theme={true} logo={<Logo width={55} height={43} />} />
+      <Header
+        theme={true}
+        logo={
+          <Logo width={55} height={43} aria-hidden="true" focusable={false} />
+        }
+      />
       <main>{children}</main>
 
       <Footer isMain={isMain} />

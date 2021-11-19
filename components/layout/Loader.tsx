@@ -53,7 +53,7 @@ const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
         role="presentation"
         aria-labelledby="title desc"
       >
-        <title id="title">Chokor solomon`&apos;`s logo </title>
+        <title id="title">Dev Chuck`&apos;`s logo </title>
         <desc id="desc">
           An orange and blue log which forms the letter dc it is uses as a
           loader(placeholder) while the site is data is being prepared
@@ -61,7 +61,7 @@ const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
         <path
           d="M158.15 63.72c-37.65-30-60.65-30.31-68.51-31.81C65.5 27.3 29.5 30.72 29.5 30.72v217.29l59-.29c4.09-.36 54 .28 79-43 17.18-29.76-2-91 35-133 39.45-44.79 116-60 158-13"
           fill="none"
-          stroke="#EF4E3C"
+          stroke="#CC4233"
           strokeMiterlimit="10"
           strokeWidth="59"
           ref={primary}

@@ -142,6 +142,7 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
         ref={ref}
         title="website theme button"
         type="button"
+        aria-labelledby="theme-label"
       >
         <svg
           version="1.1"
@@ -151,7 +152,11 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
           role="presentation"
           width={50}
           height={50}
+          aria-hidden={true}
         >
+          <span hidden id="theme-label">
+            switches to light or dark mode
+          </span>
           <path ref={sunCircle} d={initialPath} id="circle" />
 
           <g ref={sunTickGroup} fill="#FFD54F">

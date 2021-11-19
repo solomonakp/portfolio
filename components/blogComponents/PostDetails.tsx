@@ -46,7 +46,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
             layout="responsive"
             objectPosition="center"
             objectFit="cover"
-            alt="post-image"
+            alt={`Image for Blog Post titled:${title}`}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(imageWidth, imageHeight, projectCardColor)

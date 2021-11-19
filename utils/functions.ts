@@ -34,23 +34,12 @@ export function getStrapiMedia(media: Image) {
   return imageUrl
 }
 
-export const sortPosts = (posts: Posts) => {
-  // sorts post from most recent to least recent
-  return posts.slice().sort((a, b) => {
-    const dateA = new Date(a.published_at)
-    const dateB = new Date(b.published_at)
-
-    return dateA < dateB ? 1 : -1
-  })
-}
-
 export const createPostsSections = (posts: Posts, featuredPost: Post) => ({
   featuredPost: featuredPost,
   posts: posts,
 })
 
 export const createFeaturedData = (post: Post) => {
-  const featuredImage = getStrapiMedia(post.image)
   const featuredObject = {
     slug: post.slug,
     title: post.title,
@@ -59,8 +48,13 @@ export const createFeaturedData = (post: Post) => {
     author: post.author.name,
     date: dayjs(post.created_at).format('MMMM D, YYYY'),
   }
+  const featuredImageData = {
+    src: getStrapiMedia(post.image),
+    alt: post.image.alternativeText,
+    title: post.title,
+  }
 
-  return { featuredObject, featuredImage }
+  return { featuredObject, featuredImageData }
 }
 
 export const createPostsData = (posts: Posts) => {

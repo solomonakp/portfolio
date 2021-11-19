@@ -57,10 +57,17 @@ export const Header: React.FC<HeaderProps> = ({ logo, theme }) => {
   return (
     <header ref={header}>
       <div className="container-fluid">
-        <nav className="d-flex align-items-center">
+        <nav
+          className="d-flex align-items-center"
+          role="navigation"
+          aria-label="Main Menu"
+        >
           <Link href="/" scroll={true}>
-            <a id="nav-logo" className="mr-auto">
+            <a id="nav-logo" className="mr-auto" aria-labelledby="home-label">
               {logo}
+              <span id="home-label" hidden>
+                Home
+              </span>
             </a>
           </Link>
 

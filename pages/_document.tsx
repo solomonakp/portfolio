@@ -14,7 +14,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    // to avoid flickering screen on darkmode for use-dark-mode hook
     const setInitialTheme = `
     (function() {
   // Change these if you use something different in your hook.
@@ -56,8 +55,9 @@ class MyDocument extends Document {
   `
 
     return (
-      <Html>
+      <Html lang="en">
         <Head>
+          <title>Dev Chuck's Personal Portfolio and Blog</title>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

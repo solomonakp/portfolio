@@ -61,40 +61,20 @@ export interface Formats {
   small: Small
 }
 
-export interface Picture {
-  id: number
-  name: string
-  alternativeText?: any
-  caption?: any
-  width: number
-  height: number
-  formats: Formats
-  hash: string
-  ext: string
-  mime: string
-  size: number
-  url: string
-  previewUrl?: any
-  provider: string
-  provider_metadata?: any
-  created_at: Date
-  updated_at: Date
-}
-
 export interface Author {
   id: number
   name: string
   email: string
   created_at: Date
   updated_at: Date
-  picture: Picture
+  picture: Image
 }
 
 export interface Image {
   id: number
   name: string
-  alternativeText?: any
-  caption?: any
+  alternativeText?: string
+  caption?: string
   width: number
   height: number
   formats: Formats
