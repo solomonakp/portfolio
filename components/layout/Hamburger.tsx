@@ -29,10 +29,14 @@ const Hamburger: React.FC<HamburgerProps> = (props) => {
       aria-expanded={isOpen}
       onClick={handleMenuToggle}
       role="button"
+      aria-labelledby="toggle-menu-label"
     >
-      <span className="menu-box align-self-start">
+      <span className="menu-box align-self-start" aria-hidden>
         <span className="menu-inner"></span>
       </span>
+      <div id="toggle-menu-label" hidden>
+        Toggle Menu
+      </div>
       <style jsx>{`
         .menu-btn {
           cursor: pointer;
