@@ -26,6 +26,8 @@ const LandingImage = () => {
           alt="Chokor Solomon"
           priority={true}
           placeholder="blur"
+          objectFit="cover"
+          objectPosition={'center'}
         />
       </div>
       <style jsx>{`

@@ -14,8 +14,8 @@ const AboutImage = () => {
       <div className="left-container">
         <Image
           layout="intrinsic"
-          width="540"
-          height="426"
+          width="1368"
+          height="912"
           src={working}
           alt="Chokor Solomon"
           placeholder="blur"
