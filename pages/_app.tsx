@@ -1,10 +1,10 @@
-import React from 'react';
-import { wrapper } from '../redux/store';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.css';
+import React from 'react'
+import '@styles/globals.css'
 
-const MyApp = ({ Component, pageProps }) => (
-  <Component {...pageProps}></Component>
-);
+const MyApp = ({ Component, pageProps }) => {
+  const getLayout = Component.getLayout || ((page) => page)
 
-export default wrapper.withRedux(MyApp);
+  return getLayout(<Component {...pageProps}></Component>, Component.title)
+}
+
+export default MyApp

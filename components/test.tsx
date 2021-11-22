@@ -1,9 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-interface Props {}
+const test = () => {
+  return <div></div>
+}
 
-const test: React.PropsWithChildren<Props> = (props) => {
-  return <div></div>;
-};
-
-export default test;
+export default test
