@@ -1,8 +1,6 @@
-import { ProjectCardProps } from '@indexComponents/ProjectCard'
-
 import thumbnail from 'public/pictures/project.jpg'
 
-const projects: ProjectCardProps[] = [
+const projects = [
   {
     title: 'Portfolio site with Blog ',
     description:
