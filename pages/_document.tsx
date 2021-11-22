@@ -57,7 +57,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Dev Chuck's Personal Portfolio and Blog</title>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
