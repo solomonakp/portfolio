@@ -1,14 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
-import background from 'public/pictures/imagebackground.png'
 
-import me from 'public/pictures/me.png'
+import mejpg from 'public/pictures/me.jpg'
 
 const LandingImage = () => {
   return (
     <div className="d-none d-lg-block col-12 col-md-6 col-lg-5 image-space">
       <div className="image-container">
-        <Image
+        {/* <Image
           className="back-image"
           layout="fill"
           src={background}
@@ -17,10 +16,21 @@ const LandingImage = () => {
           alt=""
           priority
           placeholder="blur"
-        />
-        <Image
+        /> */}
+        {/* <Image
           layout="responsive"
           src={me}
+          width="444.985"
+          height="444.985"
+          alt="Chokor Solomon"
+          priority={true}
+          placeholder="blur"
+          objectFit="cover"
+          objectPosition="center"
+        /> */}
+        <Image
+          layout="responsive"
+          src={mejpg}
           width="444.985"
           height="444.985"
           alt="Chokor Solomon"
