@@ -8,6 +8,7 @@ const AboutImage = () => {
   const {
     media: { maxSm },
     colors: { projectCardColor },
+    radius: { button },
   } = useTheme()
   return (
     <div className="col-md-6 image-space">
@@ -22,6 +23,7 @@ const AboutImage = () => {
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(540, 426, projectCardColor)
           )}`}
+          className="about-image"
         />
       </div>
       <style jsx>{`
@@ -29,6 +31,9 @@ const AboutImage = () => {
           @media (${maxSm}) {
             order: 3;
           }
+        }
+        :global(.about-image) {
+          border-radius: ${button};
         }
       `}</style>
     </div>
