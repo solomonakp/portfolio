@@ -7,8 +7,8 @@ const LandingText = () => {
       <div className="left-container d-flex flex-column justify-content-center">
         <h1>Hello World &#128075;, I am Solomon</h1>
         <p>
-          I am Front-end engineer/developer currently Based in Abuja, Nigeria. I
-          love building creative, accessible and interactive web applications.
+          I am Front-end engineer currently Based in Abuja, Nigeria. I love
+          building creative, accessible and interactive web applications.
           Front-end development is not just a job to me but a culture.
         </p>
         <div className="d-flex">
