@@ -5,11 +5,11 @@ const LandingText = () => {
   return (
     <div className="col-12 col-lg-6">
       <div className="left-container d-flex flex-column justify-content-center">
-        <h1>Hire Freelancers With better reviews</h1>
+        <h1>Hello World &#128075;, I am Solomon</h1>
         <p>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud ametnostrud amet.
+          I am Front-end engineer/developer currently Based in Abuja, Nigeria. I
+          love building creative, accessible and interactive web applications.
+          Front-end development is not just a job to me but a culture.
         </p>
         <div className="d-flex">
           <div className="contact-btn-container">
