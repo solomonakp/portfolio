@@ -5,41 +5,43 @@ import starwars from 'public/pictures/starwars.png'
 
 const projects = [
   {
-    title: 'Atara',
+    title: 'AtaraPay',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum at et nibh gravida ullamcorper mauris, arcu eget duis. Amet et tristique condimentum nisi, lectus',
-    tags: ['React', 'Firebase', 'Next.js', 'bootstrap'],
+      'AtaraPay is an Escrow platform that allows buyers and sellers to perform transactions with zero risk.',
+    tags: ['HTML', 'CSS', 'javaScript', 'bootstrap'],
     thumbnail: atara,
-    repository: '/',
-    site: '/',
+    site: 'https://www.atarapay.com/',
   },
   {
     title: 'Star wars Info',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum at et nibh gravida ullamcorper mauris, arcu eget duis. Amet et tristique condimentum nisi, lectus',
-    tags: ['React', 'Firebase', 'Next.js', 'bootstrap'],
+      'Yes I know I am a geek, channeling my geekiness I decided to creat small web application that gives information and statistics on star wars characters and planets.',
+    tags: ['React', 'SASS Modules', 'Redux', 'SWAPI'],
     thumbnail: starwars,
-    repository: '/',
-    site: '/',
+    repository: 'https://github.com/solomonakp/Starwars-info',
+    site: 'https://starwars-info-neon.vercel.app/',
+    figma:
+      'https://www.figma.com/file/OEvEm5yotJwoFdaH5hdQvg/Untitled?node-id=0%3A1',
   },
   {
-    title: 'Lumia',
+    title: 'Lumia.ng',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum at et nibh gravida ullamcorper mauris, arcu eget duis. Amet et tristique condimentum nisi, lectus',
-    tags: ['React', 'Firebase', 'Next.js', 'bootstrap'],
+      'Lumia.ng is a web application that reduces the hassle of purchasing electricity units for millions of Nigerian.',
+    tags: ['Vue', 'CSS', 'bootstrap'],
     thumbnail: lumia,
-    repository: '/',
-    site: '/',
+    site: 'https://lumia.ng/',
   },
 
   {
-    title: 'Portfolio site with Blog ',
+    title: 'Portfolio with Blog ',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum at et nibh gravida ullamcorper mauris, arcu eget duis. Amet et tristique condimentum nisi, lectus',
-    tags: ['React', 'Firebase', 'Next.js', 'bootstrap'],
+      'This project was build to showcase my work and document my journey as a software engineer.',
+    tags: ['TypeScript', 'Next.js', 'Strapi', 'Anime.js', 'bootstrap'],
     thumbnail: portfolio,
-    repository: '/',
-    site: '/',
+    repository: 'https://github.com/solomonakp/portfolio',
+    site: 'https://www.devchuck.me/',
+    figma:
+      'figma.com/file/3lqHLfVz7F2VUKUqoSb39l/Chuki-Port-(Copy)?node-id=2215%3A408',
   },
 ]
 

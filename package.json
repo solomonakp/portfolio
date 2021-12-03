@@ -19,7 +19,6 @@
     "react-dom": "^17.0.2",
     "react-markdown": "^7.0.1",
     "react-media-hook": "^0.4.9",
-    "react-ripples": "^2.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "scrollreveal": "^4.0.9",

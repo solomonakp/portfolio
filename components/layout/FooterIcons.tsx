@@ -19,6 +19,7 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
       <IconLink
         href={'https://github.com/solomonakp'}
         aria-labelledby="footer-github-label"
+        target="_blank"
       >
         <Github
           width={24}
@@ -34,6 +35,7 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
       <IconLink
         href={'https://www.linkedin.com/in/chokor-solomon-110177131/'}
         aria-labelledby="footer-linkedin-label"
+        target="_blank"
       >
         <Linkedin
           width={24}
@@ -49,6 +51,7 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
       <IconLink
         href={'https://twitter.com/dev_chuck'}
         aria-labelledby="footer-twitter-label"
+        target="_blank"
       >
         <Twitter
           width={24}
@@ -84,19 +87,20 @@ const FooterIcons: React.FC<FooterIconsProps> = ({ isMain }) => {
             display: ${isMain ? 'none !important' : 'flex'};
           }
         }
-        div :global(a) {
+        #footer-icons :global(a) {
           margin-right: 1.5rem;
           &:last-of-type {
             margin-right: 0;
           }
         }
+
         :global(#footer-icons a:hover svg, #footer-icons
             a:active
             svg, #footer-icons a:focus svg) {
           fill: ${hover};
           transition: ${fillTrans};
         }
-        div :global(#github, #linkedin, #twitter, #telephone) {
+        #footer-icons :global(#github, #linkedin, #twitter, #telephone) {
           transition: ${fillTrans};
         }
       `}</style>

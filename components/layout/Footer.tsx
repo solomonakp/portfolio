@@ -2,10 +2,15 @@ import React from 'react'
 import useTheme from '@hooks/useTheme'
 import FooterIcons from '@layout/FooterIcons'
 import { LayoutProps } from '@layout/Layout'
+import useReveal from '@hooks/useReveal'
 
 type FooterProps = LayoutProps
 
 const Footer: React.FC<FooterProps> = (props) => {
+  useReveal({
+    ref: 'footer',
+  })
+
   const {
     size: { sectionHeading, textHeading },
     colors: { dark, primary },
@@ -44,12 +49,6 @@ const Footer: React.FC<FooterProps> = (props) => {
           position: relative;
           cursor: pointer;
 
-          &:hover {
-            &::before {
-              transform: perspective(700px) scale3d(1, 1, 1);
-            }
-          }
-
           &::before {
             content: '';
             display: block;
@@ -58,10 +57,22 @@ const Footer: React.FC<FooterProps> = (props) => {
             height: 3px;
             left: 0;
             right: 0;
-            transform: perspective(500px) scale3d(0, 1, 1);
+            transform: perspective(500px) scale3d(1, 1, 1);
             transition: transform 200ms linear;
             border-radius: ${button};
             background-color: ${primary};
+          }
+
+          &:hover {
+            &::before {
+              transform: perspective(700px) scale3d(0, 1, 1);
+            }
+          }
+          &:focus,
+          active {
+            &::before {
+              transform: perspective(700px) scale3d(1, 1, 1);
+            }
           }
         }
       `}</style>

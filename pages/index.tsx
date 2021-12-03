@@ -9,13 +9,8 @@ import { useMediaPredicate } from 'react-media-hook'
 import useTheme from '@hooks/useTheme'
 import Seo from '@components/Seo'
 import { portfolioSeo } from '@utils/config'
-import useReveal from '@hooks/useReveal'
 
 const Index = () => {
-  useReveal({
-    ref: 'footer',
-  })
-
   useEffect(() => {
     easeIn()
   }, [])
@@ -103,7 +98,7 @@ const Index = () => {
       )
       .add(
         {
-          targets: '#landing-section .ripple',
+          targets: '#landing-section a',
           opacity: [0, 1],
           translateY: [20, 0],
           delay: anime.stagger(100),

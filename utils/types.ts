@@ -1,3 +1,5 @@
+export type target = '_blank' | '_parent' | '_self' | '_top '
+
 export interface Category {
   id: number
   name: string

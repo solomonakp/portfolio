@@ -49,7 +49,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 src={thumbnail}
                 className="thumbnail"
                 alt="Project thumbnail"
-                objectFit="cover"
+                objectFit="fill"
                 objectPosition="top"
                 blurDataURL={`blur`}
               />
