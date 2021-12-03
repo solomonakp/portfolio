@@ -10,8 +10,9 @@ export interface ProjectCardProps {
   title: string
   description: string
   thumbnail: StaticImageData
-  repository: string
+  repository?: string
   site: string
+  figma?: string
   index: number
 }
 
