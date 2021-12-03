@@ -18,7 +18,7 @@ const ProjectsSection = () => {
     <section id="project-section" className="section-space">
       <div className="container">
         <Heading className="section-heading-space" id="projects-heading">
-          My Latest Works
+          Some of my work
         </Heading>
         <ProjectsContainer />
       </div>

@@ -134,7 +134,7 @@ const useTheme = () => {
     radius: {
       button: '5px',
       card: '8px',
-      chip: '11px',
+      chip: '8px',
       paginationRadius: '10px',
     },
     shadow: {
