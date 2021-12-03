@@ -53,14 +53,18 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
             :global(#floating-email:hover, #floating-email:focus, #floating-email:active) {
             color: ${hover};
           }
-          & :global(a:hover svg, a:active svg, a:focus svg) {
-            fill: ${hover};
-            transition: ${fillTrans};
-          }
+
           &
             :global(#fixed-github, #fixed-linkedin, #fixed-twitter, #fixed-telephone) {
             transition: ${fillTrans};
           }
+        }
+
+        :global(.floating-container a:hover svg, .floating-container
+            a:active
+            svg, .floating-container a:focus svg) {
+          fill: ${hover};
+          transition: ${fillTrans};
         }
 
         #right {
@@ -75,6 +79,14 @@ const FloatingContainer: React.FC<FloatingContainerProps> = ({
           }
         }
       `}</style>
+      <style global>
+        {`.floating-container a:hover svg, .floating-container
+            a:active
+            svg, .floating-container a:focus svg{
+          fill: ${hover};
+          transition: ${fillTrans};
+        }`}
+      </style>
     </div>
   )
 }

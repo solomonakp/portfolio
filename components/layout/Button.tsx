@@ -1,6 +1,6 @@
 import React from 'react'
-import { createRipples } from 'react-ripples'
 import useTheme from '@hooks/useTheme'
+import { target } from '@utils/types'
 
 type colors = 'primary' | 'secondary' | 'inherit' | 'light' | 'dark'
 
@@ -10,9 +10,10 @@ interface ButtonProps {
   bgColor?: colors
   radius?: number
   id?: string
+  className?: string
+  target?: target
+  href: string
 }
-
-const Ripples = createRipples()
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -21,34 +22,98 @@ const Button: React.FC<ButtonProps> = ({
   bgColor = 'primary',
   radius = 5,
   id,
+  className,
+
   ...props
 }) => {
   const {
-    colors: { dark, primary, secondary, light, outLine, btnColor, lightColor },
-    effects: { buttonTransitionIn, buttonTransitionOut },
+    colors: {
+      dark,
+      primary,
+      secondary,
+      light,
+      outLineColor,
+      btnColor,
+      lightColor,
+    },
+    effects: { buttonTransitionOut },
     media: { maxSm },
   } = useTheme()
+
   return (
-    <Ripples className="ripple">
-      <button {...props} id={id}>
-        {children}
-      </button>
+    <>
+      {outline ? (
+        <a
+          id={id}
+          className={`outlined ${className ? className : ''}`}
+          {...props}
+        >
+          {children}
+        </a>
+      ) : (
+        <a id={id} className={`normal ${className}`} {...props}>
+          {children}
+        </a>
+      )}
       <style jsx>{`
-        button {
+        a {
           text-align: center;
           padding: 0.75em 1em;
           text-transform: uppercase;
-          font-weight: 500;
-          border-width: 1px;
-          border-style: solid;
-          will-change: background-color, border-color, color;
-          transition: ${buttonTransitionIn};
-          border-color: ${outline ? outLine : light};
+          font-weight: 400;
+          position: relative;
+          overflow: hidden;
           font-size: ${size + 'px'};
           border-radius: ${radius + 'px'};
-          background-color: ${outline
-            ? 'transparent'
-            : bgColor === 'primary'
+          color: ${outline ? btnColor : lightColor};
+          @media (${maxSm}) {
+            font-size: ${size - 2 + 'px'};
+          }
+
+          &::before {
+            content: '';
+            display: block;
+            height: 105%;
+            width: 105%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 0.2s transform ease-out;
+            will-change: transform;
+            z-index: -1;
+            perspective: 1500px;
+            border-radius: ${radius + 'px'};
+          }
+        }
+        .outlined {
+          background-color: transparent;
+          border-width: 1px;
+          border-style: solid;
+          border-color: ${outline ? outLineColor : light};
+          transition: 0.2s transform ease-in-out;
+          will-change: transform;
+          z-index: 0;
+          &:before {
+            transform: translate(-100%, 0) rotate(10deg);
+            transform-origin: top left;
+            background-color: ${outLineColor};
+          }
+
+          &:hover,
+          &:focus,
+          &:active {
+            transform: scale(1.05);
+            will-change: transform;
+            border: 1px solid transparent;
+            color: ${outline ? lightColor : btnColor};
+            &:before {
+              transform: translate(0, 0);
+            }
+          }
+        }
+        .normal,
+        .normal::before {
+          background-color: ${bgColor === 'primary'
             ? primary
             : bgColor === 'secondary'
             ? secondary
@@ -59,20 +124,25 @@ const Button: React.FC<ButtonProps> = ({
             : bgColor === 'light'
             ? light
             : bgColor};
-          color: ${outline ? btnColor : lightColor};
-          &:hover,
-          &:focus {
-            transition: ${buttonTransitionOut};
-            background-color: ${outline ? primary : 'transparent'};
-            border-color: ${outline ? light : outLine};
-            color: ${outline ? lightColor : btnColor};
+        }
+        .normal {
+          &::before {
+            transform: translateX(-100%);
+            filter: brightness(85%);
           }
-          @media (${maxSm}) {
-            font-size: ${size - 2 + 'px'};
+          &:hover,
+          &:focus,
+          &:active {
+            &::before {
+              transform: translateX(0);
+              transform-origin: left;
+            }
+            transition: ${buttonTransitionOut};
+            border-color: ${outLineColor};
           }
         }
       `}</style>
-    </Ripples>
+    </>
   )
 }
 

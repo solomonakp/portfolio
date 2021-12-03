@@ -98,7 +98,7 @@ const Index = () => {
       )
       .add(
         {
-          targets: '#landing-section .ripple',
+          targets: '#landing-section a',
           opacity: [0, 1],
           translateY: [20, 0],
           delay: anime.stagger(100),

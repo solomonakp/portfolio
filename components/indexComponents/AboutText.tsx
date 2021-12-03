@@ -9,7 +9,7 @@ const AboutText = () => {
       <div className="about-text">
         <h2>About Me</h2>
         <p>
-          Hello again !, I am Solomon Chokor. A Software Engineer with a Focus
+          Hello again! I&apos;m Solomon Chokor. A Software Engineer with a Focus
           on Front-end Engineering. I got into software engineering after
           various failed attempts and building my own product with limited
           coding experience. These days I enjoy building user interfaces which
@@ -19,7 +19,7 @@ const AboutText = () => {
           Asides anything code, I enjoy cooking, reading, movies and meaningful
           conversations. I know I said asides &#128579;, but I also enjoy
           talking about the web and helping those around me become better
-          developers while whilst learning from them.
+          developers whilst learning from them.
         </p>
         <p>
           Some of the tools in my toolkit are but not limited to:{' '}

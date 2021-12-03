@@ -12,7 +12,7 @@ interface Theme {
     light: string
     iconColor: string
     cardHover: string
-    outLine: string
+    outLineColor: string
     btnColor: string
     lightColor: string
     darkColor: string
@@ -97,7 +97,7 @@ const useTheme = () => {
       iconColor: isDark ? '#B2B9CD' : '#616F94', // based on state
       cardHover: isDark ? '#1B2E43' : '#ECF1F4', // based on state
       dark: isDark ? '#FFFFFC' : '#001524 ',
-      outLine: isDark ? '#616F94' : '#CC4233',
+      outLineColor: isDark ? '#616F94' : '#CC4233',
       btnColor: isDark ? '#FFFFFC' : '#CC4233',
       lightColor: '#FFFFFC',
       darkColor: '#001524',

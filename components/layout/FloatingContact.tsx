@@ -18,6 +18,7 @@ export const FloatingContact: React.FC = ({}) => {
           <IconLink
             href={'https://github.com/solomonakp'}
             aria-labelledby="side-github-label"
+            target="_blank"
           >
             <Github
               width={20}
@@ -35,6 +36,7 @@ export const FloatingContact: React.FC = ({}) => {
           <IconLink
             href={'https://www.linkedin.com/in/chokor-solomon-110177131/'}
             aria-labelledby="side-linkedin-label"
+            target="_blank"
           >
             <Linkedin
               width={20}
@@ -52,6 +54,7 @@ export const FloatingContact: React.FC = ({}) => {
           <IconLink
             href={'https://twitter.com/dev_chuck'}
             aria-labelledby="side-twitter-label"
+            target="_blank"
           >
             <Twitter
               width={20}
