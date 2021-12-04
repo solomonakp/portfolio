@@ -109,7 +109,7 @@ const Pagination = (props: PaginationProps) => {
           }
           return (
             <li key={number} className="page-item">
-              <Link as={`/blog?page=${number}`} href={`/blog?page=${number}`}>
+              <Link as={`/blog/page/${number}`} href={`/blog/page/${number}`}>
                 <a
                   className={`pagination-link ${
                     number === currentPage ? 'active' : ''

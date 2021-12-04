@@ -41,7 +41,7 @@ const projects = [
     repository: 'https://github.com/solomonakp/portfolio',
     site: 'https://www.devchuck.me/',
     figma:
-      'figma.com/file/3lqHLfVz7F2VUKUqoSb39l/Chuki-Port-(Copy)?node-id=2215%3A408',
+      'https://www.figma.com/file/3lqHLfVz7F2VUKUqoSb39l/Chuki-Port-(Copy)?node-id=2215%3A408',
   },
 ]
 

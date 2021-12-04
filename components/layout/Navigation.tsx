@@ -22,7 +22,7 @@ interface Route {
 const routes: Route[] = [
   { text: 'About', route: '#about-section' },
   { text: 'Projects', route: '#project-section' },
-  { text: 'Blog', route: '/blog' },
+  { text: 'Blog', route: '/blog/page/1' },
 ]
 
 const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
@@ -65,7 +65,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
       // dispatch toggleOpen
       dispatch(toggleOpen())
 
-      if (href === '/blog') {
+      if (href === '/blog/page/1') {
         animation()
         router.push(href, href, { scroll: true })
         return
@@ -83,7 +83,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
       // false
 
       // if link clicked is the blog link
-      if (href === '/blog') {
+      if (href === '/blog/page/1') {
         router.push(href, href, { scroll: true })
         return
       }
