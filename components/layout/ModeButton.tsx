@@ -179,7 +179,7 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
             background-color: transparent;
             @media (${maxMd}) {
               position: absolute;
-              top: 1.25rem;
+              top: 10%;
               right: 2%;
               width: 3.125rem;
               height: 3.125rem;

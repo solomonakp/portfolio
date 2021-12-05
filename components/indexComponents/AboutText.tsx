@@ -11,9 +11,9 @@ const AboutText = () => {
         <p>
           Hello again! I&apos;m Solomon Chokor. A Software Engineer with a Focus
           on Front-end Engineering. I got into software engineering after
-          various failed attempts and building my own product with limited
-          coding experience. These days I enjoy building user interfaces which
-          are accessible, usable, performant and scalable.
+          various failed attempts at building my own product with limited coding
+          experience. These days I enjoy building user interfaces which are
+          accessible, usable, performant and scalable.
         </p>
         <p>
           Asides anything code, I enjoy cooking, reading, movies and meaningful
