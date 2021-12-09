@@ -6,11 +6,15 @@ import { createPostsData } from '@utils/functions'
 const PostsSection = () => {
   const { posts } = useBlog()
 
-  const postData = createPostsData(posts)
+  const postData = posts && createPostsData(posts)
 
   return (
     <section id="posts" className="section-space">
-      <PostsContainer posts={postData} />
+      {posts ? (
+        <PostsContainer posts={postData} />
+      ) : (
+        <h1>No featured post yet</h1>
+      )}
     </section>
   )
 }
