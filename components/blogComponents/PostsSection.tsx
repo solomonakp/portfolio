@@ -2,19 +2,19 @@ import React from 'react'
 import PostsContainer from '@blogComponents/PostsContainer'
 import { useBlog } from '@context/blog/blogContext'
 import { createPostsData } from '@utils/functions'
+import NoPost from './NoPost'
 
 const PostsSection = () => {
   const { posts } = useBlog()
 
   const postData = posts && createPostsData(posts)
+  if (!posts) {
+    return <NoPost>No posts yet</NoPost>
+  }
 
   return (
     <section id="posts" className="section-space">
-      {posts ? (
-        <PostsContainer posts={postData} />
-      ) : (
-        <h1>No featured post yet</h1>
-      )}
+      <PostsContainer posts={postData} />
     </section>
   )
 }

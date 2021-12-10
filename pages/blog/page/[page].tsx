@@ -13,6 +13,7 @@ import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
 import Pagination from '@components/layout/Pagination'
+import NoPost from '@components/blogComponents/NoPost'
 
 const Index = ({
   sections,
@@ -22,6 +23,12 @@ const Index = ({
   postPerPage,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const { seo } = blogPage
+
+  const { featuredPost, posts } = sections
+
+  if (!featuredPost && !posts) {
+    return <NoPost height="100vh">No posts yet</NoPost>
+  }
 
   return (
     <BlogProvider value={sections}>
