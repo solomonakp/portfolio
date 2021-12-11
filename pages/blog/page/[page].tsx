@@ -143,6 +143,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         blogPage,
         ...paginationData,
       },
+      revalidate: 5,
     }
   }
 
@@ -154,6 +155,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       blogPage,
       ...paginationData,
     },
+    revalidate: 5,
   }
 }
 
