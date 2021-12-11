@@ -6,7 +6,6 @@ NoPost
 const FeaturedPostSection = () => {
   const { featuredPost } = useBlog()
 
-  console.log(featuredPost, 'featured Post')
   if (!featuredPost) {
     return <NoPost>No featured post yet</NoPost>
   }

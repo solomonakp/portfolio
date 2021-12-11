@@ -8,6 +8,7 @@ const PostsSection = () => {
   const { posts } = useBlog()
 
   const postData = posts && createPostsData(posts)
+
   if (!posts) {
     return <NoPost>No posts yet</NoPost>
   }
