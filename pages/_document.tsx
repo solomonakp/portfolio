@@ -71,6 +71,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
             rel="stylesheet"
           />
+          <meta
+            name="google-site-verification"
+            content="UN2UO4pdGF1mseZ3lZrWs0h__SONkKO1fgO3nkh1ZGk"
+          />
         </Head>
         <body>
           <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />

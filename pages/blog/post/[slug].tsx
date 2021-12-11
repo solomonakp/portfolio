@@ -20,7 +20,7 @@ const PostComponent = (
       <Seo {...seo} />
       <PostDetailSection {...postDetails} />
       <PostBodySection content={content} />
-      <ReadMoreSection posts={morePosts} />
+      {morePosts.length && <ReadMoreSection posts={morePosts} />}
     </div>
   )
 }
