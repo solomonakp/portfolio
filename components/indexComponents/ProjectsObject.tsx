@@ -2,6 +2,7 @@ import portfolio from 'public/pictures/portfolio.png'
 import atara from 'public/pictures/atara.png'
 import lumia from 'public/pictures/lumia.png'
 import starwars from 'public/pictures/starwars.png'
+import velox from 'public/pictures/velox.png'
 
 const projects = [
   {
@@ -42,6 +43,14 @@ const projects = [
     site: 'https://www.devchuck.me/',
     figma:
       'https://www.figma.com/file/3lqHLfVz7F2VUKUqoSb39l/Chuki-Port-(Copy)?node-id=2215%3A408',
+  },
+  {
+    title: 'myvelox.io',
+    description:
+      'A financial solution created to help, students, unemployed, entrepreneurs, private and public workers in Nigeria have access to quicker loans.',
+    tags: ['TypeScript', 'Next.js', 'Material Ui', 'Redux', 'SWR'],
+    thumbnail: velox,
+    site: 'https://myvelox.io/',
   },
 ]
 

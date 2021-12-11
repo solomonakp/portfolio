@@ -93,6 +93,10 @@ const Pagination = (props: PaginationProps) => {
     pageNumbers = range(1, totalPages)
   }
 
+  if (totalPages <= 1) {
+    return null
+  }
+
   return (
     <nav className="container-xl">
       <ul className="pagination-container d-flex flex-wrap justify-content-center">

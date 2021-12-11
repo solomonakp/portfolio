@@ -13,6 +13,7 @@ import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
 import Pagination from '@components/layout/Pagination'
+import NoPost from '@components/blogComponents/NoPost'
 
 const Index = ({
   sections,
@@ -22,6 +23,12 @@ const Index = ({
   postPerPage,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const { seo } = blogPage
+
+  const { featuredPost, posts } = sections
+
+  if (!featuredPost && !posts) {
+    return <NoPost height="100vh">No posts yet</NoPost>
+  }
 
   return (
     <BlogProvider value={sections}>
@@ -66,6 +73,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { page } = context.params
 
+  // convert page to number
+  const currentPage = Number(page)
+
   //   start position to query data from
   const start = +page === 1 ? 0 : (+page - 1) * postPerPage
 
@@ -78,30 +88,71 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ]
   )
 
+  // total post is  total post count  minus featured post
+  const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
+
+  if (totalPosts === 0) {
+    return {
+      props: {
+        blogPage,
+        sections: {
+          featuredPost: null,
+          posts: null,
+        },
+        page: 0,
+        totalPosts: 0,
+        postPerPage,
+      },
+    }
+  }
+
+  const paginationData = {
+    page: currentPage,
+    totalPosts: postsCount,
+    postPerPage,
+  }
+
   // getting featured post
   const featuredPost = featuredPosts[0]
 
   // featching posts that do not include featured posts
   const posts = await fetchAPI(
-    `/articles?slug_ne=${featuredPost.slug}&_limit=${postPerPage}&_start=${start}&_sort=published_at:DESC`
+    `/articles?slug_ne=${
+      featuredPost?.slug && null
+    }&_limit=${postPerPage}&_start=${start}&_sort=published_at:DESC`
   )
 
-  // format data for page component
+  if (!featuredPost) {
+    const sections = createPostsSections(posts, null)
+
+    return {
+      props: {
+        sections,
+        blogPage,
+        ...paginationData,
+      },
+    }
+  }
+
+  if (posts.length === 0) {
+    const sections = createPostsSections(null, featuredPost)
+
+    return {
+      props: {
+        sections,
+        blogPage,
+        ...paginationData,
+      },
+    }
+  }
+
   const sections = createPostsSections(posts, featuredPost)
-
-  // total post is  total post count  minus featured post
-  const postsCount = totalPosts - 1
-
-  // convert page to number
-  const currentPage = Number(page)
 
   return {
     props: {
       sections,
       blogPage,
-      page: currentPage,
-      totalPosts: postsCount,
-      postPerPage,
+      ...paginationData,
     },
   }
 }

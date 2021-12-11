@@ -1,6 +1,9 @@
 import React from 'react'
 import useTheme from '@hooks/useTheme'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 export interface PostBodyProps {
   content?: string
 }
@@ -9,13 +12,38 @@ const PostBody = (props: PostBodyProps) => {
   const { content } = props
 
   const {
-    colors: { dark },
+    colors: { dark: darkColor },
     media: { maxSm },
   } = useTheme()
 
   return (
     <article className="post" role="article">
-      <ReactMarkdown className="post-content">{content}</ReactMarkdown>
+      {/* <ReactMarkdown className="post-content">{content}</ReactMarkdown> */}
+      <ReactMarkdown
+        rehypePlugins={[rehypeRaw]}
+        components={{
+          code({ inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '')
+            return !inline && match ? (
+              <SyntaxHighlighter
+                style={atomDark}
+                language={match[1]}
+                PreTag="div"
+                wrapLongLines
+                {...props}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            )
+          },
+        }}
+      >
+        {content}
+      </ReactMarkdown>
       <style jsx>{`
         .post {
           max-width: 90%;
@@ -28,7 +56,7 @@ const PostBody = (props: PostBodyProps) => {
         }
         :global(.post-content ul) {
           list-style-type: none;
-          color: ${dark};
+          color: ${darkColor};
           padding-left: 0;
         }
         :global(.post-content li) {
@@ -43,8 +71,12 @@ const PostBody = (props: PostBodyProps) => {
             height: 0.5em;
             left: -1.5em;
             top: 8px;
-            background-color: ${dark};
+            background-color: ${darkColor};
           }
+        }
+        :global(iframe) {
+          width: 100%;
+          margin-bottom: 1rem;
         }
       `}</style>
     </article>
