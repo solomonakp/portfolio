@@ -2,8 +2,8 @@ import React from 'react'
 import useTheme from '@hooks/useTheme'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 export interface PostBodyProps {
   content?: string
 }
@@ -18,15 +18,15 @@ const PostBody = (props: PostBodyProps) => {
 
   return (
     <article className="post" role="article">
-      {/* <ReactMarkdown className="post-content">{content}</ReactMarkdown> */}
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
           code({ inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
+
             return !inline && match ? (
               <SyntaxHighlighter
-                style={atomDark}
+                style={coldarkDark}
                 language={match[1]}
                 PreTag="div"
                 wrapLongLines
