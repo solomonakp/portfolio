@@ -13,7 +13,7 @@ export interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
   const {
-    colors: { light, secondary, dark },
+    colors: { light, secondary, dark, primary },
     effects: { bgTrans, colorTrans },
     size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
     media: { maxSm, minXxL },
@@ -92,6 +92,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
           p {
             color: ${dark};
             transition: ${colorTrans};
+          }
+
+          #nprogress .bar {
+            background: ${primary};
+          }
+          #nprogress .peg {
+            box-shadow: 0 0 10px ${primary}, 0 0 5px ${primary};
           }
           .left-container {
             width: 100%;
