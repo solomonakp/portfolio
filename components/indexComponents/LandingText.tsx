@@ -27,7 +27,7 @@ const LandingText = () => {
               href="https://1drv.ms/w/s!ApZqfEcXkAmrjMQ8N1ffbVlPY8BSMA?e=PzAc0O"
               target="_blank"
             >
-              Download Cv
+              View Resume
             </Button>
           </div>
         </div>
