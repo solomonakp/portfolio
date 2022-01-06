@@ -20,3 +20,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return getServerSideSitemap(ctx, fields)
 }
+
+const NullComponent = () => {
+  return null
+}
+
+export default NullComponent
