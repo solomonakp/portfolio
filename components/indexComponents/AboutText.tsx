@@ -25,9 +25,9 @@ const AboutText = () => {
           Some of the tools in my toolkit are but not limited to:{' '}
           <b>
             HTML, CSS/SASS, JavaScript/TypeScript, React, Next.js, Redux,
-            CSS-in-JS, Material UI, Bootstrap, Anime.js, Jest, React testing
-            library, Webpack, Firebase, Strapi, Wordpress, Git, Command line and
-            Vercel.
+            GraphQL, CSS-in-JS,TailWind, Material UI, Bootstrap, Anime.js, Jest,
+            React testing library, Webpack, Firebase, Strapi, Wordpress, Git,
+            Command line and Vercel.
           </b>{' '}
         </p>
       </div>
