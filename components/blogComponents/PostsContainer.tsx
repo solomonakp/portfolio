@@ -7,6 +7,7 @@ interface PostsContainerProps {
 }
 
 const PostsContainer: FC<PostsContainerProps> = ({ posts }) => {
+  console.log(posts, 'posts')
   return (
     <div className="container">
       <div className="row">

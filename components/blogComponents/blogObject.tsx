@@ -17,7 +17,7 @@ const Posts: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
   {
@@ -26,7 +26,7 @@ const Posts: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
   {
@@ -35,7 +35,7 @@ const Posts: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
   {
@@ -44,7 +44,7 @@ const Posts: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
 ]
@@ -56,7 +56,7 @@ export const ReadMore: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
   {
@@ -65,7 +65,7 @@ export const ReadMore: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
   {
@@ -74,7 +74,7 @@ export const ReadMore: PostDetailsProps[] = [
     description:
       'Anastasia Hawkings, a single mother of one who makes daily living from her active blog was once travelling through.',
     date: 'Jun 28, 2020',
-    tag: 'Development',
+    tags: ['Development'],
     image: '/pictures/card.jpg',
   },
 ]

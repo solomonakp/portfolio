@@ -1,13 +1,5 @@
 export type target = '_blank' | '_parent' | '_self' | '_top '
 
-export interface Category {
-  id: number
-  name: string
-  slug: string
-  created_at: Date
-  updated_at: Date
-}
-
 export interface Thumbnail {
   name: string
   hash: string
@@ -98,7 +90,7 @@ export interface Post {
   description: string
   content: string
   slug: string
-  category: Category
+  tags: string
   author: Author
   published_at: Date
   created_at: Date

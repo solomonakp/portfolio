@@ -9,7 +9,7 @@ export interface PostDetailsProps {
   title: string
   description: string
   date: string
-  tag: string
+  tags: string[]
   image: string
   imageWidth?: number
   imageHeight?: number
@@ -22,7 +22,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
   title,
   description,
   date,
-  tag,
+  tags,
   image,
   imageHeight = 330,
   imageWidth = 618,
@@ -53,7 +53,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
             )}`}
           />
           <p className="d-flex align-items-center">
-            <span className="tag">{tag}</span>
+            <span className="tag">{tags[0]}</span>
             <span className="dot"></span>
             <span className="date">{date}</span>
           </p>
