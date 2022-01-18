@@ -153,10 +153,8 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
           width={50}
           height={50}
           aria-hidden={true}
+          aria-label="switches to light or dark mode"
         >
-          <span hidden id="theme-label">
-            switches to light or dark mode
-          </span>
           <path ref={sunCircle} d={initialPath} id="circle" />
 
           <g ref={sunTickGroup} fill="#FFD54F">

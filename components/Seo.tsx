@@ -9,7 +9,7 @@ interface SeoProps extends SeoType {
 }
 
 const Seo: FC<SeoProps> = (props) => {
-  const { isMain, ...rest } = props
+  const { isMain = false, ...rest } = props
   const fullSeo = {
     ...rest,
     // Add title suffix
