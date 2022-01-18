@@ -12,47 +12,8 @@ export interface Thumbnail {
   url: string
 }
 
-export interface Large {
-  name: string
-  hash: string
-  ext: string
-  mime: string
-  width: number
-  height: number
-  size: number
-  path?: any
-  url: string
-}
-
-export interface Medium {
-  name: string
-  hash: string
-  ext: string
-  mime: string
-  width: number
-  height: number
-  size: number
-  path?: any
-  url: string
-}
-
-export interface Small {
-  name: string
-  hash: string
-  ext: string
-  mime: string
-  width: number
-  height: number
-  size: number
-  path?: any
-  url: string
-}
-
 export interface Formats {
   thumbnail: Thumbnail
-  large: Large
-  medium: Medium
-  small: Small
 }
 
 export interface Author {

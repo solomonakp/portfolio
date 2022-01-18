@@ -45,6 +45,8 @@ const Index = ({
       />
     </BlogProvider>
   )
+
+  return null
 }
 
 //  post to be displayed per page

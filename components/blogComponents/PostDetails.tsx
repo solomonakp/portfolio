@@ -35,6 +35,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({
     size: { textHeading, resTextHeading },
     media: { maxSm },
   } = useTheme()
+
   return (
     <Link as={`/blog/post/${slug}`} href="/blog/post/[slug]">
       <a className={className}>
