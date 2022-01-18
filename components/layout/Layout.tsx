@@ -25,127 +25,126 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
     dispatch,
   } = useUi()
 
-  if (isLoading) {
-    return <Loader fixed={true} dispatch={dispatch} />
-  }
-
   return (
-    <div id="layout">
-      <Head>
-        <link rel="icon" type="image/png" href="/favicon.png" />
-      </Head>
-      <Header
-        theme={true}
-        logo={
-          <Logo width={55} height={43} aria-hidden="true" focusable={false} />
-        }
-      />
-      <main>{children}</main>
+    <>
+      {isLoading && <Loader fixed={true} dispatch={dispatch} />}
+      <div id="layout">
+        <Head>
+          <link rel="icon" type="image/png" href="/favicon.png" />
+        </Head>
+        <Header
+          theme={true}
+          logo={
+            <Logo width={55} height={43} aria-hidden="true" focusable={false} />
+          }
+        />
+        <main>{children}</main>
 
-      <Footer isMain={isMain} />
-      <style jsx global>
-        {`
-          body::-webkit-scrollbar {
-            background-color: ${light};
-            width: 16px;
-            transition: all 300ms ease-in-out;
-          }
-          body {
-            scrollbar-width: thin;
-            scrollbar-color: #babac0;
-          }
-          body::-webkit-scrollbar-track {
-            background-color: ${light};
-            transition: ${bgTrans};
-          }
-          body::-webkit-scrollbar-thumb {
-            background-color: #babac0;
-            border-radius: 16px;
-            border: 4px solid ${light};
-            transition: ${bgTrans};
-          }
-
-          body::-webkit-scrollbar-button {
-            display: none;
-          }
-
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            letter-spacing: -0.02em;
-            font-weight: 500;
-            color: ${secondary};
-            transition: ${colorTrans};
-            min-height: 0vw;
-          }
-          h1 {
-            font-size: ${resMainHeading};
-          }
-
-          h2,
-          .h2 {
-            font-size: ${resSectionHeading};
-          }
-          p {
-            color: ${dark};
-            transition: ${colorTrans};
-          }
-
-          #nprogress .bar {
-            background: ${primary};
-          }
-          #nprogress .peg {
-            box-shadow: 0 0 10px ${primary}, 0 0 5px ${primary};
-          }
-          .left-container {
-            width: 100%;
-            height: 100%;
-            max-width: 540px;
-            @media (${maxSm}) {
-              margin: 0 auto;
+        <Footer isMain={isMain} />
+        <style jsx global>
+          {`
+            body::-webkit-scrollbar {
+              background-color: ${light};
+              width: 16px;
+              transition: all 300ms ease-in-out;
             }
-          }
-
-          .page-spacing {
-            width: 100%;
-            margin: 100px 0;
-          }
-          .section-space {
-            margin-bottom: ${sectionSpace};
-            @media (${maxSm}) {
-              margin-bottom: ${resSectionSpace};
+            body {
+              scrollbar-width: thin;
+              scrollbar-color: #babac0;
             }
-          }
-          .section-heading-space {
-            margin-bottom: ${headingSpace};
-          }
+            body::-webkit-scrollbar-track {
+              background-color: ${light};
+              transition: ${bgTrans};
+            }
+            body::-webkit-scrollbar-thumb {
+              background-color: #babac0;
+              border-radius: 16px;
+              border: 4px solid ${light};
+              transition: ${bgTrans};
+            }
 
-          @media (${minXxL}) {
+            body::-webkit-scrollbar-button {
+              display: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+              letter-spacing: -0.02em;
+              font-weight: 500;
+              color: ${secondary};
+              transition: ${colorTrans};
+              min-height: 0vw;
+            }
             h1 {
-              font-size: ${mainHeading};
+              font-size: ${resMainHeading};
             }
+
             h2,
             .h2 {
-              font-size: ${sectionHeading};
+              font-size: ${resSectionHeading};
             }
-          }
+            p {
+              color: ${dark};
+              transition: ${colorTrans};
+            }
 
-          @media (${maxSm}) {
-            .image-space {
-              margin-top: 3rem;
+            #nprogress .bar {
+              background: ${primary};
             }
-          }
-          .trim {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-        `}
-      </style>
-    </div>
+            #nprogress .peg {
+              box-shadow: 0 0 10px ${primary}, 0 0 5px ${primary};
+            }
+            .left-container {
+              width: 100%;
+              height: 100%;
+              max-width: 540px;
+              @media (${maxSm}) {
+                margin: 0 auto;
+              }
+            }
+
+            .page-spacing {
+              width: 100%;
+              margin: 100px 0;
+            }
+            .section-space {
+              margin-bottom: ${sectionSpace};
+              @media (${maxSm}) {
+                margin-bottom: ${resSectionSpace};
+              }
+            }
+            .section-heading-space {
+              margin-bottom: ${headingSpace};
+            }
+
+            @media (${minXxL}) {
+              h1 {
+                font-size: ${mainHeading};
+              }
+              h2,
+              .h2 {
+                font-size: ${sectionHeading};
+              }
+            }
+
+            @media (${maxSm}) {
+              .image-space {
+                margin-top: 3rem;
+              }
+            }
+            .trim {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+            }
+          `}
+        </style>
+      </div>
+    </>
   )
 }
 

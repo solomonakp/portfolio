@@ -9,11 +9,18 @@ import { useMediaPredicate } from 'react-media-hook'
 import useTheme from '@hooks/useTheme'
 import Seo from '@components/Seo'
 import { portfolioSeo } from '@utils/config'
+import { useUi } from '@context/ui/uiContext'
 
 const Index = () => {
+  const {
+    state: { isLoading },
+  } = useUi()
+
   useEffect(() => {
-    easeIn()
-  }, [])
+    if (isLoading === false) {
+      easeIn()
+    }
+  }, [isLoading])
 
   const {
     media: { maxMd },

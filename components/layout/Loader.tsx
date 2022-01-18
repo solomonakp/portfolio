@@ -2,6 +2,7 @@ import anime from 'animejs'
 import React, { useRef, useEffect } from 'react'
 import { toggleLoading } from '@context/ui/uiActions'
 import { Dispatch } from '@context/ui/uiTypes'
+import useTheme from '@hooks/useTheme'
 interface LoaderProps {
   fixed?: boolean
   dispatch: Dispatch
@@ -11,16 +12,19 @@ const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
   const loader = useRef<HTMLDivElement>(null)
   const primary = useRef<SVGPathElement>(null)
   const secondary = useRef<SVGPathElement>(null)
+  const {
+    colors: { light },
+  } = useTheme()
 
   useEffect(() => {
     anime.set(loader.current, {
-      opacity: 1,
+      visibility: 'visible',
     })
     const timeline = anime.timeline({
       easing: 'easeInOutQuad',
       duration: 1500,
       direction: 'alternate',
-      loop: 4,
+      loop: 2,
     })
     timeline
       .add({
@@ -80,9 +84,9 @@ const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
             right: ${fixed ? '0' : 'initial'};
             top: ${fixed ? '0' : 'initial'};
             bottom: ${fixed ? '0' : 'initial'};
-            background-color: inherit;
-            opacity: 0;
+            background-color: ${light};
             z-index: 10000;
+            visibility: hidden;
             svg {
               height: auto;
               width: 150px;

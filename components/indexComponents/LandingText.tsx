@@ -24,7 +24,7 @@ const LandingText = () => {
           <div className="download-btn-btn-container">
             <Button
               outline={true}
-              href="https://1drv.ms/w/s!ApZqfEcXkAmrjMQ8N1ffbVlPY8BSMA?e=PzAc0O"
+              href="https://1drv.ms/w/s!ApZqfEcXkAmrjMcOYx6evMeoZIxhaQ?e=Gc08em"
               target="_blank"
             >
               View Resume

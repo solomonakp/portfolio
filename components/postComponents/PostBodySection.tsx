@@ -11,10 +11,6 @@ const PostBodySection: FC<PostBodyProps> = (props) => {
           </div>
         </div>
       </div>
-      <style jsx>{`
-        section {
-        }
-      `}</style>
     </section>
   )
 }
