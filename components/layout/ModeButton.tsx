@@ -6,7 +6,7 @@ interface ModeButtonProps {
   isOpen: boolean
 }
 
-export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
+const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
   ({}, ref) => {
     const {
       media: { maxMd },
@@ -209,3 +209,7 @@ export const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
     )
   }
 )
+
+ModeButton.displayName = 'ModeButton'
+
+export default ModeButton
