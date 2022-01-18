@@ -64,7 +64,7 @@ export const createPostsData = (posts: Posts) => {
       title: post.title,
       description: post.description,
       image: getStrapiMedia(post.image),
-      tag: post.category.name,
+      tags: post.tags.split(','),
       date: dayjs(post.created_at).format('MMMM D, YYYY'),
       id: post.id,
     }

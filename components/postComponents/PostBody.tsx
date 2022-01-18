@@ -41,7 +41,7 @@ const PostBody = (props: PostBodyProps) => {
   } = useTheme()
 
   return (
-    <article className="post" role="article">
+    <article className="post-content" role="article">
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -75,8 +75,9 @@ const PostBody = (props: PostBodyProps) => {
             max-width: 100%;
           }
         }
-        :global(.post-content p) {
-          margin-bottom: 1.5rem;
+
+        :global(.post-content img) {
+          width: 100%;
         }
         :global(.post-content ul) {
           list-style-type: none;
@@ -100,7 +101,6 @@ const PostBody = (props: PostBodyProps) => {
         }
         :global(iframe) {
           width: 100%;
-          margin-bottom: 1rem;
         }
       `}</style>
     </article>

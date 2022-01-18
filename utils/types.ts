@@ -1,50 +1,6 @@
 export type target = '_blank' | '_parent' | '_self' | '_top '
 
-export interface Category {
-  id: number
-  name: string
-  slug: string
-  created_at: Date
-  updated_at: Date
-}
-
 export interface Thumbnail {
-  name: string
-  hash: string
-  ext: string
-  mime: string
-  width: number
-  height: number
-  size: number
-  path?: any
-  url: string
-}
-
-export interface Large {
-  name: string
-  hash: string
-  ext: string
-  mime: string
-  width: number
-  height: number
-  size: number
-  path?: any
-  url: string
-}
-
-export interface Medium {
-  name: string
-  hash: string
-  ext: string
-  mime: string
-  width: number
-  height: number
-  size: number
-  path?: any
-  url: string
-}
-
-export interface Small {
   name: string
   hash: string
   ext: string
@@ -58,9 +14,6 @@ export interface Small {
 
 export interface Formats {
   thumbnail: Thumbnail
-  large: Large
-  medium: Medium
-  small: Small
 }
 
 export interface Author {
@@ -98,7 +51,7 @@ export interface Post {
   description: string
   content: string
   slug: string
-  category: Category
+  tags: string
   author: Author
   published_at: Date
   created_at: Date

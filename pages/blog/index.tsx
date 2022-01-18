@@ -22,7 +22,7 @@ const Index = ({
   return (
     <BlogProvider value={sections}>
       <div id="page" className="page-spacing">
-        <Seo {...seo} />
+        <Seo {...seo} isMain />
         <FeaturedPostSection />
         <PostsSection />
       </div>

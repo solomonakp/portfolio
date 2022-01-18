@@ -5,11 +5,13 @@ import { FC } from 'react'
 
 interface SeoProps extends SeoType {
   article?: boolean
+  isMain?: boolean
 }
 
 const Seo: FC<SeoProps> = (props) => {
+  const { isMain, ...rest } = props
   const fullSeo = {
-    ...props,
+    ...rest,
     // Add title suffix
     metaTitle: `${props.metaTitle} | ${props.siteName}`,
     // Get full image URL
@@ -41,6 +43,12 @@ const Seo: FC<SeoProps> = (props) => {
       )}
       {fullSeo.article && <meta property="og:type" content="article" />}
       <meta name="twitter:card" content="summary_large_image" />
+      {isMain && (
+        <meta
+          name="google-site-verification"
+          content="UN2UO4pdGF1mseZ3lZrWs0h__SONkKO1fgO3nkh1ZGk"
+        />
+      )}
     </Head>
   )
 }
