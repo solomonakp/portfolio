@@ -1,6 +1,6 @@
 import React from 'react'
 import useTheme from '@hooks/useTheme'
-import { ModeButton } from '@layout/ModeButton'
+import ModeButton from '@layout/ModeButton'
 import { toggleOpen } from '@context/ui/uiActions'
 import { animationCallback } from '@hooks/useNavAnimation'
 import { useRouter } from 'next/router'
