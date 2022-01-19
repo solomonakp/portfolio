@@ -8,7 +8,7 @@ import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
 import PostsSection from '@blogComponents/PostsSection'
 import { fetchAPI } from '@utils/functions'
-import { BlogResponse } from '@utils/types'
+import { BlogSeo, Posts } from '@utils/types'
 import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
@@ -80,13 +80,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const start = +page === 1 ? 0 : (+page - 1) * postPerPage
 
   // Run API calls in parallel
-  const [blogPage, totalPosts, featuredPosts]: BlogResponse = await Promise.all(
-    [
-      fetchAPI('/homepage'),
-      fetchAPI('/articles/count'),
-      fetchAPI('/articles?featured=true&_limit=1&_sort=published_at:DESC'),
-    ]
-  )
+  const [blogPage, totalPosts, featuredPosts] = await Promise.all([
+    fetchAPI<BlogSeo>('/homepage'),
+    fetchAPI<number>('/articles/count'),
+    fetchAPI<Posts>('/articles?featured=true&_limit=1&_sort=published_at:DESC'),
+  ])
 
   // total post is  total post count  minus featured post
   const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
@@ -118,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const featuredPost = featuredPosts[0]
 
   // featching posts that do not include featured posts
-  const posts = await fetchAPI(
+  const posts = await fetchAPI<Posts>(
     `/articles?slug_ne=${
       featuredPost?.slug && null
     }&_limit=${postPerPage}&_start=${start}&_sort=published_at:DESC`
