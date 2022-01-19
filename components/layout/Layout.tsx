@@ -13,7 +13,7 @@ export interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
   const {
-    colors: { light, secondary, dark, primary },
+    colors: { light, secondary, dark, primary, codeBlockColor },
     effects: { bgTrans, colorTrans },
     size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
     media: { maxSm, minXxL },
@@ -47,6 +47,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
               background-color: ${light};
               width: 16px;
               transition: all 300ms ease-in-out;
+              overflow: ${isLoading ? 'hidden' : 'visible'};
             }
             body {
               scrollbar-width: thin;
@@ -90,6 +91,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
             p {
               color: ${dark};
               transition: ${colorTrans};
+            }
+            pre[class*='language-'],
+            :not(pre) > code[class*='language-'] {
+              background: ${codeBlockColor};
             }
 
             #nprogress .bar {

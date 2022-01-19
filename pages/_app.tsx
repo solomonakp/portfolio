@@ -1,4 +1,5 @@
 import useProgress from '@hooks/useProgress'
+import '@styles/prism.css'
 import '@styles/globals.css'
 
 const MyApp = ({ Component, pageProps }) => {

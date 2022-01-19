@@ -1,4 +1,4 @@
-import { Posts, Post, Image } from './types'
+import { Posts, Post, Image, MdxPost } from './types'
 import dayjs from 'dayjs'
 
 export function getStrapiURL(path = '') {
@@ -20,10 +20,10 @@ export const range = (from: number, to: number, step = 1) => {
 }
 
 // Helper to make GET requests to Strapi
-export async function fetchAPI(path: string) {
+export async function fetchAPI<T>(path: string) {
   const requestUrl = getStrapiURL(path)
   const response = await fetch(requestUrl)
-  const data = await response.json()
+  const data = (await response.json()) as Promise<T>
   return data
 }
 
@@ -74,7 +74,8 @@ export const createPostsData = (posts: Posts) => {
   return postsData
 }
 
-export const formatPost = (post: Post) => {
+export const formatPost = (post: MdxPost) => {
+  console.log(post, 'post')
   const postDetails = {
     date: dayjs(post.created_at).format('MMMM D, YYYY'),
     title: post.title,

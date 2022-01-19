@@ -11,11 +11,7 @@ type ProviderProps = {
 }
 
 export const BlogProvider: FC<ProviderProps> = ({ children, value }) => {
-  return (
-    <>
-      <BlogContext.Provider value={value}>{children}</BlogContext.Provider>
-    </>
-  )
+  return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>
 }
 
 export const useBlog = () => {

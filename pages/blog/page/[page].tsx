@@ -45,8 +45,6 @@ const Index = ({
       />
     </BlogProvider>
   )
-
-  return null
 }
 
 //  post to be displayed per page
@@ -92,6 +90,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // total post is  total post count  minus featured post
   const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
+
+  console.log(blogPage, 'blogPage')
 
   if (totalPosts === 0) {
     return {

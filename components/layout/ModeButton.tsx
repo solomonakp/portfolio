@@ -12,6 +12,8 @@ const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
       media: { maxMd },
       isDark,
       toggle,
+      radius: { button },
+      colors: { modeButtonColor },
     } = useTheme()
 
     const [initialMode, setInitialMode] = useState<boolean | null>(null)
@@ -171,10 +173,12 @@ const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
         <style jsx>{`
           button {
             margin-left: 3.875rem;
-            border-radius: 50%;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: transparent;
+            border-radius: ${button};
+            width: 2.75rem;
+            height: 2.75rem;
+            background-color: ${modeButtonColor};
+            padding: 0.5rem;
+            transition: background-color ease-in-out 100ms;
             @media (${maxMd}) {
               position: absolute;
               top: 12%;
