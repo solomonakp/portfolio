@@ -32,11 +32,9 @@ export const UiProvider: FC<ProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, initialState)
 
   return (
-    <>
-      <UiContext.Provider value={{ state, dispatch }}>
-        {children}
-      </UiContext.Provider>
-    </>
+    <UiContext.Provider value={{ state, dispatch }}>
+      {children}
+    </UiContext.Provider>
   )
 }
 

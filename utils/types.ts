@@ -1,3 +1,4 @@
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 export type target = '_blank' | '_parent' | '_self' | '_top '
 
 export interface Thumbnail {
@@ -45,11 +46,11 @@ export interface Image {
   updated_at: Date
 }
 
-export interface Post {
+export interface BasePost<T> {
   id: number
   title: string
   description: string
-  content: string
+  content: T
   slug: string
   tags: string
   author: Author
@@ -59,6 +60,12 @@ export interface Post {
   image: Image
   featured: boolean
 }
+
+export type Post = BasePost<string>
+
+export type MdxPost = BasePost<
+  MDXRemoteSerializeResult<Record<string, unknown>>
+>
 
 export type Posts = Post[]
 
