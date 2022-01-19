@@ -9,7 +9,7 @@ import { getLayout } from '@layout/Layout'
 import PostsSection from '@blogComponents/PostsSection'
 import { fetchAPI } from '@utils/functions'
 import { BlogSeo, Posts } from '@utils/types'
-import Seo from '@components/Seo'
+
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
 import Pagination from '@components/layout/Pagination'
@@ -17,7 +17,7 @@ import NoPost from '@components/blogComponents/NoPost'
 
 const Index = ({
   sections,
-  blogPage,
+
   page,
   totalPosts,
   postPerPage,
