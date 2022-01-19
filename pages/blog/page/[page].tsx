@@ -22,7 +22,7 @@ const Index = ({
   totalPosts,
   postPerPage,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  const { seo } = blogPage
+  // const { seo } = blogPage
 
   const { featuredPost, posts } = sections
 
@@ -33,7 +33,7 @@ const Index = ({
   return (
     <BlogProvider value={sections}>
       <div id="page" className="page-spacing">
-        <Seo {...seo} />
+        {/* <Seo {...seo} /> */}
         <FeaturedPostSection />
         <PostsSection />
       </div>
@@ -88,8 +88,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // total post is  total post count  minus featured post
   const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
-
-  console.log(blogPage, 'blogPage')
 
   if (totalPosts === 0) {
     return {

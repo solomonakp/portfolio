@@ -75,7 +75,6 @@ export const createPostsData = (posts: Posts) => {
 }
 
 export const formatPost = (post: MdxPost) => {
-  console.log(post, 'post')
   const postDetails = {
     date: dayjs(post.created_at).format('MMMM D, YYYY'),
     title: post.title,
