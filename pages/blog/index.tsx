@@ -9,7 +9,6 @@ import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
 import Pagination from '@components/layout/Pagination'
-import '@styles/prism.css'
 
 const Index = ({
   sections,
