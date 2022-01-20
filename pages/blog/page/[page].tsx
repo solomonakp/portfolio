@@ -1,58 +1,56 @@
-import React from 'react'
 import {
   InferGetServerSidePropsType,
   GetStaticProps,
   GetStaticPaths,
 } from 'next'
-import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
+// import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
-import PostsSection from '@blogComponents/PostsSection'
-import { fetchAPI2 } from '@utils/functions'
-import { BlogResponse } from '@utils/types'
-import Seo from '@components/Seo'
+// import PostsSection from '@blogComponents/PostsSection'
+import { fetchAPI } from '@utils/functions'
+import { BlogSeo, Posts } from '@utils/types'
+// import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
-import { BlogProvider } from '@context/blog/blogContext'
-import Pagination from '@components/layout/Pagination'
-import NoPost from '@components/blogComponents/NoPost'
+// import { BlogProvider } from '@context/blog/blogContext'
+// import Pagination from '@components/layout/Pagination'
+// import NoPost from '@components/blogComponents/NoPost'
 
-const Index = ({
-  sections,
-  blogPage,
-  page,
-  totalPosts,
-  postPerPage,
-}: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  const { seo } = blogPage
+const Index = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
+  //  const { sections, blogPage, page, totalPosts, postPerPage } = props
 
-  const { featuredPost, posts } = sections
+  // const { seo } = blogPage
 
-  if (!featuredPost && !posts) {
-    return <NoPost height="100vh">No posts yet</NoPost>
-  }
+  // const { featuredPost, posts } = sections
 
-  return (
-    <BlogProvider value={sections}>
-      <div id="page" className="page-spacing">
-        <Seo {...seo} />
-        <FeaturedPostSection />
-        <PostsSection />
-      </div>
-      <Pagination
-        currentPage={page}
-        totalItems={totalPosts}
-        itemsPerPage={postPerPage}
-        pageNeighbours={2}
-      />
-    </BlogProvider>
-  )
+  // if (!featuredPost && !posts) {
+  //   return <NoPost height="100vh">No posts yet</NoPost>
+  // }
+
+  // return (
+  //   <BlogProvider value={sections}>
+  //     <div id="page" className="page-spacing">
+  //       <Seo {...seo} />
+  //       <FeaturedPostSection />
+  //       <PostsSection />
+  //     </div>
+  //     <Pagination
+  //       currentPage={page}
+  //       totalItems={totalPosts}
+  //       itemsPerPage={postPerPage}
+  //       pageNeighbours={2}
+  //     />
+  //   </BlogProvider>
+  // )
+  console.log(props, 'current page props')
+
+  return null
 }
 
 //  post to be displayed per page
 const postPerPage = 10
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Run API calls in parallel
-  const totalPosts: number = await fetchAPI2('/articles/count')
+  // Run API calls
+  const totalPosts: number = await fetchAPI('/articles/count')
 
   // finding the median of maxValue if there are total items else total pages = 1
   const totalPages = totalPosts ? Math.ceil(totalPosts / postPerPage) : 1
@@ -80,16 +78,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const start = +page === 1 ? 0 : (+page - 1) * postPerPage
 
   // Run API calls in parallel
-  const [blogPage, totalPosts, featuredPosts]: BlogResponse = await Promise.all(
-    [
-      fetchAPI2('/homepage'),
-      fetchAPI2('/articles/count'),
-      fetchAPI2('/articles?featured=true&_limit=1&_sort=published_at:DESC'),
-    ]
-  )
+  const [blogPage, totalPosts, featuredPosts] = await Promise.all([
+    fetchAPI<BlogSeo>('/homepage'),
+    fetchAPI<number>('/articles/count'),
+    fetchAPI<Posts>('/articles?featured=true&_limit=1&_sort=published_at:DESC'),
+  ])
 
   // total post is  total post count  minus featured post
   const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
+
+  console.log(blogPage, 'blogPage')
 
   if (totalPosts === 0) {
     return {
@@ -116,7 +114,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const featuredPost = featuredPosts[0]
 
   // featching posts that do not include featured posts
-  const posts = await fetchAPI2(
+  const posts = await fetchAPI<Posts>(
     `/articles?slug_ne=${
       featuredPost?.slug && null
     }&_limit=${postPerPage}&_start=${start}&_sort=published_at:DESC`
