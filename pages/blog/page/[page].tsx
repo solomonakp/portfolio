@@ -7,9 +7,9 @@ import {
 import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
 import PostsSection from '@blogComponents/PostsSection'
-import { fetchAPI } from '@utils/functions'
-import { BlogSeo, Posts } from '@utils/types'
-
+import { fetchAPI2 } from '@utils/functions'
+import { BlogResponse } from '@utils/types'
+import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
 import Pagination from '@components/layout/Pagination'
@@ -17,12 +17,12 @@ import NoPost from '@components/blogComponents/NoPost'
 
 const Index = ({
   sections,
-
+  blogPage,
   page,
   totalPosts,
   postPerPage,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  // const { seo } = blogPage
+  const { seo } = blogPage
 
   const { featuredPost, posts } = sections
 
@@ -33,7 +33,7 @@ const Index = ({
   return (
     <BlogProvider value={sections}>
       <div id="page" className="page-spacing">
-        {/* <Seo {...seo} /> */}
+        <Seo {...seo} />
         <FeaturedPostSection />
         <PostsSection />
       </div>
@@ -52,7 +52,7 @@ const postPerPage = 10
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Run API calls in parallel
-  const totalPosts: number = await fetchAPI('/articles/count')
+  const totalPosts: number = await fetchAPI2('/articles/count')
 
   // finding the median of maxValue if there are total items else total pages = 1
   const totalPages = totalPosts ? Math.ceil(totalPosts / postPerPage) : 1
@@ -80,11 +80,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const start = +page === 1 ? 0 : (+page - 1) * postPerPage
 
   // Run API calls in parallel
-  const [blogPage, totalPosts, featuredPosts] = await Promise.all([
-    fetchAPI<BlogSeo>('/homepage'),
-    fetchAPI<number>('/articles/count'),
-    fetchAPI<Posts>('/articles?featured=true&_limit=1&_sort=published_at:DESC'),
-  ])
+  const [blogPage, totalPosts, featuredPosts]: BlogResponse = await Promise.all(
+    [
+      fetchAPI2('/homepage'),
+      fetchAPI2('/articles/count'),
+      fetchAPI2('/articles?featured=true&_limit=1&_sort=published_at:DESC'),
+    ]
+  )
 
   // total post is  total post count  minus featured post
   const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
@@ -114,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const featuredPost = featuredPosts[0]
 
   // featching posts that do not include featured posts
-  const posts = await fetchAPI<Posts>(
+  const posts = await fetchAPI2(
     `/articles?slug_ne=${
       featuredPost?.slug && null
     }&_limit=${postPerPage}&_start=${start}&_sort=published_at:DESC`

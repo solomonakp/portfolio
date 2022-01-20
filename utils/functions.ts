@@ -27,6 +27,12 @@ export async function fetchAPI<T>(path: string) {
   return data
 }
 
+export async function fetchAPI2(path: string) {
+  const requestUrl = getStrapiURL(path)
+  const response = await fetch(requestUrl)
+  const data = await response.json()
+  return data
+}
 export function getStrapiMedia(media: Image) {
   const imageUrl = media.url.startsWith('/')
     ? getStrapiURL(media.url)
