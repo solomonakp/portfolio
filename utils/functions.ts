@@ -27,6 +27,12 @@ export async function fetchAPI<T>(path: string) {
   return data
 }
 
+export async function fetchAPI2(path: string) {
+  const requestUrl = getStrapiURL(path)
+  const response = await fetch(requestUrl)
+  const data = await response.json()
+  return data
+}
 export function getStrapiMedia(media: Image) {
   const imageUrl = media.url.startsWith('/')
     ? getStrapiURL(media.url)
@@ -75,7 +81,6 @@ export const createPostsData = (posts: Posts) => {
 }
 
 export const formatPost = (post: MdxPost) => {
-  console.log(post, 'post')
   const postDetails = {
     date: dayjs(post.created_at).format('MMMM D, YYYY'),
     title: post.title,
@@ -113,3 +118,7 @@ export const toBase64 = (str) =>
   typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
+
+export function isEmpty(obj: Record<string, unknown>) {
+  return Object.keys(obj).length === 0
+}
