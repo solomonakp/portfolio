@@ -1,20 +1,17 @@
 import anime from 'animejs'
 import React, { useRef, useEffect } from 'react'
 import { toggleLoading } from '@context/ui/uiActions'
-import { Dispatch } from '@context/ui/uiTypes'
-import useTheme from '@hooks/useTheme'
+import { useUi } from '@context/ui/uiContext'
 interface LoaderProps {
   fixed?: boolean
-  dispatch: Dispatch
 }
 
-const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
+const Loader: React.FC<LoaderProps> = ({ fixed }) => {
   const loader = useRef<HTMLDivElement>(null)
   const primary = useRef<SVGPathElement>(null)
   const secondary = useRef<SVGPathElement>(null)
-  const {
-    colors: { light },
-  } = useTheme()
+
+  const { dispatch } = useUi()
 
   useEffect(() => {
     anime.set(loader.current, {
@@ -43,11 +40,11 @@ const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
     timeline.finished.then(() => {
       dispatch(toggleLoading())
     })
-  }, [])
+  }, [dispatch])
 
   return (
     <div
-      className="d-flex align-items-center justify-content-center "
+      className="d-flex align-items-center justify-content-center"
       id="loader-container"
       ref={loader}
     >
@@ -84,7 +81,6 @@ const Loader: React.FC<LoaderProps> = ({ fixed, dispatch }) => {
             right: ${fixed ? '0' : 'initial'};
             top: ${fixed ? '0' : 'initial'};
             bottom: ${fixed ? '0' : 'initial'};
-            background-color: ${light};
             z-index: 10000;
             visibility: hidden;
             svg {
