@@ -50,7 +50,7 @@ const postPerPage = 10
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Run API calls
-  const totalPosts: number = await fetchAPI('/articles/count')
+  const totalPosts = await fetchAPI<number>('/articles/count')
 
   // finding the median of maxValue if there are total items else total pages = 1
   const totalPages = totalPosts ? Math.ceil(totalPosts / postPerPage) : 1
