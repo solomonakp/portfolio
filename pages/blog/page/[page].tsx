@@ -6,16 +6,15 @@ import {
 import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
 import PostsSection from '@blogComponents/PostsSection'
-import { fetchAPI } from '@utils/functions'
+import { fetchAPI, createPostsSections, isEmpty } from '@utils/functions'
 import { BlogSeo, Posts } from '@utils/types'
 import Seo from '@components/Seo'
-import { createPostsSections } from '@utils/functions'
 import { BlogProvider } from '@context/blog/blogContext'
-import Pagination from '@components/layout/Pagination'
-import NoPost from '@components/blogComponents/NoPost'
+import Pagination from '@layout/Pagination'
+import NoPost from '@blogComponents/NoPost'
 
 const Index = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  if (Object.keys(props).length === 0) {
+  if (isEmpty(props)) {
     return null
   }
 

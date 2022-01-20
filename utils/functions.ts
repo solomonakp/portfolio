@@ -118,3 +118,7 @@ export const toBase64 = (str) =>
   typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
+
+export function isEmpty(obj: Record<string, unknown>) {
+  return Object.keys(obj).length === 0
+}
