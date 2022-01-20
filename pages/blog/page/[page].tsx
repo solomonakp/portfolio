@@ -3,46 +3,51 @@ import {
   GetStaticProps,
   GetStaticPaths,
 } from 'next'
-// import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
+import FeaturedPostSection from '@blogComponents/FeaturedPostSection'
 import { getLayout } from '@layout/Layout'
-// import PostsSection from '@blogComponents/PostsSection'
+import PostsSection from '@blogComponents/PostsSection'
 import { fetchAPI } from '@utils/functions'
 import { BlogSeo, Posts } from '@utils/types'
-// import Seo from '@components/Seo'
+import Seo from '@components/Seo'
 import { createPostsSections } from '@utils/functions'
-// import { BlogProvider } from '@context/blog/blogContext'
-// import Pagination from '@components/layout/Pagination'
-// import NoPost from '@components/blogComponents/NoPost'
+import { BlogProvider } from '@context/blog/blogContext'
+import Pagination from '@components/layout/Pagination'
+import NoPost from '@components/blogComponents/NoPost'
 
 const Index = (props: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  //  const { sections, blogPage, page, totalPosts, postPerPage } = props
+  if (Object.keys(props).length === 0) {
+    return null
+  }
 
-  // const { seo } = blogPage
+  const {
+    sections,
+    blogPage: { seo },
+    page,
+    totalPosts,
+    postPerPage,
+  } = props
 
-  // const { featuredPost, posts } = sections
+  const { featuredPost, posts } = sections
 
-  // if (!featuredPost && !posts) {
-  //   return <NoPost height="100vh">No posts yet</NoPost>
-  // }
+  if (!featuredPost && !posts) {
+    return <NoPost height="100vh">No posts yet</NoPost>
+  }
 
-  // return (
-  //   <BlogProvider value={sections}>
-  //     <div id="page" className="page-spacing">
-  //       <Seo {...seo} />
-  //       <FeaturedPostSection />
-  //       <PostsSection />
-  //     </div>
-  //     <Pagination
-  //       currentPage={page}
-  //       totalItems={totalPosts}
-  //       itemsPerPage={postPerPage}
-  //       pageNeighbours={2}
-  //     />
-  //   </BlogProvider>
-  // )
-  console.log(props, 'current page props')
-
-  return null
+  return (
+    <BlogProvider value={sections}>
+      <div id="page" className="page-spacing">
+        <Seo {...seo} />
+        <FeaturedPostSection />
+        <PostsSection />
+      </div>
+      <Pagination
+        currentPage={page}
+        totalItems={totalPosts}
+        itemsPerPage={postPerPage}
+        pageNeighbours={2}
+      />
+    </BlogProvider>
+  )
 }
 
 //  post to be displayed per page
@@ -86,8 +91,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // total post is  total post count  minus featured post
   const postsCount = totalPosts === 0 ? 0 : totalPosts - 1
-
-  console.log(blogPage, 'blogPage')
 
   if (totalPosts === 0) {
     return {
