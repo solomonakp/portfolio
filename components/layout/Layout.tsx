@@ -13,7 +13,7 @@ export interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
   const {
-    colors: { light, secondary, dark, primary, codeBlockColor },
+    colors: { light, secondary, dark, primary },
     effects: { bgTrans, colorTrans },
     size: { sectionHeading, mainHeading, resSectionHeading, resMainHeading },
     media: { maxSm, minXxL },
@@ -22,134 +22,129 @@ export const Layout: React.FC<LayoutProps> = ({ children, isMain }) => {
 
   const {
     state: { isLoading },
-    dispatch,
   } = useUi()
 
+  if (isLoading) {
+    return <Loader fixed={true} />
+  }
+
   return (
-    <>
-      {isLoading && <Loader fixed={true} dispatch={dispatch} />}
-      <div id="layout">
-        <Head>
-          <link rel="icon" type="image/png" href="/favicon.png" />
-        </Head>
-        <Header
-          theme={true}
-          logo={
-            <Logo width={55} height={43} aria-hidden="true" focusable={false} />
+    <div id="layout">
+      <Head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </Head>
+      <Header
+        theme={true}
+        logo={
+          <Logo width={55} height={43} aria-hidden="true" focusable={false} />
+        }
+      />
+      <main>{children}</main>
+      <Footer isMain={isMain} />
+      <style jsx global>
+        {`
+          body::-webkit-scrollbar {
+            background-color: ${light};
+            width: 16px;
+            transition: all 300ms ease-in-out;
           }
-        />
-        <main>{children}</main>
+          body {
+            scrollbar-width: thin;
+            scrollbar-color: #babac0;
+            overflow: ${isLoading ? 'hidden' : 'visible'};
+          }
+          body::-webkit-scrollbar-track {
+            background-color: ${light};
+            transition: ${bgTrans};
+          }
+          body::-webkit-scrollbar-thumb {
+            background-color: #babac0;
+            border-radius: 16px;
+            border: 4px solid ${light};
+            transition: ${bgTrans};
+          }
 
-        <Footer isMain={isMain} />
-        <style jsx global>
-          {`
-            body::-webkit-scrollbar {
-              background-color: ${light};
-              width: 16px;
-              transition: all 300ms ease-in-out;
-              overflow: ${isLoading ? 'hidden' : 'visible'};
-            }
-            body {
-              scrollbar-width: thin;
-              scrollbar-color: #babac0;
-            }
-            body::-webkit-scrollbar-track {
-              background-color: ${light};
-              transition: ${bgTrans};
-            }
-            body::-webkit-scrollbar-thumb {
-              background-color: #babac0;
-              border-radius: 16px;
-              border: 4px solid ${light};
-              transition: ${bgTrans};
-            }
+          body::-webkit-scrollbar-button {
+            display: none;
+          }
 
-            body::-webkit-scrollbar-button {
-              display: none;
-            }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            letter-spacing: -0.02em;
+            font-weight: 500;
+            color: ${secondary};
+            transition: ${colorTrans};
+            min-height: 0vw;
+          }
+          h1 {
+            font-size: ${resMainHeading};
+          }
 
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-              letter-spacing: -0.02em;
-              font-weight: 500;
-              color: ${secondary};
-              transition: ${colorTrans};
-              min-height: 0vw;
+          h2,
+          .h2 {
+            font-size: ${resSectionHeading};
+          }
+          p {
+            color: ${dark};
+            transition: ${colorTrans};
+          }
+
+          #nprogress .bar {
+            background: ${primary};
+          }
+          #nprogress .peg {
+            box-shadow: 0 0 10px ${primary}, 0 0 5px ${primary};
+          }
+          .left-container {
+            width: 100%;
+            height: 100%;
+            max-width: 540px;
+            @media (${maxSm}) {
+              margin: 0 auto;
             }
+          }
+
+          .page-spacing {
+            width: 100%;
+            margin: 100px 0;
+          }
+          .section-space {
+            margin-bottom: ${sectionSpace};
+            @media (${maxSm}) {
+              margin-bottom: ${resSectionSpace};
+            }
+          }
+          .section-heading-space {
+            margin-bottom: ${headingSpace};
+          }
+
+          @media (${minXxL}) {
             h1 {
-              font-size: ${resMainHeading};
+              font-size: ${mainHeading};
             }
-
             h2,
             .h2 {
-              font-size: ${resSectionHeading};
+              font-size: ${sectionHeading};
             }
-            p {
-              color: ${dark};
-              transition: ${colorTrans};
-            }
-            pre[class*='language-'],
-            :not(pre) > code[class*='language-'] {
-              background: ${codeBlockColor};
-            }
+          }
 
-            #nprogress .bar {
-              background: ${primary};
+          @media (${maxSm}) {
+            .image-space {
+              margin-top: 3rem;
             }
-            #nprogress .peg {
-              box-shadow: 0 0 10px ${primary}, 0 0 5px ${primary};
-            }
-            .left-container {
-              width: 100%;
-              height: 100%;
-              max-width: 540px;
-              @media (${maxSm}) {
-                margin: 0 auto;
-              }
-            }
-
-            .page-spacing {
-              width: 100%;
-              margin: 100px 0;
-            }
-            .section-space {
-              margin-bottom: ${sectionSpace};
-              @media (${maxSm}) {
-                margin-bottom: ${resSectionSpace};
-              }
-            }
-            .section-heading-space {
-              margin-bottom: ${headingSpace};
-            }
-
-            @media (${minXxL}) {
-              h1 {
-                font-size: ${mainHeading};
-              }
-              h2,
-              .h2 {
-                font-size: ${sectionHeading};
-              }
-            }
-
-            @media (${maxSm}) {
-              .image-space {
-                margin-top: 3rem;
-              }
-            }
-            .trim {
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-            }
-          `}
-        </style>
-      </div>
-    </>
+          }
+          .trim {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        `}
+      </style>
+    </div>
   )
 }
 
