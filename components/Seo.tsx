@@ -13,7 +13,7 @@ const Seo: FC<SeoProps> = (props) => {
   const fullSeo = {
     ...rest,
     // Add title suffix
-    metaTitle: `${props.metaTitle} | ${props.siteName}`,
+    metaTitle: `${props.metaTitle} | ${props.siteName ? props.siteName : ''}`,
     // Get full image URL
     shareImage: props.shareImage ? getStrapiMedia(props.shareImage) : null,
   }

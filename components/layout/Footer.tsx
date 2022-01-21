@@ -48,6 +48,7 @@ const Footer: React.FC<FooterProps> = (props) => {
         a {
           position: relative;
           cursor: pointer;
+          color: inherit;
 
           &::before {
             content: '';

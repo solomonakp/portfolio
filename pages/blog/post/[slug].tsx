@@ -46,6 +46,10 @@ const PostComponent = (
           }
         }
 
+        :global(.post-content h4, ) {
+          font-size: 2rem;
+        }
+
         :global(.post-content img) {
           width: 100%;
         }
