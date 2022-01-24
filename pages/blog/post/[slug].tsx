@@ -22,9 +22,11 @@ const PostComponent = (
 
   const { postDetails, seo, content } = formatPost(post)
 
+  console.log(post, 'post')
+
   return (
     <div id="post-page" className="page-spacing">
-      <Seo {...seo} />
+      <Seo {...seo} slug={`/blog/post/${post.slug}`} />
       <PostDetailSection {...postDetails} />
       <section id="post-body" className="section-space">
         <div className="container">

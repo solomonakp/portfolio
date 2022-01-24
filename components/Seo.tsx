@@ -2,17 +2,15 @@ import Head from 'next/head'
 import { getStrapiMedia } from '@utils/functions'
 import { SeoType } from '@utils/types'
 import { FC } from 'react'
-import { useRouter } from 'next/router'
 
 interface SeoProps extends SeoType {
   article?: boolean
   isMain?: boolean
+  slug?: string
 }
 
 const Seo: FC<SeoProps> = (props) => {
   const url = process.env.NEXT_PUBLIC_SITE_URL
-
-  const { pathname } = useRouter()
 
   const { isMain = false, ...rest } = props
   const fullSeo = {
@@ -48,7 +46,10 @@ const Seo: FC<SeoProps> = (props) => {
       )}
       {fullSeo.article && <meta property="og:type" content="article" />}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="og:url" content={`${url + pathname}`} />
+      {fullSeo.slug && (
+        <meta property="og:url" content={`${url}${fullSeo.slug}`} />
+      )}
+
       {isMain && (
         <meta
           name="google-site-verification"
