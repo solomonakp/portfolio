@@ -6,9 +6,12 @@ import { FC } from 'react'
 interface SeoProps extends SeoType {
   article?: boolean
   isMain?: boolean
+  slug?: string
 }
 
 const Seo: FC<SeoProps> = (props) => {
+  const url = process.env.NEXT_PUBLIC_SITE_URL
+
   const { isMain = false, ...rest } = props
   const fullSeo = {
     ...rest,
@@ -43,6 +46,10 @@ const Seo: FC<SeoProps> = (props) => {
       )}
       {fullSeo.article && <meta property="og:type" content="article" />}
       <meta name="twitter:card" content="summary_large_image" />
+      {fullSeo.slug && (
+        <meta property="og:url" content={`${url}${fullSeo.slug}`} />
+      )}
+
       {isMain && (
         <meta
           name="google-site-verification"

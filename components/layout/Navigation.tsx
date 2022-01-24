@@ -148,7 +148,7 @@ const Navigation = React.forwardRef<any, NavigationProps>(function NavLinks(
               position: fixed;
               left: 0;
               right: 0;
-              top: -90vh;
+              top: -95vh;
               bottom: 0;
               background: ${navOverlay};
               z-index: 10;
