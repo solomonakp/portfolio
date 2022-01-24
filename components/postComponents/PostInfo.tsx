@@ -21,6 +21,7 @@ const PostInfo: React.FC<PostInfoProps> = ({
   const {
     radius: { card },
     colors: { projectCardColor },
+    size: { resSectionHeading },
   } = useTheme()
 
   return (
@@ -38,14 +39,15 @@ const PostInfo: React.FC<PostInfoProps> = ({
           shimmer(1074, 551, projectCardColor)
         )}`}
       />
-      <h2 className="h2">{title}</h2>
+      <h1 className="h2">{title}</h1>
       <Avatar image={avatar} date={date} author={author} />
       <style jsx>{`
-        h2 {
+        h1 {
           max-width: 750px;
           width: 100%;
           margin-bottom: 1.5rem;
           margin-top: 20px;
+          font-size: ${resSectionHeading};
         }
         :global(.post-image) {
           border-radius: ${card};

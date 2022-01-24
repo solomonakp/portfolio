@@ -185,6 +185,11 @@ const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
               right: 2%;
               width: 3.125rem;
               height: 3.125rem;
+
+              @supports (-webkit-touch-callout: none) {
+                top: 17% !important;
+                right: 2%;
+              }
             }
 
             svg {
