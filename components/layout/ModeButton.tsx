@@ -187,7 +187,7 @@ const ModeButton = React.forwardRef<HTMLButtonElement, ModeButtonProps>(
               height: 3.125rem;
 
               @supports (-webkit-touch-callout: none) {
-                top: 17% !important;
+                top: 25% !important;
                 right: 2%;
               }
             }
